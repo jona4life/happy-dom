@@ -128,7 +128,7 @@ class EventTarget {
             (event[PropertySymbol.type] !== 'load' || !event[PropertySymbol.target])) {
             event[PropertySymbol.dispatching] = true;
             event[PropertySymbol.target] = this[PropertySymbol.proxy] || this;
-            console.log(this, event);
+            // console.log(this, event);
             this._goThroughDispatchEventPhases(event);
             event[PropertySymbol.dispatching] = false;
             return !(event[PropertySymbol.cancelable] && event[PropertySymbol.defaultPrevented]);

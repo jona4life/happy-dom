@@ -123,7 +123,7 @@ export default class EventTarget {
 			event[PropertySymbol.dispatching] = true;
 			event[PropertySymbol.target] = this[PropertySymbol.proxy] || this;
 
-			console.log(this, event);
+			// console.log(this, event);
 
 			this._goThroughDispatchEventPhases(event);
 
