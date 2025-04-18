@@ -621,13 +621,13 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 	globalThis[PropertySymbol.moduleImportMap] = null;
 
 	// Private properties
-	globalThis['#innerWidth'] = null;
-	globalThis['#innerHeight'] = null;
-	globalThis['#outerWidth'] = null;
-	globalThis['#outerHeight'] = null;
-	globalThis['#devicePixelRatio'] = null;
-	globalThis['#zeroDelayTimeout'] = { timeouts: null };
-	globalThis['#timerLoopStacks'] = [];
+	globalThis['_innerWidth'] = null;
+	globalThis['_innerHeight'] = null;
+	globalThis['_outerWidth'] = null;
+	globalThis['_outerHeight'] = null;
+	globalThis['_devicePixelRatio'] = null;
+	globalThis['_zeroDelayTimeout'] = { timeouts: null };
+	globalThis['_timerLoopStacks'] = [];
 
 	Object.defineProperty(globalThis, 'self', {
 		get() {
@@ -694,7 +694,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 
 	Object.defineProperty(globalThis, 'opener', {
 		get() {
-			return globalThis.#browserFrame[PropertySymbol.openerWindow];
+			return globalThis._browserFrame[PropertySymbol.openerWindow];
 		}
 	});
 
@@ -730,64 +730,64 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 
 	Object.defineProperty(globalThis, 'innerWidth', {
 		get() {
-			if (globalThis.#innerWidth === null) {
-				return globalThis.#browserFrame.page.viewport.width;
+			if (globalThis._innerWidth === null) {
+				return globalThis._browserFrame.page.viewport.width;
 			}
-			return globalThis.#innerWidth;
+			return globalThis._innerWidth;
 		},
 		set(value: number) {
-			globalThis.#innerWidth = value;
+			globalThis._innerWidth = value;
 		}
 	});
 
 	Object.defineProperty(globalThis, 'innerHeight', {
 		get() {
 			// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
-			if (globalThis.#innerHeight === null) {
-				return globalThis.#browserFrame.page.viewport.height;
+			if (globalThis._innerHeight === null) {
+				return globalThis._browserFrame.page.viewport.height;
 			}
-			return globalThis.#innerHeight;
+			return globalThis._innerHeight;
 		},
 		set(value: number) {
-			globalThis.#innerHeight = value;
+			globalThis._innerHeight = value;
 		}
 	});
 
 	Object.defineProperty(globalThis, 'outerWidth', {
 		get() {
 			// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
-			if (globalThis.#outerWidth === null) {
-				return globalThis.#browserFrame.page.viewport.width;
+			if (globalThis._outerWidth === null) {
+				return globalThis._browserFrame.page.viewport.width;
 			}
-			return globalThis.#outerWidth;
+			return globalThis._outerWidth;
 		},
 		set(value: number) {
-			globalThis.#outerWidth = value;
+			globalThis._outerWidth = value;
 		}
 	});
 
 	Object.defineProperty(globalThis, 'outerHeight', {
 		get() {
-			if (globalThis.#outerHeight === null) {
-				return globalThis.#browserFrame.page.viewport.height;
+			if (globalThis._outerHeight === null) {
+				return globalThis._browserFrame.page.viewport.height;
 			}
-			return globalThis.#outerHeight;
+			return globalThis._outerHeight;
 		},
 		set(value: number) {
-			globalThis.#outerHeight = value;
+			globalThis._outerHeight = value;
 		}
 	});
 
 	Object.defineProperty(globalThis, 'devicePixelRatio', {
 		get() {
 			// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
-			if (globalThis.#devicePixelRatio === null) {
-				return globalThis.#browserFrame.page.viewport.devicePixelRatio;
+			if (globalThis._devicePixelRatio === null) {
+				return globalThis._browserFrame.page.viewport.devicePixelRatio;
 			}
-			return globalThis.#devicePixelRatio;
+			return globalThis._devicePixelRatio;
 		},
 		set(value: number) {
-			globalThis.#devicePixelRatio = value;
+			globalThis._devicePixelRatio = value;
 		}
 	});
 
@@ -862,7 +862,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 		target?: string,
 		features?: string
 	): typeof globalThis | CrossOriginBrowserWindow | null {
-		return WindowPageOpenUtility.openPage(globalThis.#browserFrame, {
+		return WindowPageOpenUtility.openPage(globalThis._browserFrame, {
 			url,
 			target,
 			features
@@ -872,9 +872,9 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 	globalThis['close'] = function (): void {
 		// When using a Window instance directly, the Window instance is the main frame and we will close the page and destroy the browser.
 		// When using the Browser API we should only close the page when the Window instance is connected to the main frame (we should not close child frames such as iframes).
-		if (globalThis.#browserFrame.page?.mainFrame === globalThis.#browserFrame) {
+		if (globalThis._browserFrame.page?.mainFrame === globalThis._browserFrame) {
 			globalThis[PropertySymbol.destroy]();
-			globalThis.#browserFrame.page.close();
+			globalThis._browserFrame.page.close();
 		}
 	}.bind(globalThis);
 
@@ -889,7 +889,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 			return;
 		}
 		TIMER.clearImmediate(id);
-		globalThis.#browserFrame[PropertySymbol.asyncTaskManager].endImmediate(id);
+		globalThis._browserFrame[PropertySymbol.asyncTaskManager].endImmediate(id);
 	}.bind(globalThis);
 
 	globalThis['queueMicrotask'] = function (callback: Function): void {
@@ -897,10 +897,10 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 			return;
 		}
 		let isAborted = false;
-		const taskId = globalThis.#browserFrame[PropertySymbol.asyncTaskManager].startTask(
+		const taskId = globalThis._browserFrame[PropertySymbol.asyncTaskManager].startTask(
 			() => (isAborted = true)
 		);
-		const settings = globalThis.#browserFrame.page?.context?.browser?.settings;
+		const settings = globalThis._browserFrame.page?.context?.browser?.settings;
 		const useTryCatch =
 			!settings ||
 			(!settings.disableErrorCapturing &&
@@ -909,7 +909,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 		TIMER.queueMicrotask(() => {
 			if (!isAborted) {
 				// We need to call endTask() before the callback as the callback might throw an error.
-				globalThis.#browserFrame[PropertySymbol.asyncTaskManager].endTask(taskId);
+				globalThis._browserFrame[PropertySymbol.asyncTaskManager].endTask(taskId);
 				if (useTryCatch) {
 					let result: any;
 					try {
@@ -938,7 +938,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 		}
 
 		return await new Fetch({
-			browserFrame: globalThis.#browserFrame,
+			browserFrame: globalThis._browserFrame,
 			window: globalThis,
 			url,
 			init
@@ -984,12 +984,12 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 			globalThis.dispatchEvent(
 				new MessageEvent('message', {
 					data: message,
-					origin: globalThis.#browserFrame.parentFrame
-						? globalThis.#browserFrame.parentFrame.window.location.origin
-						: globalThis.#browserFrame.window.location.origin,
-					source: globalThis.#browserFrame.parentFrame
-						? globalThis.#browserFrame.parentFrame.window
-						: globalThis.#browserFrame.window,
+					origin: globalThis._browserFrame.parentFrame
+						? globalThis._browserFrame.parentFrame.window.location.origin
+						: globalThis._browserFrame.window.location.origin,
+					source: globalThis._browserFrame.parentFrame
+						? globalThis._browserFrame.parentFrame.window
+						: globalThis._browserFrame.window,
 					lastEventId: ''
 				})
 			)
@@ -1008,8 +1008,8 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 		}
 
 		// We can only resize the window if it is a popup.
-		if (globalThis.#browserFrame[PropertySymbol.popup]) {
-			globalThis.#browserFrame.page.setViewport({ width, height });
+		if (globalThis._browserFrame[PropertySymbol.popup]) {
+			globalThis._browserFrame.page.setViewport({ width, height });
 		}
 	}.bind(globalThis);
 
@@ -1025,9 +1025,9 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 		}
 
 		// We can only resize the window if it is a popup.
-		if (globalThis.#browserFrame[PropertySymbol.popup]) {
-			const viewport = globalThis.#browserFrame.page.viewport;
-			globalThis.#browserFrame.page.setViewport({
+		if (globalThis._browserFrame[PropertySymbol.popup]) {
+			const viewport = globalThis._browserFrame.page.viewport;
+			globalThis._browserFrame.page.setViewport({
 				width: viewport.width + width,
 				height: viewport.height + height
 			});
@@ -1035,7 +1035,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 	}.bind(globalThis);
 
 	globalThis[PropertySymbol.dispatchError] = function (error: Error): void {
-		globalThis.#browserFrame?.page?.console.error(error);
+		globalThis._browserFrame?.page?.console.error(error);
 		globalThis.dispatchEvent(new ErrorEvent('error', { message: error.message, error }));
 	}.bind(globalThis);
 
@@ -1131,19 +1131,19 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 		}
 	});
 
-	globalThis.#browserFrame = browserFrame;
+	globalThis._browserFrame = browserFrame;
 
 	globalThis[PropertySymbol.navigator] = new Navigator(globalThis);
 	globalThis[PropertySymbol.screen] = new Screen();
 	globalThis[PropertySymbol.sessionStorage] = new Storage();
 	globalThis[PropertySymbol.localStorage] = new Storage();
 	globalThis[PropertySymbol.location] = new Location(
-		globalThis.#browserFrame,
+		globalThis._browserFrame,
 		options?.url ?? 'about:blank'
 	);
-	globalThis[PropertySymbol.history] = new History(globalThis.#browserFrame, globalThis);
+	globalThis[PropertySymbol.history] = new History(globalThis._browserFrame, globalThis);
 
-	WindowBrowserContext.setWindowBrowserFrameRelation(globalThis, globalThis.#browserFrame);
+	WindowBrowserContext.setWindowBrowserFrameRelation(globalThis, globalThis._browserFrame);
 
 	globalThis[PropertySymbol.setupVMContext]();
 
