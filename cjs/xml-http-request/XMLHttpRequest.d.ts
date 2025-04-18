@@ -1,10 +1,8 @@
 import XMLHttpRequestEventTarget from './XMLHttpRequestEventTarget.cjs';
 import XMLHttpRequestReadyStateEnum from './XMLHttpRequestReadyStateEnum.cjs';
 import Document from '../nodes/document/Document.cjs';
-import Blob from '../file/Blob.cjs';
 import XMLHttpRequestUpload from './XMLHttpRequestUpload.cjs';
 import XMLHttpResponseTypeEnum from './XMLHttpResponseTypeEnum.cjs';
-import IRequestBody from '../fetch/types/IRequestBody.cjs';
 /**
  * XMLHttpRequest.
  *
@@ -118,7 +116,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
      *
      * @param body Optional data to send as request body.
      */
-    send(body?: Document | IRequestBody): void;
+    send(body?: any): void;
     /**
      * Aborts a request.
      */

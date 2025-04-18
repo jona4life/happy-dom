@@ -1,6 +1,5 @@
 /// <reference types="node" resolution-mode="require"/>
 /// <reference types="node" resolution-mode="require"/>
-import Blob from '../file/Blob.js';
 import Document from '../nodes/document/Document.js';
 import { Buffer } from 'buffer';
 /**

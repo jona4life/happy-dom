@@ -1,7 +1,5 @@
 import IRequestReferrerPolicy from '../types/IRequestReferrerPolicy.cjs';
 import IRequestRedirect from '../types/IRequestRedirect.cjs';
-import URL from '../../url/URL.cjs';
-import Request from '../Request.cjs';
 /**
  * Fetch request validation utility.
  */

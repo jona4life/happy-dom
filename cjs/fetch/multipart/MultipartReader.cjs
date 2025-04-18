@@ -1,9 +1,5 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const File_js_1 = __importDefault(require("../../file/File.cjs"));
 var MultipartParserStateEnum;
 (function (MultipartParserStateEnum) {
     MultipartParserStateEnum[MultipartParserStateEnum["boundary"] = 0] = "boundary";
@@ -152,7 +148,7 @@ class MultipartReader {
             return;
         }
         if (filename) {
-            this.formData.append(key, new File_js_1.default([value], filename, {
+            this.formData.append(key, new File([value], filename, {
                 type
             }));
         }

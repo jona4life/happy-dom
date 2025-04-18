@@ -1,1 +1,1 @@
-{"version":3,"file":"WindowContextClassExtender.d.ts","sourceRoot":"","sources":["../../src/window/WindowContextClassExtender.ts"],"names":[],"mappings":"AAgDA;;;;GAIG;AACH,MAAM,CAAC,OAAO,OAAO,0BAA0B;IAC9C;;;;OAIG;WACW,aAAa,CAAC,MAAM,EAAE,OAAO,UAAU,GAAG,IAAI;CA4O5D"}
+{"version":3,"file":"WindowContextClassExtender.d.ts","sourceRoot":"","sources":["../../src/window/WindowContextClassExtender.ts"],"names":[],"mappings":"AA8CA;;;;GAIG;AACH,MAAM,CAAC,OAAO,OAAO,0BAA0B;IAC9C;;;;OAIG;WACW,aAAa,CAAC,MAAM,EAAE,OAAO,UAAU,GAAG,IAAI;CA4O5D"}

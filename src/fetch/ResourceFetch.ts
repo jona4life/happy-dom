@@ -1,5 +1,3 @@
-import URL from '../url/URL.js';
-import Fetch from './Fetch.js';
 import SyncFetch from './SyncFetch.js';
 import IRequestCredentials from './types/IRequestCredentials.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
@@ -37,7 +35,7 @@ export default class ResourceFetch {
 		destination: 'script' | 'style' | 'module',
 		options?: { credentials?: IRequestCredentials; referrerPolicy?: IRequestReferrerPolicy }
 	): Promise<string> {
-		const browserFrame = new WindowBrowserContext(this.window).getBrowserFrame();
+		// const browserFrame = new WindowBrowserContext(this.window).getBrowserFrame();
 
 		// Preloaded resource
 		if (destination === 'script' || destination === 'style') {
@@ -56,8 +54,7 @@ export default class ResourceFetch {
 
 				if (!response.ok) {
 					throw new this.window.DOMException(
-						`Failed to perform request to "${
-							new URL(url, this.window.location.href).href
+						`Failed to perform request to "${new URL(url, this.window.location.href).href
 						}". Status ${preloadEntry.response.status} ${preloadEntry.response.statusText}.`
 					);
 				}
@@ -66,24 +63,14 @@ export default class ResourceFetch {
 			}
 		}
 
-		const fetch = new Fetch({
-			browserFrame,
-			window: this.window,
-			url,
-			disableSameOriginPolicy: destination === 'script' || destination === 'style',
-			disablePreload: true,
-			init: {
-				credentials: options?.credentials,
-				referrerPolicy: options?.referrerPolicy
-			}
+		const response = await fetch(url, {
+			credentials: options?.credentials,
+			referrerPolicy: options?.referrerPolicy
 		});
-
-		const response = await fetch.send();
 
 		if (!response.ok) {
 			throw new this.window.DOMException(
-				`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${
-					response.status
+				`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${response.status
 				} ${response.statusText}.`
 			);
 		}
@@ -126,8 +113,7 @@ export default class ResourceFetch {
 
 				if (!response.ok) {
 					throw new this.window.DOMException(
-						`Failed to perform request to "${
-							new URL(url, this.window.location.href).href
+						`Failed to perform request to "${new URL(url, this.window.location.href).href
 						}". Status ${preloadEntry.response.status} ${preloadEntry.response.statusText}.`
 					);
 				}
@@ -151,8 +137,7 @@ export default class ResourceFetch {
 
 		if (!response.ok) {
 			throw new this.window.DOMException(
-				`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${
-					response.status
+				`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${response.status
 				} ${response.statusText}.`
 			);
 		}

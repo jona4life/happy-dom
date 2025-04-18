@@ -2,8 +2,6 @@ import MultipartFormDataParser from '../multipart/MultipartFormDataParser.js';
 import { ReadableStream } from 'stream/web';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import { URLSearchParams } from 'url';
-import FormData from '../../form-data/FormData.js';
-import Blob from '../../file/Blob.js';
 import DOMException from '../../exception/DOMException.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
 import IRequestBody from '../types/IRequestBody.js';

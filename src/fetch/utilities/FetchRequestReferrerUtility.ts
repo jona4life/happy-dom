@@ -1,9 +1,6 @@
-import URL from '../../url/URL.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import { isIP } from 'net';
-import Headers from '../Headers.js';
 import IRequestReferrerPolicy from '../types/IRequestReferrerPolicy.js';
-import Request from '../Request.js';
 
 const REQUEST_REFERRER_UNSUPPORTED_PROTOCOL_REGEXP = /^(about|blob|data):$/;
 const REFERRER_POLICIES: IRequestReferrerPolicy[] = [

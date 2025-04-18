@@ -1,7 +1,5 @@
 import IBrowserFrame from '../types/IBrowserFrame.cjs';
 import IGoToOptions from '../types/IGoToOptions.cjs';
-import Response from '../../fetch/Response.cjs';
-import FormData from '../../form-data/FormData.cjs';
 /**
  * Browser frame navigation utility.
  */

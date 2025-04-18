@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const DOMException_js_1 = __importDefault(require("../exception/DOMException.cjs"));
-const Blob_js_1 = __importDefault(require("../file/Blob.cjs"));
 /**
  * Clipboard Item API.
  *
@@ -45,10 +44,10 @@ class ClipboardItem {
         if (!this.#data[type]) {
             throw new DOMException_js_1.default(`Failed to execute 'getType' on 'ClipboardItem': The type '${type}' was not found`);
         }
-        if (this.#data[type] instanceof Blob_js_1.default) {
+        if (this.#data[type] instanceof Blob) {
             return this.#data[type];
         }
-        return new Blob_js_1.default([await this.#data[type]], { type });
+        return new Blob([await this.#data[type]], { type });
     }
 }
 exports.default = ClipboardItem;

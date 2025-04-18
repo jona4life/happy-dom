@@ -1,4 +1,4 @@
-import Response from '../Response.js';
+/// <reference types="node" resolution-mode="require"/>
 /**
  * Preload entry.
  *

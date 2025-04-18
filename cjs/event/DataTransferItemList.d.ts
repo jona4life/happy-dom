@@ -1,4 +1,3 @@
-import File from '../file/File.cjs';
 import DataTransferItem from './DataTransferItem.cjs';
 /**
  *

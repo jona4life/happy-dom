@@ -1,5 +1,3 @@
-import File from '../file/File.js';
-
 /**
  * Data transfer item.
  *

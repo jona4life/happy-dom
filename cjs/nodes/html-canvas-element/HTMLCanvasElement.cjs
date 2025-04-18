@@ -38,7 +38,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const HTMLElement_js_1 = __importDefault(require("../html-element/HTMLElement.cjs"));
 const PropertySymbol = __importStar(require("../../PropertySymbol.cjs"));
-const Blob_js_1 = __importDefault(require("../../file/Blob.cjs"));
 const OffscreenCanvas_js_1 = __importDefault(require("./OffscreenCanvas.cjs"));
 const ElementEventAttributeUtility_js_1 = __importDefault(require("../element/ElementEventAttributeUtility.cjs"));
 const DEVICE_ID = 'S3F/aBCdEfGHIjKlMnOpQRStUvWxYz1234567890+1AbC2DEf2GHi3jK34le+ab12C3+1aBCdEf==';
@@ -165,7 +164,7 @@ class HTMLCanvasElement extends HTMLElement_js_1.default {
      * @param [_quality] Quality.
      */
     toBlob(callback, _type, _quality) {
-        callback(new Blob_js_1.default([]));
+        callback(new Blob([]));
     }
     /**
      * Transfers control to offscreen.

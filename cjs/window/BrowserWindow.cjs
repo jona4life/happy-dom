@@ -40,8 +40,6 @@ exports.prepareWindow = void 0;
 const buffer_1 = require("buffer");
 // import { webcrypto } from 'crypto';
 const util_1 = require("util");
-const stream_1 = __importDefault(require("stream"));
-const web_1 = require("stream/web");
 const url_1 = require("url");
 const vm_1 = __importDefault(require("vm"));
 const PropertySymbol = __importStar(require("../PropertySymbol.cjs"));
@@ -81,9 +79,6 @@ const SubmitEvent_js_1 = __importDefault(require("../event/events/SubmitEvent.cj
 const TouchEvent_js_1 = __importDefault(require("../event/events/TouchEvent.cjs"));
 const WheelEvent_js_1 = __importDefault(require("../event/events/WheelEvent.cjs"));
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../exception/DOMExceptionNameEnum.cjs"));
-const Fetch_js_1 = __importDefault(require("../fetch/Fetch.cjs"));
-const Blob_js_1 = __importDefault(require("../file/Blob.cjs"));
-const File_js_1 = __importDefault(require("../file/File.cjs"));
 const History_js_1 = __importDefault(require("../history/History.cjs"));
 const IntersectionObserver_js_1 = __importDefault(require("../intersection-observer/IntersectionObserver.cjs"));
 const IntersectionObserverEntry_js_1 = __importDefault(require("../intersection-observer/IntersectionObserverEntry.cjs"));
@@ -186,7 +181,6 @@ const ResizeObserver_js_1 = __importDefault(require("../resize-observer/ResizeOb
 const Screen_js_1 = __importDefault(require("../screen/Screen.cjs"));
 const Storage_js_1 = __importDefault(require("../storage/Storage.cjs"));
 const NodeFilter_js_1 = __importDefault(require("../tree-walker/NodeFilter.cjs"));
-const URL_js_1 = __importDefault(require("../url/URL.cjs"));
 const ValidityState_js_1 = __importDefault(require("../validity-state/ValidityState.cjs"));
 const VMGlobalPropertyScript_js_1 = __importDefault(require("./VMGlobalPropertyScript.cjs"));
 const WindowPageOpenUtility_js_1 = __importDefault(require("./WindowPageOpenUtility.cjs"));
@@ -306,14 +300,14 @@ const IS_NODE_JS_TIMEOUT_ENVIRONMENT = setTimeout.toString().includes('new Timeo
 /**
  * Class for PerformanceObserverEntryList as it is only available as an interface from Node.js.
  */
-class PerformanceObserverEntryList {
-    /**
-     * Constructor.
-     */
-    constructor() {
-        throw new TypeError('Illegal constructor');
-    }
-}
+// class PerformanceObserverEntryList {
+// 	/**
+// 	 * Constructor.
+// 	 */
+// 	constructor() {
+// 		throw new TypeError('Illegal constructor');
+// 	}
+// }
 const prepareWindow = (browserFrame, options) => {
     // Assigning Node-related classes to globalThis
     globalThis['Node'] = Node_js_1.default;
@@ -468,7 +462,7 @@ const prepareWindow = (browserFrame, options) => {
     globalThis['CustomEvent'] = CustomEvent_js_1.default;
     globalThis['AnimationEvent'] = AnimationEvent_js_1.default;
     globalThis['KeyboardEvent'] = KeyboardEvent_js_1.default;
-    globalThis['MessageEvent'] = MessageEvent_js_1.default;
+    // globalThis['MessageEvent'] = MessageEvent;
     globalThis['MouseEvent'] = MouseEvent_js_1.default;
     globalThis['PointerEvent'] = PointerEvent_js_1.default;
     globalThis['FocusEvent'] = FocusEvent_js_1.default;
@@ -549,9 +543,9 @@ const prepareWindow = (browserFrame, options) => {
     globalThis['Location'] = Location_js_1.default;
     globalThis['CustomElementRegistry'] = CustomElementRegistry_js_1.default;
     globalThis['ResizeObserver'] = ResizeObserver_js_1.default;
-    globalThis['URL'] = URL_js_1.default;
-    globalThis['Blob'] = Blob_js_1.default;
-    globalThis['File'] = File_js_1.default;
+    globalThis['URL'] = URL;
+    // globalThis['Blob'] = Blob;
+    // globalThis['File'] = File;
     globalThis['Storage'] = Storage_js_1.default;
     globalThis['MimeType'] = MimeType_js_1.default;
     globalThis['MimeTypeArray'] = MimeTypeArray_js_1.default;
@@ -593,12 +587,12 @@ const prepareWindow = (browserFrame, options) => {
     globalThis['SVGUnitTypes'] = SVGUnitTypes_js_1.default;
     globalThis['DOMPoint'] = DOMPoint_js_1.default;
     globalThis['URLSearchParams'] = url_1.URLSearchParams;
-    globalThis['WritableStream'] = stream_1.default.Writable;
-    globalThis['ReadableStream'] = web_1.ReadableStream;
-    globalThis['TransformStream'] = stream_1.default.Transform;
+    // globalThis['WritableStream'] = Stream.Writable;
+    // globalThis['ReadableStream'] = ReadableStream;
+    // globalThis['TransformStream'] = Stream.Transform;
     globalThis['PerformanceObserver'] = node_perf_hooks_1.PerformanceObserver;
     globalThis['PerformanceEntry'] = node_perf_hooks_1.PerformanceEntry;
-    globalThis['PerformanceObserverEntryList'] = PerformanceObserverEntryList;
+    // globalThis['PerformanceObserverEntryList'] = PerformanceObserverEntryList;
     // Events
     globalThis['onload'] = null;
     globalThis['onerror'] = null;
@@ -934,17 +928,6 @@ const prepareWindow = (browserFrame, options) => {
                 }
             }
         });
-    }.bind(globalThis);
-    globalThis['fetch'] = async function (url, init) {
-        if (globalThis.closed) {
-            return Promise.reject(new globalThis.DOMException("Failed to execute 'fetch' on 'Window': The window is closed.", DOMExceptionNameEnum_js_1.default.invalidStateError));
-        }
-        return await new Fetch_js_1.default({
-            browserFrame: globalThis._browserFrame,
-            window: globalThis,
-            url,
-            init
-        }).send();
     }.bind(globalThis);
     globalThis['btoa'] = function (data) {
         return Base64_js_1.default.btoa(data);

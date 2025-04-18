@@ -2,8 +2,6 @@ import MimeTypeArray from './MimeTypeArray.cjs';
 import PluginArray from './PluginArray.cjs';
 import Permissions from '../permissions/Permissions.cjs';
 import Clipboard from '../clipboard/Clipboard.cjs';
-import Blob from '../file/Blob.cjs';
-import FormData from '../form-data/FormData.cjs';
 /**
  * Browser Navigator API.
  *
@@ -133,7 +131,7 @@ export default class Navigator {
      * @param data Data.
      * @returns "true" if the user agent successfully queued the data for transfer. Otherwise, it returns "false".
      */
-    sendBeacon(url: string, data: string | Blob | ArrayBuffer | ArrayBufferView | FormData): boolean;
+    sendBeacon(url: string, data: any): boolean;
     /**
      * Returns the object as a string.
      *

@@ -1,8 +1,6 @@
 import IBrowserFrame from '../../browser/types/IBrowserFrame.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import CookieStringUtility from '../../cookie/urilities/CookieStringUtility.js';
-import Headers from '../Headers.js';
-import Request from '../Request.js';
 import FetchCORSUtility from './FetchCORSUtility.js';
 import { URL } from 'url';
 
@@ -137,7 +135,7 @@ export default class FetchRequestHeaderUtility {
 		// We need to convert the headers to Node request headers.
 		const httpRequestHeaders = {};
 
-		for (const header of Object.values(headers[PropertySymbol.entries])) {
+		for (const header of Object.values<any>(headers[PropertySymbol.entries])) {
 			httpRequestHeaders[header.name] = header.value.join(', ');
 		}
 

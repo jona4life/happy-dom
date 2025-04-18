@@ -1,4 +1,4 @@
-import Blob from '../../file/Blob.js';
+/// <reference types="node" resolution-mode="require"/>
 import ImageBitmap from './ImageBitmap.js';
 /**
  * OffscreenCanvas.

@@ -1,6 +1,4 @@
 import IBrowserFrame from '../../browser/types/IBrowserFrame.cjs';
-import Headers from '../Headers.cjs';
-import Request from '../Request.cjs';
 /**
  * Fetch request header utility.
  */

@@ -1,4 +1,4 @@
-import Response from '../Response.js';
+/// <reference types="node" resolution-mode="require"/>
 import ISyncResponse from '../types/ISyncResponse.js';
 /**
  * Virtual server utility.

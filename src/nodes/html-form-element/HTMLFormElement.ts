@@ -500,7 +500,7 @@ export default class HTMLFormElement extends HTMLElement {
 	/**
 	 * @override
 	 */
-	public override [PropertySymbol.cloneNode](deep = false): HTMLFormElement {
+	public override[PropertySymbol.cloneNode](deep = false): HTMLFormElement {
 		return <HTMLFormElement>super[PropertySymbol.cloneNode](deep);
 	}
 
@@ -609,7 +609,57 @@ export default class HTMLFormElement extends HTMLElement {
 			return;
 		}
 
-		const formData = new this[PropertySymbol.window].FormData(this);
+		const formData = new FormData();
+
+		const items = this[PropertySymbol.getFormControlItems]();
+
+		for (const item of items) {
+			const name = item.name;
+
+			if (name) {
+				switch (item[PropertySymbol.tagName]) {
+					case 'INPUT':
+						switch ((<HTMLInputElement>item).type) {
+							case 'file':
+								if ((<HTMLInputElement>item)[PropertySymbol.files].length === 0) {
+									formData.append(name, new File([], '', { type: 'application/octet-stream' }));
+								} else {
+									for (const file of (<HTMLInputElement>item)[PropertySymbol.files]) {
+										formData.append(name, file);
+									}
+								}
+								break;
+							case 'checkbox':
+							case 'radio':
+								if ((<HTMLInputElement>item).checked) {
+									formData.append(name, (<HTMLInputElement>item).value);
+								}
+								break;
+							case 'submit':
+							case 'reset':
+							case 'button':
+								if ((<HTMLInputElement>item).value) {
+									formData.append(name, (<HTMLInputElement>item).value);
+								}
+								break;
+							default:
+								formData.append(name, (<HTMLInputElement>item).value);
+								break;
+						}
+						break;
+					case 'BUTTON':
+						if ((<HTMLInputElement>item).value) {
+							formData.append(name, (<HTMLInputElement>item).value);
+						}
+						break;
+					case 'TEXTAREA':
+					case 'SELECT':
+						formData.append(name, (<HTMLInputElement>item).value);
+						break;
+				}
+			}
+		}
+
 		let targetFrame: IBrowserFrame;
 
 		switch (submitter?.formTarget || this.target) {

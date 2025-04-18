@@ -1,6 +1,5 @@
 import HTMLElement from '../html-element/HTMLElement.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import Blob from '../../file/Blob.js';
 import OffscreenCanvas from './OffscreenCanvas.js';
 import Event from '../../event/Event.js';
 import MediaStream from '../html-media-element/MediaStream.js';

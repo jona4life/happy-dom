@@ -1,4 +1,3 @@
-import FormData from '../form-data/FormData.cjs';
 import HistoryScrollRestorationEnum from './HistoryScrollRestorationEnum.cjs';
 export default interface IHistoryItem {
     title: string | null;

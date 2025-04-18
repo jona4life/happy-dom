@@ -1,4 +1,3 @@
-import File from '../file/File.cjs';
 /**
  * Data transfer item.
  *

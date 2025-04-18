@@ -1,8 +1,6 @@
 import { Buffer } from 'buffer';
 // import { webcrypto } from 'crypto';
 import { TextEncoder, TextDecoder } from 'util';
-import Stream from 'stream';
-import { ReadableStream } from 'stream/web';
 import { URLSearchParams } from 'url';
 import VM from 'vm';
 import * as PropertySymbol from '../PropertySymbol.js';
@@ -43,12 +41,6 @@ import SubmitEvent from '../event/events/SubmitEvent.js';
 import TouchEvent from '../event/events/TouchEvent.js';
 import WheelEvent from '../event/events/WheelEvent.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
-import Fetch from '../fetch/Fetch.js';
-import Response from '../fetch/Response.js';
-import IRequestInfo from '../fetch/types/IRequestInfo.js';
-import IRequestInit from '../fetch/types/IRequestInit.js';
-import Blob from '../file/Blob.js';
-import File from '../file/File.js';
 import History from '../history/History.js';
 import IntersectionObserver from '../intersection-observer/IntersectionObserver.js';
 import IntersectionObserverEntry from '../intersection-observer/IntersectionObserverEntry.js';
@@ -151,7 +143,6 @@ import ResizeObserver from '../resize-observer/ResizeObserver.js';
 import Screen from '../screen/Screen.js';
 import Storage from '../storage/Storage.js';
 import NodeFilter from '../tree-walker/NodeFilter.js';
-import URL from '../url/URL.js';
 import ValidityState from '../validity-state/ValidityState.js';
 import CrossOriginBrowserWindow from './CrossOriginBrowserWindow.js';
 import VMGlobalPropertyScript from './VMGlobalPropertyScript.js';
@@ -276,14 +267,14 @@ const IS_NODE_JS_TIMEOUT_ENVIRONMENT = setTimeout.toString().includes('new Timeo
 /**
  * Class for PerformanceObserverEntryList as it is only available as an interface from Node.js.
  */
-class PerformanceObserverEntryList {
-	/**
-	 * Constructor.
-	 */
-	constructor() {
-		throw new TypeError('Illegal constructor');
-	}
-}
+// class PerformanceObserverEntryList {
+// 	/**
+// 	 * Constructor.
+// 	 */
+// 	constructor() {
+// 		throw new TypeError('Illegal constructor');
+// 	}
+// }
 
 export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: string }): void => {
 	// Assigning Node-related classes to globalThis
@@ -443,7 +434,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 	globalThis['CustomEvent'] = CustomEvent;
 	globalThis['AnimationEvent'] = AnimationEvent;
 	globalThis['KeyboardEvent'] = KeyboardEvent;
-	globalThis['MessageEvent'] = MessageEvent;
+	// globalThis['MessageEvent'] = MessageEvent;
 	globalThis['MouseEvent'] = MouseEvent;
 	globalThis['PointerEvent'] = PointerEvent;
 	globalThis['FocusEvent'] = FocusEvent;
@@ -527,8 +518,8 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 	globalThis['CustomElementRegistry'] = CustomElementRegistry;
 	globalThis['ResizeObserver'] = ResizeObserver;
 	globalThis['URL'] = URL;
-	globalThis['Blob'] = Blob;
-	globalThis['File'] = File;
+	// globalThis['Blob'] = Blob;
+	// globalThis['File'] = File;
 	globalThis['Storage'] = Storage;
 	globalThis['MimeType'] = MimeType;
 	globalThis['MimeTypeArray'] = MimeTypeArray;
@@ -571,12 +562,12 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 	globalThis['DOMPoint'] = DOMPoint;
 
 	globalThis['URLSearchParams'] = URLSearchParams;
-	globalThis['WritableStream'] = Stream.Writable;
-	globalThis['ReadableStream'] = ReadableStream;
-	globalThis['TransformStream'] = Stream.Transform;
+	// globalThis['WritableStream'] = Stream.Writable;
+	// globalThis['ReadableStream'] = ReadableStream;
+	// globalThis['TransformStream'] = Stream.Transform;
 	globalThis['PerformanceObserver'] = PerformanceObserver;
 	globalThis['PerformanceEntry'] = PerformanceEntry;
-	globalThis['PerformanceObserverEntryList'] = PerformanceObserverEntryList;
+	// globalThis['PerformanceObserverEntryList'] = PerformanceObserverEntryList;
 
 	// Events
 	globalThis['onload'] = null;
@@ -965,24 +956,6 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 				}
 			}
 		});
-	}.bind(globalThis);
-
-	globalThis['fetch'] = async function (url: IRequestInfo, init?: IRequestInit): Promise<Response> {
-		if (globalThis.closed) {
-			return Promise.reject(
-				new globalThis.DOMException(
-					"Failed to execute 'fetch' on 'Window': The window is closed.",
-					DOMExceptionNameEnum.invalidStateError
-				)
-			);
-		}
-
-		return await new Fetch({
-			browserFrame: globalThis._browserFrame,
-			window: globalThis,
-			url,
-			init
-		}).send();
 	}.bind(globalThis);
 
 	globalThis['btoa'] = function (data: unknown): string {

@@ -3,24 +3,23 @@ import * as PropertySymbol from '../PropertySymbol.js';
 import XMLHttpRequestReadyStateEnum from './XMLHttpRequestReadyStateEnum.js';
 import Event from '../event/Event.js';
 import Document from '../nodes/document/Document.js';
-import Blob from '../file/Blob.js';
 import XMLHttpRequestUpload from './XMLHttpRequestUpload.js';
 import DOMException from '../exception/DOMException.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
 import XMLHttpResponseTypeEnum from './XMLHttpResponseTypeEnum.js';
 import ErrorEvent from '../event/events/ErrorEvent.js';
-import Headers from '../fetch/Headers.js';
-import Fetch from '../fetch/Fetch.js';
+// import Headers from '../fetch/Headers.js';
+// import Fetch from '../fetch/Fetch.js';
 import SyncFetch from '../fetch/SyncFetch.js';
-import Request from '../fetch/Request.js';
+// import Request from '../fetch/Request.js';
 import ISyncResponse from '../fetch/types/ISyncResponse.js';
-import AbortController from '../fetch/AbortController.js';
+// import AbortController from '../fetch/AbortController.js';
 import ProgressEvent from '../event/events/ProgressEvent.js';
 import NodeTypeEnum from '../nodes/node/NodeTypeEnum.js';
-import IRequestBody from '../fetch/types/IRequestBody.js';
+// import IRequestBody from '../fetch/types/IRequestBody.js';
 import XMLHttpRequestResponseDataParser from './XMLHttpRequestResponseDataParser.js';
 import FetchRequestHeaderUtility from '../fetch/utilities/FetchRequestHeaderUtility.js';
-import Response from '../fetch/Response.js';
+// import Response from '../fetch/Response.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
 
 /**
@@ -212,8 +211,8 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 		this.#response = null;
 		this.#responseBody = null;
 		// @ts-ignore
-		this.#abortController = new window.AbortController();
-		this.#request = new window.Request(url, {
+		this.#abortController = new AbortController();
+		this.#request = new Request(url, {
 			method,
 			headers,
 			signal: this.#abortController.signal,
@@ -285,7 +284,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 	 *
 	 * @param body Optional data to send as request body.
 	 */
-	public send(body?: Document | IRequestBody): void {
+	public send(body?: any): void {
 		const window = this[PropertySymbol.window];
 
 		if (this.readyState != XMLHttpRequestReadyStateEnum.opened) {
@@ -305,11 +304,11 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 		}
 
 		if (this.#async) {
-			this.#sendAsync(<IRequestBody>body).catch((error) => {
+			this.#sendAsync(body).catch((error) => {
 				throw error;
 			});
 		} else {
-			this.#sendSync(<IRequestBody>body);
+			this.#sendSync(body);
 		}
 	}
 
@@ -329,7 +328,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 	 *
 	 * @param body Optional data to send as request body.
 	 */
-	async #sendAsync(body?: IRequestBody): Promise<void> {
+	async #sendAsync(body?: any): Promise<void> {
 		const window = this[PropertySymbol.window];
 		const browserFrame = new WindowBrowserContext(window).getBrowserFrame();
 		const asyncTaskManager = browserFrame[PropertySymbol.asyncTaskManager];
@@ -375,15 +374,8 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 			asyncTaskManager.endTask(taskID);
 		};
 
-		const fetch = new Fetch({
-			browserFrame: browserFrame,
-			window: window,
-			url: this.#request.url,
-			init: this.#request
-		});
-
 		try {
-			this.#response = await fetch.send();
+			this.#response = await fetch(this.#request);
 		} catch (error) {
 			onError(error);
 			return;
@@ -449,12 +441,12 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 	 *
 	 * @param body Optional data to send as request body.
 	 */
-	#sendSync(body?: IRequestBody): void {
+	#sendSync(body?: any): void {
 		const window = this[PropertySymbol.window];
 		const browserFrame = new WindowBrowserContext(window).getBrowserFrame();
 
 		if (body) {
-			this.#request = new window.Request(this.#request.url, {
+			this.#request = new Request(this.#request.url, {
 				method: this.#request.method,
 				headers: this.#request.headers,
 				signal: this.#abortController.signal,
@@ -469,6 +461,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 			browserFrame,
 			window: window,
 			url: this.#request.url,
+			// @ts-ignore
 			init: this.#request
 		});
 

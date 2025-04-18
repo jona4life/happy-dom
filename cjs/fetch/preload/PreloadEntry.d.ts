@@ -1,4 +1,3 @@
-import Response from '../Response.cjs';
 /**
  * Preload entry.
  *

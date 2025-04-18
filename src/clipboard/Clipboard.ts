@@ -1,5 +1,4 @@
 import ClipboardItem from './ClipboardItem.js';
-import Blob from '../file/Blob.js';
 
 /**
  * Clipboard API.

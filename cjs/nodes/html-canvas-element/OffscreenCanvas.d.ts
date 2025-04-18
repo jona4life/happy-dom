@@ -1,4 +1,3 @@
-import Blob from '../../file/Blob.cjs';
 import ImageBitmap from './ImageBitmap.cjs';
 /**
  * OffscreenCanvas.

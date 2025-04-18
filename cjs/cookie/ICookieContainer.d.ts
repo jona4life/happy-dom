@@ -1,4 +1,3 @@
-import URL from '../url/URL.cjs';
 import ICookie from './ICookie.cjs';
 import IOptionalCookie from './IOptionalCookie.cjs';
 /**

@@ -1,4 +1,3 @@
-import Headers from '../../Headers.cjs';
 export default interface ICachableResponse {
     status: number;
     statusText: string;

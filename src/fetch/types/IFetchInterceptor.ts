@@ -1,5 +1,5 @@
-import Request from '../Request.js';
-import Response from '../Response.js';
+// import Request from '../Request.js';
+// import Response from '../Response.js';
 import ISyncResponse from './ISyncResponse.js';
 
 export default interface IFetchInterceptor {

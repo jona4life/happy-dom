@@ -1,7 +1,6 @@
-import URL from '../../url/URL.js';
-import Headers from '../Headers.js';
+/// <reference types="node" resolution-mode="require"/>
+/// <reference types="node" resolution-mode="require"/>
 import IRequestReferrerPolicy from '../types/IRequestReferrerPolicy.js';
-import Request from '../Request.js';
 /**
  * Fetch referrer utility.
  */

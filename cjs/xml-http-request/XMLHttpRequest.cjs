@@ -44,13 +44,16 @@ const DOMException_js_1 = __importDefault(require("../exception/DOMException.cjs
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../exception/DOMExceptionNameEnum.cjs"));
 const XMLHttpResponseTypeEnum_js_1 = __importDefault(require("./XMLHttpResponseTypeEnum.cjs"));
 const ErrorEvent_js_1 = __importDefault(require("../event/events/ErrorEvent.cjs"));
-const Headers_js_1 = __importDefault(require("../fetch/Headers.cjs"));
-const Fetch_js_1 = __importDefault(require("../fetch/Fetch.cjs"));
+// import Headers from '../fetch/Headers.cjs';
+// import Fetch from '../fetch/Fetch.cjs';
 const SyncFetch_js_1 = __importDefault(require("../fetch/SyncFetch.cjs"));
+// import AbortController from '../fetch/AbortController.cjs';
 const ProgressEvent_js_1 = __importDefault(require("../event/events/ProgressEvent.cjs"));
 const NodeTypeEnum_js_1 = __importDefault(require("../nodes/node/NodeTypeEnum.cjs"));
+// import IRequestBody from '../fetch/types/IRequestBody.cjs';
 const XMLHttpRequestResponseDataParser_js_1 = __importDefault(require("./XMLHttpRequestResponseDataParser.cjs"));
 const FetchRequestHeaderUtility_js_1 = __importDefault(require("../fetch/utilities/FetchRequestHeaderUtility.cjs"));
+// import Response from '../fetch/Response.cjs';
 const WindowBrowserContext_js_1 = __importDefault(require("../window/WindowBrowserContext.cjs"));
 /**
  * XMLHttpRequest.
@@ -194,7 +197,7 @@ class XMLHttpRequest extends XMLHttpRequestEventTarget_js_1.default {
         if (!async && !!this.responseType && this.responseType !== XMLHttpResponseTypeEnum_js_1.default.text) {
             throw new window.DOMException(`Failed to execute 'open' on 'XMLHttpRequest': Synchronous requests from a document must not set a response type.`, DOMExceptionNameEnum_js_1.default.invalidAccessError);
         }
-        const headers = new Headers_js_1.default();
+        const headers = new Headers();
         if (user) {
             const authBuffer = Buffer.from(`${user}:${password || ''}`);
             headers.set('Authorization', 'Basic ' + authBuffer.toString('base64'));
@@ -204,8 +207,8 @@ class XMLHttpRequest extends XMLHttpRequestEventTarget_js_1.default {
         this.#response = null;
         this.#responseBody = null;
         // @ts-ignore
-        this.#abortController = new window.AbortController();
-        this.#request = new window.Request(url, {
+        this.#abortController = new AbortController();
+        this.#request = new Request(url, {
             method,
             headers,
             signal: this.#abortController.signal,
@@ -339,14 +342,8 @@ class XMLHttpRequest extends XMLHttpRequestEventTarget_js_1.default {
             this.dispatchEvent(new Event_js_1.default('readystatechange'));
             asyncTaskManager.endTask(taskID);
         };
-        const fetch = new Fetch_js_1.default({
-            browserFrame: browserFrame,
-            window: window,
-            url: this.#request.url,
-            init: this.#request
-        });
         try {
-            this.#response = await fetch.send();
+            this.#response = await fetch(this.#request);
         }
         catch (error) {
             onError(error);
@@ -407,7 +404,7 @@ class XMLHttpRequest extends XMLHttpRequestEventTarget_js_1.default {
         const window = this[PropertySymbol.window];
         const browserFrame = new WindowBrowserContext_js_1.default(window).getBrowserFrame();
         if (body) {
-            this.#request = new window.Request(this.#request.url, {
+            this.#request = new Request(this.#request.url, {
                 method: this.#request.method,
                 headers: this.#request.headers,
                 signal: this.#abortController.signal,
@@ -420,6 +417,7 @@ class XMLHttpRequest extends XMLHttpRequestEventTarget_js_1.default {
             browserFrame,
             window: window,
             url: this.#request.url,
+            // @ts-ignore
             init: this.#request
         });
         try {

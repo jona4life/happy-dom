@@ -1,4 +1,4 @@
-import URL from '../../url/URL.js';
+/// <reference types="node" resolution-mode="require"/>
 import ICookie from '../ICookie.js';
 /**
  * Cookie string.

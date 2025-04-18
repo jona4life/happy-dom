@@ -1,5 +1,4 @@
 import HTMLElement from '../html-element/HTMLElement.cjs';
-import Blob from '../../file/Blob.cjs';
 import OffscreenCanvas from './OffscreenCanvas.cjs';
 import Event from '../../event/Event.cjs';
 import MediaStream from '../html-media-element/MediaStream.cjs';

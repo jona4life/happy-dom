@@ -1,8 +1,7 @@
-import IRequestInit from './types/IRequestInit.js';
-import IRequestInfo from './types/IRequestInfo.js';
+/// <reference types="node" resolution-mode="require"/>
+/// <reference types="node" resolution-mode="require"/>
 import IBrowserFrame from '../browser/types/IBrowserFrame.js';
 import ISyncResponse from './types/ISyncResponse.js';
-import Headers from './Headers.js';
 /**
  * Handles synchrounous fetch requests.
  */
@@ -30,8 +29,8 @@ export default class SyncFetch {
     constructor(options: {
         browserFrame: IBrowserFrame;
         window: typeof globalThis;
-        url: IRequestInfo;
-        init?: IRequestInit;
+        url: string | URL;
+        init?: RequestInit;
         redirectCount?: number;
         contentType?: string;
         disableCache?: boolean;

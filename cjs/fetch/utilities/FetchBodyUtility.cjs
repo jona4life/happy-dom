@@ -40,8 +40,6 @@ const MultipartFormDataParser_js_1 = __importDefault(require("../multipart/Multi
 const web_1 = require("stream/web");
 const PropertySymbol = __importStar(require("../../PropertySymbol.cjs"));
 const url_1 = require("url");
-const FormData_js_1 = __importDefault(require("../../form-data/FormData.cjs"));
-const Blob_js_1 = __importDefault(require("../../file/Blob.cjs"));
 const DOMException_js_1 = __importDefault(require("../../exception/DOMException.cjs"));
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../../exception/DOMExceptionNameEnum.cjs"));
 const buffer_1 = require("buffer");
@@ -72,7 +70,7 @@ class FetchBodyUtility {
                 contentLength: buffer.length
             };
         }
-        else if (body instanceof Blob_js_1.default) {
+        else if (body instanceof Blob) {
             const buffer = body[PropertySymbol.buffer];
             return {
                 buffer,
@@ -115,7 +113,7 @@ class FetchBodyUtility {
                 contentLength: null
             };
         }
-        else if (body instanceof FormData_js_1.default) {
+        else if (body instanceof FormData) {
             return MultipartFormDataParser_js_1.default.formDataToStream(body);
         }
         const buffer = buffer_1.Buffer.from(String(body));

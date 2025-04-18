@@ -1,7 +1,7 @@
 /// <reference types="node" resolution-mode="require"/>
 /// <reference types="node" resolution-mode="require"/>
 /// <reference types="node" resolution-mode="require"/>
-import FormData from '../../form-data/FormData.js';
+/// <reference types="node" resolution-mode="require"/>
 import { ReadableStream } from 'stream/web';
 import { Buffer } from 'buffer';
 /**

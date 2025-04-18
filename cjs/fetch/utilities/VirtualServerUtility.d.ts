@@ -1,4 +1,3 @@
-import Response from '../Response.cjs';
 import ISyncResponse from '../types/ISyncResponse.cjs';
 /**
  * Virtual server utility.

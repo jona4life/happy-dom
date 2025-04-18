@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const CookieStringUtility_js_1 = __importDefault(require("../../cookie/urilities/CookieStringUtility.cjs"));
-const Headers_js_1 = __importDefault(require("../Headers.cjs"));
 /**
  * Fetch request validation utility.
  */
@@ -20,7 +19,7 @@ class FetchResponseHeaderUtility {
      * @returns Headers.
      */
     static parseResponseHeaders(options) {
-        const headers = new Headers_js_1.default();
+        const headers = new Headers();
         let key = null;
         for (const header of options.rawHeaders) {
             if (!key) {

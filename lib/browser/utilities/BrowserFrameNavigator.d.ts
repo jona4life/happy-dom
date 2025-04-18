@@ -1,7 +1,6 @@
+/// <reference types="node" resolution-mode="require"/>
 import IBrowserFrame from '../types/IBrowserFrame.js';
 import IGoToOptions from '../types/IGoToOptions.js';
-import Response from '../../fetch/Response.js';
-import FormData from '../../form-data/FormData.js';
 /**
  * Browser frame navigation utility.
  */

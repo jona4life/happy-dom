@@ -1,4 +1,4 @@
-import File from '../../file/File.js';
+/// <reference types="node" resolution-mode="require"/>
 /**
  * FileList.
  *

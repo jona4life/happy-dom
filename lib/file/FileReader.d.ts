@@ -1,7 +1,6 @@
 /// <reference types="node" resolution-mode="require"/>
 /// <reference types="node" resolution-mode="require"/>
 import ProgressEvent from '../event/events/ProgressEvent.js';
-import Blob from './Blob.js';
 import EventTarget from '../event/EventTarget.js';
 import { Buffer } from 'buffer';
 /**

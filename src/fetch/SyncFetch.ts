@@ -1,15 +1,12 @@
-import IRequestInit from './types/IRequestInit.js';
 import * as PropertySymbol from '../PropertySymbol.js';
-import IRequestInfo from './types/IRequestInfo.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
-import URL from '../url/URL.js';
 import FS from 'fs';
 import Path from 'path';
-import Request from './Request.js';
+// import Request from './Request.js';
 import IBrowserFrame from '../browser/types/IBrowserFrame.js';
 import ChildProcess from 'child_process';
 import ISyncResponse from './types/ISyncResponse.js';
-import Headers from './Headers.js';
+// import Headers from './Headers.js';
 import CachedResponseStateEnum from './cache/response/CachedResponseStateEnum.js';
 import FetchRequestReferrerUtility from './utilities/FetchRequestReferrerUtility.js';
 import FetchRequestValidationUtility from './utilities/FetchRequestValidationUtility.js';
@@ -20,7 +17,7 @@ import FetchResponseHeaderUtility from './utilities/FetchResponseHeaderUtility.j
 import Zlib from 'zlib';
 import FetchResponseRedirectUtility from './utilities/FetchResponseRedirectUtility.js';
 import FetchCORSUtility from './utilities/FetchCORSUtility.js';
-import Fetch from './Fetch.js';
+// import Fetch from './Fetch.js';
 import IFetchInterceptor from './types/IFetchInterceptor.js';
 import VirtualServerUtility from './utilities/VirtualServerUtility.js';
 
@@ -64,8 +61,8 @@ export default class SyncFetch {
 	constructor(options: {
 		browserFrame: IBrowserFrame;
 		window: typeof globalThis;
-		url: IRequestInfo;
-		init?: IRequestInit;
+		url: string | URL;
+		init?: RequestInit;
 		redirectCount?: number;
 		contentType?: string;
 		disableCache?: boolean;
@@ -101,9 +98,9 @@ export default class SyncFetch {
 
 		const beforeRequestResponse = this.interceptor?.beforeSyncRequest
 			? this.interceptor.beforeSyncRequest({
-					request: this.request,
-					window: this.#window
-				})
+				request: this.request,
+				window: this.#window
+			})
 			: undefined;
 
 		if (typeof beforeRequestResponse === 'object') {
@@ -135,10 +132,10 @@ export default class SyncFetch {
 			};
 			const interceptedResponse = this.interceptor?.afterSyncResponse
 				? this.interceptor.afterSyncResponse({
-						window: this.#window,
-						response,
-						request: this.request
-					})
+					window: this.#window,
+					response,
+					request: this.request
+				})
 				: undefined;
 			return typeof interceptedResponse === 'object' ? interceptedResponse : response;
 		}
@@ -149,10 +146,8 @@ export default class SyncFetch {
 			this.#window.location.protocol === 'https:'
 		) {
 			throw new this.#window.DOMException(
-				`Mixed Content: The page at '${
-					this.#window.location.href
-				}' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint '${
-					this.request.url
+				`Mixed Content: The page at '${this.#window.location.href
+				}' was loaded over HTTPS, but requested an insecure XMLHttpRequest endpoint '${this.request.url
 				}'. This request has been blocked; the content must be served over HTTPS.`,
 				DOMExceptionNameEnum.securityError
 			);
@@ -216,6 +211,7 @@ export default class SyncFetch {
 					browserFrame: this.#browserFrame,
 					window: this.#window,
 					url: this.request.url,
+					// @ts-ignore
 					init: { headers, method: cachedResponse.request.method },
 					disableCache: true,
 					disableSameOriginPolicy: true
@@ -226,6 +222,7 @@ export default class SyncFetch {
 
 				cachedResponse = this.#browserFrame.page.context.responseCache.add(this.request, {
 					...validateResponse,
+					// @ts-ignore
 					body,
 					waitingForBody: false
 				});
@@ -234,18 +231,19 @@ export default class SyncFetch {
 					return validateResponse;
 				}
 			} else {
-				const fetch = new Fetch({
-					browserFrame: this.#browserFrame,
-					window: this.#window,
-					url: this.request.url,
-					init: { headers, method: cachedResponse.request.method },
-					disableCache: true,
-					disableSameOriginPolicy: true
-				});
-				fetch.send().then((response) => {
-					response.buffer().then((body: Buffer) => {
+				// const fetch = new Fetch({
+				// 	browserFrame: this.#browserFrame,
+				// 	window: this.#window,
+				// 	url: this.request.url,
+				// 	init: { headers, method: cachedResponse.request.method },
+				// 	disableCache: true,
+				// 	disableSameOriginPolicy: true
+				// });
+				fetch(this.request.url, { headers, method: cachedResponse.request.method }).then((response) => {
+					response.arrayBuffer().then((body: Buffer) => {
 						this.#browserFrame.page.context.responseCache.add(this.request, {
 							...response,
+							// @ts-ignore
 							body,
 							waitingForBody: false
 						});
@@ -289,10 +287,10 @@ export default class SyncFetch {
 			const response = VirtualServerUtility.getNotFoundSyncResponse(this.#window);
 			const interceptedResponse = this.interceptor?.afterSyncResponse
 				? this.interceptor.afterSyncResponse({
-						window: this.#window,
-						response,
-						request: this.request
-					})
+					window: this.#window,
+					response,
+					request: this.request
+				})
 				: undefined;
 			return typeof interceptedResponse === 'object' ? interceptedResponse : response;
 		}
@@ -308,10 +306,10 @@ export default class SyncFetch {
 			const response = VirtualServerUtility.getNotFoundSyncResponse(this.#window);
 			const interceptedResponse = this.interceptor?.afterSyncResponse
 				? this.interceptor.afterSyncResponse({
-						window: this.#window,
-						response,
-						request: this.request
-					})
+					window: this.#window,
+					response,
+					request: this.request
+				})
 				: undefined;
 			return typeof interceptedResponse === 'object' ? interceptedResponse : response;
 		}
@@ -327,18 +325,21 @@ export default class SyncFetch {
 		};
 		const interceptedResponse = this.interceptor?.afterSyncResponse
 			? this.interceptor.afterSyncResponse({
-					window: this.#window,
-					response,
-					request: this.request
-				})
+				window: this.#window,
+				// @ts-ignore
+				response,
+				request: this.request
+			})
 			: undefined;
 		const returnResponse = typeof interceptedResponse === 'object' ? interceptedResponse : response;
 
 		this.#browserFrame.page.context.responseCache.add(this.request, {
 			...returnResponse,
+			// @ts-ignore
 			waitingForBody: false
 		});
 
+		// @ts-ignore
 		return returnResponse;
 	}
 
@@ -524,10 +525,10 @@ export default class SyncFetch {
 
 		const interceptedResponse = this.interceptor?.afterSyncResponse
 			? this.interceptor.afterSyncResponse({
-					window: this.#window,
-					response: redirectedResponse,
-					request: this.request
-				})
+				window: this.#window,
+				response: redirectedResponse,
+				request: this.request
+			})
 			: undefined;
 		const returnResponse =
 			typeof interceptedResponse === 'object' ? interceptedResponse : redirectedResponse;
@@ -640,7 +641,7 @@ export default class SyncFetch {
 				}
 
 				const headers = new Headers(this.request.headers);
-				const requestInit: IRequestInit = {
+				const requestInit: RequestInit = {
 					method: this.request.method,
 					signal: this.request.signal,
 					referrer: this.request.referrer,

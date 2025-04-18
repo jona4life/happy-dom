@@ -1,4 +1,3 @@
-import Headers from '../../Headers.cjs';
 export default interface ICachablePreflightResponse {
     status: number;
     url: string;

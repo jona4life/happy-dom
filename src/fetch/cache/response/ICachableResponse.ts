@@ -1,5 +1,3 @@
-import Headers from '../../Headers.js';
-
 export default interface ICachableResponse {
 	status: number;
 	statusText: string;

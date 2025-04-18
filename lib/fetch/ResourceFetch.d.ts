@@ -1,4 +1,4 @@
-import URL from '../url/URL.js';
+/// <reference types="node" resolution-mode="require"/>
 import IRequestCredentials from './types/IRequestCredentials.js';
 import IRequestReferrerPolicy from './types/IRequestReferrerPolicy.js';
 /**

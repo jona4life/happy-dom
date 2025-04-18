@@ -5,7 +5,6 @@ import VirtualConsole from '../../console/VirtualConsole.js';
 import IBrowserPage from '../types/IBrowserPage.js';
 import { Script } from 'vm';
 import IGoToOptions from '../types/IGoToOptions.js';
-import Response from '../../fetch/Response.js';
 import BrowserPageUtility from '../utilities/BrowserPageUtility.js';
 import IReloadOptions from '../types/IReloadOptions.js';
 import DefaultBrowserPageViewport from '../DefaultBrowserPageViewport.js';

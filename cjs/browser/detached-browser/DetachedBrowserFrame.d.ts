@@ -1,7 +1,6 @@
 import DetachedBrowserPage from './DetachedBrowserPage.cjs';
 import * as PropertySymbol from '../../PropertySymbol.cjs';
 import IBrowserFrame from '../types/IBrowserFrame.cjs';
-import Response from '../../fetch/Response.cjs';
 import IGoToOptions from '../types/IGoToOptions.cjs';
 import { Script } from 'vm';
 import IReloadOptions from '../types/IReloadOptions.cjs';

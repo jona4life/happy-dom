@@ -1,4 +1,3 @@
-import Headers from '../../Headers.cjs';
 export default interface ICachableRequest {
     url: string;
     method: string;

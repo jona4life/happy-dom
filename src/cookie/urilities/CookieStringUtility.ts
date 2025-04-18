@@ -1,5 +1,4 @@
 import CookieSameSiteEnum from '../enums/CookieSameSiteEnum.js';
-import URL from '../../url/URL.js';
 import ICookie from '../ICookie.js';
 import DefaultCookie from '../DefaultCookie.js';
 

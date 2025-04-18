@@ -6,7 +6,6 @@ import IBrowserPage from './types/IBrowserPage.js';
 import BrowserPageUtility from './utilities/BrowserPageUtility.js';
 import { Script } from 'vm';
 import IGoToOptions from './types/IGoToOptions.js';
-import Response from '../fetch/Response.js';
 import IReloadOptions from './types/IReloadOptions.js';
 import IBrowserPageViewport from './types/IBrowserPageViewport.js';
 import IOptionalBrowserPageViewport from './types/IOptionalBrowserPageViewport.js';

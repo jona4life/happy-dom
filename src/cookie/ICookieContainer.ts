@@ -1,4 +1,3 @@
-import URL from '../url/URL.js';
 import ICookie from './ICookie.js';
 import IOptionalCookie from './IOptionalCookie.js';
 

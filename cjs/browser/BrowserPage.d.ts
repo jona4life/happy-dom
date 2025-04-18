@@ -4,7 +4,6 @@ import BrowserContext from './BrowserContext.cjs';
 import IBrowserPage from './types/IBrowserPage.cjs';
 import { Script } from 'vm';
 import IGoToOptions from './types/IGoToOptions.cjs';
-import Response from '../fetch/Response.cjs';
 import IReloadOptions from './types/IReloadOptions.cjs';
 import IBrowserPageViewport from './types/IBrowserPageViewport.cjs';
 import IOptionalBrowserPageViewport from './types/IOptionalBrowserPageViewport.cjs';

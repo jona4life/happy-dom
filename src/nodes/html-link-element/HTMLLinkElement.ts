@@ -7,7 +7,7 @@ import Attr from '../attr/Attr.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
 import ResourceFetch from '../../fetch/ResourceFetch.js';
 import WindowBrowserContext from '../../window/WindowBrowserContext.js';
-import Fetch from '../../fetch/Fetch.js';
+// import Fetch from '../../fetch/Fetch.js';
 import BrowserErrorCaptureEnum from '../../browser/enums/BrowserErrorCaptureEnum.js';
 import ModuleFactory from '../../module/ModuleFactory.js';
 import PreloadUtility from '../../fetch/preload/PreloadUtility.js';
@@ -374,22 +374,24 @@ export default class HTMLLinkElement extends HTMLElement {
 
 		window.document[PropertySymbol.preloads].set(preloadKey, preloadEntry);
 
-		const fetch = new Fetch({
-			browserFrame,
-			window,
-			url: absoluteURL,
-			disableSameOriginPolicy: as === 'script' || as === 'style',
-			disablePreload: true,
-			init: {
-				credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
-			}
-		});
+		// const fetch = new Fetch({
+		// 	browserFrame,
+		// 	window,
+		// 	url: absoluteURL,
+		// 	disableSameOriginPolicy: as === 'script' || as === 'style',
+		// 	disablePreload: true,
+		// 	init: {
+		// 		credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
+		// 	}
+		// });
 
 		try {
-			const response = await fetch.send();
+			const response = await fetch(url, {
+				credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
+			});
 
 			if (!response[PropertySymbol.buffer]) {
-				await response.buffer();
+				await response.arrayBuffer();
 			}
 
 			preloadEntry.responseAvailable(null, response);

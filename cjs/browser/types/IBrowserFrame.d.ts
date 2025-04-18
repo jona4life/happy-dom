@@ -2,7 +2,6 @@ import AsyncTaskManager from '../../async-task-manager/AsyncTaskManager.cjs';
 import * as PropertySymbol from '../../PropertySymbol.cjs';
 import Document from '../../nodes/document/Document.cjs';
 import IBrowserPage from './IBrowserPage.cjs';
-import Response from '../../fetch/Response.cjs';
 import IGoToOptions from './IGoToOptions.cjs';
 import { Script } from 'vm';
 import IReloadOptions from './IReloadOptions.cjs';

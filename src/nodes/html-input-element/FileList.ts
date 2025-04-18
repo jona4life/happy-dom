@@ -1,4 +1,3 @@
-import File from '../../file/File.js';
 
 /**
  * FileList.

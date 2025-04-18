@@ -1,9 +1,9 @@
 /// <reference types="node" resolution-mode="require"/>
+/// <reference types="node" resolution-mode="require"/>
 import BrowserPage from './BrowserPage.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 import IBrowserFrame from './types/IBrowserFrame.js';
 import CrossOriginBrowserWindow from '../window/CrossOriginBrowserWindow.js';
-import Response from '../fetch/Response.js';
 import IGoToOptions from './types/IGoToOptions.js';
 import { Script } from 'vm';
 import IReloadOptions from './types/IReloadOptions.js';

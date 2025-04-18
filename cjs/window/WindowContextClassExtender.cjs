@@ -48,24 +48,22 @@ const Audio_js_1 = __importDefault(require("../nodes/html-audio-element/Audio.cj
 const NodeIterator_js_1 = __importDefault(require("../tree-walker/NodeIterator.cjs"));
 const TreeWalker_js_1 = __importDefault(require("../tree-walker/TreeWalker.cjs"));
 const MutationObserver_js_1 = __importDefault(require("../mutation-observer/MutationObserver.cjs"));
-const MessagePort_js_1 = __importDefault(require("../event/MessagePort.cjs"));
+// import MessagePortImplementation from '../event/MessagePort.cjs';
 const DataTransfer_js_1 = __importDefault(require("../event/DataTransfer.cjs"));
 const DataTransferItem_js_1 = __importDefault(require("../event/DataTransferItem.cjs"));
 const DataTransferItemList_js_1 = __importDefault(require("../event/DataTransferItemList.cjs"));
 const XMLSerializer_js_1 = __importDefault(require("../xml-serializer/XMLSerializer.cjs"));
 const CSSStyleSheet_js_1 = __importDefault(require("../css/CSSStyleSheet.cjs"));
-const DOMException_js_1 = __importDefault(require("../exception/DOMException.cjs"));
+// import DOMExceptionImplementation from '../exception/DOMException.cjs';
 const CSSUnitValue_js_1 = __importDefault(require("../css/CSSUnitValue.cjs"));
 const Selection_js_1 = __importDefault(require("../selection/Selection.cjs"));
-const Headers_js_1 = __importDefault(require("../fetch/Headers.cjs"));
-const Request_js_1 = __importDefault(require("../fetch/Request.cjs"));
-const Response_js_1 = __importDefault(require("../fetch/Response.cjs"));
+// import RequestImplementation from '../fetch/Request.cjs';
+// import ResponseImplementation from '../fetch/Response.cjs';
 const EventTarget_js_1 = __importDefault(require("../event/EventTarget.cjs"));
 const XMLHttpRequestUpload_js_1 = __importDefault(require("../xml-http-request/XMLHttpRequestUpload.cjs"));
 const XMLHttpRequestEventTarget_js_1 = __importDefault(require("../xml-http-request/XMLHttpRequestEventTarget.cjs"));
-const AbortController_js_1 = __importDefault(require("../fetch/AbortController.cjs"));
 const AbortSignal_js_1 = __importDefault(require("../fetch/AbortSignal.cjs"));
-const FormData_js_1 = __importDefault(require("../form-data/FormData.cjs"));
+// import FormDataImplementation from '../form-data/FormData.cjs';
 const Permissions_js_1 = __importDefault(require("../permissions/Permissions.cjs"));
 const PermissionStatus_js_1 = __importDefault(require("../permissions/PermissionStatus.cjs"));
 const ClipboardItem_js_1 = __importDefault(require("../clipboard/ClipboardItem.cjs"));
@@ -151,8 +149,7 @@ class WindowContextClassExtender {
         MutationObserver.prototype[PropertySymbol.window] = window;
         window.MutationObserver = MutationObserver;
         // MessagePort
-        class MessagePort extends MessagePort_js_1.default {
-        }
+        // class MessagePort extends MessagePortImplementation {}
         MessagePort.prototype[PropertySymbol.window] = window;
         window.MessagePort = MessagePort;
         // DataTransfer
@@ -181,8 +178,7 @@ class WindowContextClassExtender {
         CSSStyleSheet.prototype[PropertySymbol.window] = window;
         window.CSSStyleSheet = CSSStyleSheet;
         // DOMException
-        class DOMException extends DOMException_js_1.default {
-        }
+        // class DOMException extends DOMExceptionImplementation {}
         window.DOMException = DOMException;
         // CSSUnitValue
         class CSSUnitValue extends CSSUnitValue_js_1.default {
@@ -195,18 +191,15 @@ class WindowContextClassExtender {
         Selection.prototype[PropertySymbol.window] = window;
         window.Selection = Selection;
         // Headers
-        class Headers extends Headers_js_1.default {
-        }
+        // class Headers extends HeadersImplementation {}
         Headers.prototype[PropertySymbol.window] = window;
         window.Headers = Headers;
         // Request
-        class Request extends Request_js_1.default {
-        }
+        // class Request extends RequestImplementation {}
         Request.prototype[PropertySymbol.window] = window;
         window.Request = Request;
         // Response
-        class Response extends Response_js_1.default {
-        }
+        // class Response extends ResponseImplementation {}
         Response.prototype[PropertySymbol.window] = window;
         Response[PropertySymbol.window] = window;
         window.Response = Response;
@@ -228,8 +221,7 @@ class WindowContextClassExtender {
         window.XMLHttpRequestEventTarget =
             XMLHttpRequestEventTarget;
         // AbortController
-        class AbortController extends AbortController_js_1.default {
-        }
+        // class AbortController extends AbortControllerImplementation {}
         AbortController.prototype[PropertySymbol.window] = window;
         // @ts-ignore
         window.AbortController = AbortController;
@@ -241,8 +233,7 @@ class WindowContextClassExtender {
         // @ts-ignore
         window.AbortSignal = AbortSignal;
         // FormData
-        class FormData extends FormData_js_1.default {
-        }
+        // class FormData extends FormDataImplementation {}
         FormData.prototype[PropertySymbol.window] = window;
         window.FormData = FormData;
         // Permissions

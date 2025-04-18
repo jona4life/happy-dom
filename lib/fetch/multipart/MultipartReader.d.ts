@@ -1,4 +1,4 @@
-import FormData from '../../form-data/FormData.js';
+/// <reference types="node" resolution-mode="require"/>
 /**
  * Multipart reader.
  *

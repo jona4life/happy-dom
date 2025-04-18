@@ -1,6 +1,6 @@
 /// <reference types="node" resolution-mode="require"/>
 /// <reference types="node" resolution-mode="require"/>
-import Headers from '../../Headers.js';
+/// <reference types="node" resolution-mode="require"/>
 export default interface ICachableResponse {
     status: number;
     statusText: string;

@@ -1,7 +1,7 @@
+/// <reference types="node" resolution-mode="require"/>
+/// <reference types="node" resolution-mode="require"/>
 import IRequestReferrerPolicy from '../types/IRequestReferrerPolicy.js';
 import IRequestRedirect from '../types/IRequestRedirect.js';
-import URL from '../../url/URL.js';
-import Request from '../Request.js';
 /**
  * Fetch request validation utility.
  */

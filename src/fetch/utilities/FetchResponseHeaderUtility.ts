@@ -1,6 +1,5 @@
 import IBrowserFrame from '../../browser/types/IBrowserFrame.js';
 import CookieStringUtility from '../../cookie/urilities/CookieStringUtility.js';
-import Headers from '../Headers.js';
 
 /**
  * Fetch request validation utility.

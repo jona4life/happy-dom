@@ -1,5 +1,4 @@
 import ProgressEvent from '../event/events/ProgressEvent.cjs';
-import Blob from './Blob.cjs';
 import EventTarget from '../event/EventTarget.cjs';
 import { Buffer } from 'buffer';
 /**

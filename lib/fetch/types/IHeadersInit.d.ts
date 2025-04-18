@@ -1,4 +1,4 @@
-import Headers from '../Headers.js';
+/// <reference types="node" resolution-mode="require"/>
 type IHeadersInit = string[][] | {
     [key: string]: string;
 } | Headers;

@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Blob_js_1 = __importDefault(require("../../file/Blob.cjs"));
 const ImageBitmap_js_1 = __importDefault(require("./ImageBitmap.cjs"));
 /**
  * OffscreenCanvas.
@@ -42,7 +41,7 @@ class OffscreenCanvas {
      * @returns Blob.
      */
     async convertToBlob(_options) {
-        return new Blob_js_1.default([]);
+        return new Blob([]);
     }
     /**
      * Creates an ImageBitmap object from the most recently rendered image of the OffscreenCanvas.

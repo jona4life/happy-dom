@@ -1,6 +1,3 @@
-import File from '../../file/File.js';
-import FormData from '../../form-data/FormData.js';
-
 enum MultipartParserStateEnum {
 	boundary = 0,
 	headerStart = 2,

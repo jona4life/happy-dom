@@ -1,7 +1,4 @@
-import URL from '../../url/URL.cjs';
-import Headers from '../Headers.cjs';
 import IRequestReferrerPolicy from '../types/IRequestReferrerPolicy.cjs';
-import Request from '../Request.cjs';
 /**
  * Fetch referrer utility.
  */

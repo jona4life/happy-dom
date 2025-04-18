@@ -1,4 +1,3 @@
-import URL from '../url/URL.cjs';
 import IRequestCredentials from './types/IRequestCredentials.cjs';
 import IRequestReferrerPolicy from './types/IRequestReferrerPolicy.cjs';
 /**

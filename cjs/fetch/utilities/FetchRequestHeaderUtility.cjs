@@ -38,7 +38,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const PropertySymbol = __importStar(require("../../PropertySymbol.cjs"));
 const CookieStringUtility_js_1 = __importDefault(require("../../cookie/urilities/CookieStringUtility.cjs"));
-const Headers_js_1 = __importDefault(require("../Headers.cjs"));
 const FetchCORSUtility_js_1 = __importDefault(require("./FetchCORSUtility.cjs"));
 const url_1 = require("url");
 const FORBIDDEN_HEADER_NAMES = [
@@ -102,7 +101,7 @@ class FetchRequestHeaderUtility {
      * @returns Headers.
      */
     static getRequestHeaders(options) {
-        const headers = new Headers_js_1.default(options.baseHeaders);
+        const headers = new Headers(options.baseHeaders);
         options.request.headers.forEach((value, key) => {
             headers.set(key, value);
         });

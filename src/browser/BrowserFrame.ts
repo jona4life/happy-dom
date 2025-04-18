@@ -4,7 +4,6 @@ import AsyncTaskManager from '../async-task-manager/AsyncTaskManager.js';
 import IBrowserFrame from './types/IBrowserFrame.js';
 import { prepareWindow } from '../window/BrowserWindow.js';
 import CrossOriginBrowserWindow from '../window/CrossOriginBrowserWindow.js';
-import Response from '../fetch/Response.js';
 import IGoToOptions from './types/IGoToOptions.js';
 import { Script } from 'vm';
 import BrowserFrameURL from './utilities/BrowserFrameURL.js';

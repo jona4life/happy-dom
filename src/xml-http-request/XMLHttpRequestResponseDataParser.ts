@@ -1,5 +1,4 @@
 import XMLHttpResponseTypeEnum from './XMLHttpResponseTypeEnum.js';
-import Blob from '../file/Blob.js';
 import Document from '../nodes/document/Document.js';
 import { Buffer } from 'buffer';
 

@@ -1,10 +1,9 @@
+/// <reference types="node" resolution-mode="require"/>
 import XMLHttpRequestEventTarget from './XMLHttpRequestEventTarget.js';
 import XMLHttpRequestReadyStateEnum from './XMLHttpRequestReadyStateEnum.js';
 import Document from '../nodes/document/Document.js';
-import Blob from '../file/Blob.js';
 import XMLHttpRequestUpload from './XMLHttpRequestUpload.js';
 import XMLHttpResponseTypeEnum from './XMLHttpResponseTypeEnum.js';
-import IRequestBody from '../fetch/types/IRequestBody.js';
 /**
  * XMLHttpRequest.
  *
@@ -118,7 +117,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
      *
      * @param body Optional data to send as request body.
      */
-    send(body?: Document | IRequestBody): void;
+    send(body?: any): void;
     /**
      * Aborts a request.
      */

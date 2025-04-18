@@ -1,4 +1,3 @@
-import Headers from '../Headers.cjs';
 type IHeadersInit = string[][] | {
     [key: string]: string;
 } | Headers;

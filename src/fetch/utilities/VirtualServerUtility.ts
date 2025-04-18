@@ -1,6 +1,5 @@
 import WindowBrowserContext from '../../window/WindowBrowserContext.js';
 import Path from 'path';
-import Response from '../Response.js';
 import ISyncResponse from '../types/ISyncResponse.js';
 
 const NOT_FOUND_HTML =

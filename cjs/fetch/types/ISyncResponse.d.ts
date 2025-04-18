@@ -1,4 +1,3 @@
-import Headers from '../Headers.cjs';
 /**
  * Fetch response.
  *

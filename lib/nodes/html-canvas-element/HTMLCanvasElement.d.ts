@@ -1,5 +1,5 @@
+/// <reference types="node" resolution-mode="require"/>
 import HTMLElement from '../html-element/HTMLElement.js';
-import Blob from '../../file/Blob.js';
 import OffscreenCanvas from './OffscreenCanvas.js';
 import Event from '../../event/Event.js';
 import MediaStream from '../html-media-element/MediaStream.js';

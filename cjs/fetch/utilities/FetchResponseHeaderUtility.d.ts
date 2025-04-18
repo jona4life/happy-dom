@@ -1,5 +1,4 @@
 import IBrowserFrame from '../../browser/types/IBrowserFrame.cjs';
-import Headers from '../Headers.cjs';
 /**
  * Fetch request validation utility.
  */

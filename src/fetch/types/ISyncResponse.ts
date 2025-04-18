@@ -1,5 +1,3 @@
-import Headers from '../Headers.js';
-
 /**
  * Fetch response.
  *

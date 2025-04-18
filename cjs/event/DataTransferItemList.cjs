@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const File_js_1 = __importDefault(require("../file/File.cjs"));
 const DataTransferItem_js_1 = __importDefault(require("./DataTransferItem.cjs"));
 /**
  *
@@ -16,7 +15,7 @@ class DataTransferItemList extends Array {
      * @param type Type.
      */
     add(item, type) {
-        if (item instanceof File_js_1.default) {
+        if (item instanceof File) {
             this.push(new DataTransferItem_js_1.default(item));
             return;
         }

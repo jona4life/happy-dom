@@ -1,12 +1,12 @@
 /// <reference types="node" resolution-mode="require"/>
 /// <reference types="node" resolution-mode="require"/>
+/// <reference types="node" resolution-mode="require"/>
 import VirtualConsolePrinter from '../../console/VirtualConsolePrinter.js';
 import DetachedBrowserFrame from './DetachedBrowserFrame.js';
 import DetachedBrowserContext from './DetachedBrowserContext.js';
 import IBrowserPage from '../types/IBrowserPage.js';
 import { Script } from 'vm';
 import IGoToOptions from '../types/IGoToOptions.js';
-import Response from '../../fetch/Response.js';
 import IReloadOptions from '../types/IReloadOptions.js';
 import IOptionalBrowserPageViewport from '../types/IOptionalBrowserPageViewport.js';
 import IBrowserPageViewport from '../types/IBrowserPageViewport.js';

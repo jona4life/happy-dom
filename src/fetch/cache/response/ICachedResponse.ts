@@ -1,5 +1,4 @@
 import CachedResponseStateEnum from './CachedResponseStateEnum.js';
-import Headers from '../../Headers.js';
 
 export default interface ICachedResponse {
 	/** Response. */

@@ -1,7 +1,7 @@
 /// <reference types="node" resolution-mode="require"/>
 /// <reference types="node" resolution-mode="require"/>
+/// <reference types="node" resolution-mode="require"/>
 import CachedResponseStateEnum from './CachedResponseStateEnum.js';
-import Headers from '../../Headers.js';
 export default interface ICachedResponse {
     /** Response. */
     response: {

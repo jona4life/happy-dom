@@ -1,5 +1,3 @@
-import Request from '../Request.cjs';
-import Response from '../Response.cjs';
 import ISyncResponse from './ISyncResponse.cjs';
 export default interface IFetchInterceptor {
     /**

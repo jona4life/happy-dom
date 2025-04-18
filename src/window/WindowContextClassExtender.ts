@@ -11,24 +11,22 @@ import AudioImplementation from '../nodes/html-audio-element/Audio.js';
 import NodeIteratorImplementation from '../tree-walker/NodeIterator.js';
 import TreeWalkerImplementation from '../tree-walker/TreeWalker.js';
 import MutationObserverImplementation from '../mutation-observer/MutationObserver.js';
-import MessagePortImplementation from '../event/MessagePort.js';
+// import MessagePortImplementation from '../event/MessagePort.js';
 import DataTransferImplementation from '../event/DataTransfer.js';
 import DataTransferItemImplementation from '../event/DataTransferItem.js';
 import DataTransferItemListImplementation from '../event/DataTransferItemList.js';
 import XMLSerializerImplementation from '../xml-serializer/XMLSerializer.js';
 import CSSStyleSheetImplementation from '../css/CSSStyleSheet.js';
-import DOMExceptionImplementation from '../exception/DOMException.js';
+// import DOMExceptionImplementation from '../exception/DOMException.js';
 import CSSUnitValueImplementation from '../css/CSSUnitValue.js';
 import SelectionImplementation from '../selection/Selection.js';
-import HeadersImplementation from '../fetch/Headers.js';
-import RequestImplementation from '../fetch/Request.js';
-import ResponseImplementation from '../fetch/Response.js';
+// import RequestImplementation from '../fetch/Request.js';
+// import ResponseImplementation from '../fetch/Response.js';
 import EventTargetImplementation from '../event/EventTarget.js';
 import XMLHttpRequestUploadImplementation from '../xml-http-request/XMLHttpRequestUpload.js';
 import XMLHttpRequestEventTargetImplementation from '../xml-http-request/XMLHttpRequestEventTarget.js';
-import AbortControllerImplementation from '../fetch/AbortController.js';
 import AbortSignalImplementation from '../fetch/AbortSignal.js';
-import FormDataImplementation from '../form-data/FormData.js';
+// import FormDataImplementation from '../form-data/FormData.js';
 import PermissionsImplementation from '../permissions/Permissions.js';
 import PermissionStatusImplementation from '../permissions/PermissionStatus.js';
 import ClipboardItemImplementation from '../clipboard/ClipboardItem.js';
@@ -116,7 +114,7 @@ export default class WindowContextClassExtender {
 		(<typeof MutationObserver>window.MutationObserver) = MutationObserver;
 
 		// MessagePort
-		class MessagePort extends MessagePortImplementation {}
+		// class MessagePort extends MessagePortImplementation {}
 		MessagePort.prototype[PropertySymbol.window] = window;
 		(<typeof MessagePort>window.MessagePort) = MessagePort;
 
@@ -146,7 +144,7 @@ export default class WindowContextClassExtender {
 		(<typeof CSSStyleSheet>window.CSSStyleSheet) = CSSStyleSheet;
 
 		// DOMException
-		class DOMException extends DOMExceptionImplementation {}
+		// class DOMException extends DOMExceptionImplementation {}
 		(<typeof DOMException>window.DOMException) = DOMException;
 
 		// CSSUnitValue
@@ -160,17 +158,17 @@ export default class WindowContextClassExtender {
 		(<typeof Selection>window.Selection) = Selection;
 
 		// Headers
-		class Headers extends HeadersImplementation {}
+		// class Headers extends HeadersImplementation {}
 		Headers.prototype[PropertySymbol.window] = window;
 		(<typeof Headers>window.Headers) = Headers;
 
 		// Request
-		class Request extends RequestImplementation {}
+		// class Request extends RequestImplementation {}
 		Request.prototype[PropertySymbol.window] = window;
 		(<typeof Request>window.Request) = Request;
 
 		// Response
-		class Response extends ResponseImplementation {}
+		// class Response extends ResponseImplementation {}
 		Response.prototype[PropertySymbol.window] = window;
 		Response[PropertySymbol.window] = window;
 		(<typeof Response>window.Response) = Response;
@@ -193,7 +191,7 @@ export default class WindowContextClassExtender {
 			XMLHttpRequestEventTarget;
 
 		// AbortController
-		class AbortController extends AbortControllerImplementation {}
+		// class AbortController extends AbortControllerImplementation {}
 		AbortController.prototype[PropertySymbol.window] = window;
 		// @ts-ignore
 		(<typeof AbortController>window.AbortController) = AbortController;
@@ -206,7 +204,7 @@ export default class WindowContextClassExtender {
 		(<typeof AbortSignal>window.AbortSignal) = AbortSignal;
 
 		// FormData
-		class FormData extends FormDataImplementation {}
+		// class FormData extends FormDataImplementation {}
 		FormData.prototype[PropertySymbol.window] = window;
 		(<typeof FormData>window.FormData) = FormData;
 

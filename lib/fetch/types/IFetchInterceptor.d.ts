@@ -1,5 +1,4 @@
-import Request from '../Request.js';
-import Response from '../Response.js';
+/// <reference types="node" resolution-mode="require"/>
 import ISyncResponse from './ISyncResponse.js';
 export default interface IFetchInterceptor {
     /**

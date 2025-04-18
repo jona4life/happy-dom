@@ -3,8 +3,6 @@ import PluginArray from './PluginArray.js';
 import Permissions from '../permissions/Permissions.js';
 import Clipboard from '../clipboard/Clipboard.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
-import Blob from '../file/Blob.js';
-import FormData from '../form-data/FormData.js';
 
 /**
  * Browser Navigator API.
@@ -226,7 +224,7 @@ export default class Navigator {
 	 */
 	public sendBeacon(
 		url: string,
-		data: string | Blob | ArrayBuffer | ArrayBufferView | FormData
+		data: any
 	): boolean {
 		this.#window.fetch(url, {
 			method: 'POST',

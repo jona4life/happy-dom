@@ -38,11 +38,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const PropertySymbol = __importStar(require("../PropertySymbol.cjs"));
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../exception/DOMExceptionNameEnum.cjs"));
-const URL_js_1 = __importDefault(require("../url/URL.cjs"));
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const child_process_1 = __importDefault(require("child_process"));
-const Headers_js_1 = __importDefault(require("./Headers.cjs"));
+// import Headers from './Headers.cjs';
 const CachedResponseStateEnum_js_1 = __importDefault(require("./cache/response/CachedResponseStateEnum.cjs"));
 const FetchRequestReferrerUtility_js_1 = __importDefault(require("./utilities/FetchRequestReferrerUtility.cjs"));
 const FetchRequestValidationUtility_js_1 = __importDefault(require("./utilities/FetchRequestValidationUtility.cjs"));
@@ -53,7 +52,6 @@ const FetchResponseHeaderUtility_js_1 = __importDefault(require("./utilities/Fet
 const zlib_1 = __importDefault(require("zlib"));
 const FetchResponseRedirectUtility_js_1 = __importDefault(require("./utilities/FetchResponseRedirectUtility.cjs"));
 const FetchCORSUtility_js_1 = __importDefault(require("./utilities/FetchCORSUtility.cjs"));
-const Fetch_js_1 = __importDefault(require("./Fetch.cjs"));
 const VirtualServerUtility_js_1 = __importDefault(require("./utilities/VirtualServerUtility.cjs"));
 /**
  * Handles synchrounous fetch requests.
@@ -86,7 +84,7 @@ class SyncFetch {
         this.#window = options.window;
         this.#unfilteredHeaders = options.unfilteredHeaders ?? null;
         this.request =
-            typeof options.url === 'string' || options.url instanceof URL_js_1.default
+            typeof options.url === 'string' || options.url instanceof URL
                 ? new options.window.Request(options.url, options.init)
                 : options.url;
         if (options.contentType) {
@@ -106,7 +104,7 @@ class SyncFetch {
      * @returns Response.
      */
     send() {
-        FetchRequestReferrerUtility_js_1.default.prepareRequest(new URL_js_1.default(this.#window.location.href), this.request);
+        FetchRequestReferrerUtility_js_1.default.prepareRequest(new URL(this.#window.location.href), this.request);
         const beforeRequestResponse = this.interceptor?.beforeSyncRequest
             ? this.interceptor.beforeSyncRequest({
                 request: this.request,
@@ -131,7 +129,7 @@ class SyncFetch {
                 ok: true,
                 url: this.request.url,
                 redirected: false,
-                headers: new Headers_js_1.default({ 'Content-Type': result.type }),
+                headers: new Headers({ 'Content-Type': result.type }),
                 body: result.buffer
             };
             const interceptedResponse = this.interceptor?.afterSyncResponse
@@ -176,7 +174,7 @@ class SyncFetch {
             return null;
         }
         if (cachedResponse.state === CachedResponseStateEnum_js_1.default.stale) {
-            const headers = new Headers_js_1.default(cachedResponse.request.headers);
+            const headers = new Headers(cachedResponse.request.headers);
             if (cachedResponse.etag) {
                 headers.set('If-None-Match', cachedResponse.etag);
             }
@@ -191,6 +189,7 @@ class SyncFetch {
                     browserFrame: this.#browserFrame,
                     window: this.#window,
                     url: this.request.url,
+                    // @ts-ignore
                     init: { headers, method: cachedResponse.request.method },
                     disableCache: true,
                     disableSameOriginPolicy: true
@@ -199,6 +198,7 @@ class SyncFetch {
                 const body = validateResponse.status !== 304 ? validateResponse.body : null;
                 cachedResponse = this.#browserFrame.page.context.responseCache.add(this.request, {
                     ...validateResponse,
+                    // @ts-ignore
                     body,
                     waitingForBody: false
                 });
@@ -207,18 +207,19 @@ class SyncFetch {
                 }
             }
             else {
-                const fetch = new Fetch_js_1.default({
-                    browserFrame: this.#browserFrame,
-                    window: this.#window,
-                    url: this.request.url,
-                    init: { headers, method: cachedResponse.request.method },
-                    disableCache: true,
-                    disableSameOriginPolicy: true
-                });
-                fetch.send().then((response) => {
-                    response.buffer().then((body) => {
+                // const fetch = new Fetch({
+                // 	browserFrame: this.#browserFrame,
+                // 	window: this.#window,
+                // 	url: this.request.url,
+                // 	init: { headers, method: cachedResponse.request.method },
+                // 	disableCache: true,
+                // 	disableSameOriginPolicy: true
+                // });
+                fetch(this.request.url, { headers, method: cachedResponse.request.method }).then((response) => {
+                    response.arrayBuffer().then((body) => {
                         this.#browserFrame.page.context.responseCache.add(this.request, {
                             ...response,
+                            // @ts-ignore
                             body,
                             waitingForBody: false
                         });
@@ -291,6 +292,7 @@ class SyncFetch {
         const interceptedResponse = this.interceptor?.afterSyncResponse
             ? this.interceptor.afterSyncResponse({
                 window: this.#window,
+                // @ts-ignore
                 response,
                 request: this.request
             })
@@ -298,8 +300,10 @@ class SyncFetch {
         const returnResponse = typeof interceptedResponse === 'object' ? interceptedResponse : response;
         this.#browserFrame.page.context.responseCache.add(this.request, {
             ...returnResponse,
+            // @ts-ignore
             waitingForBody: false
         });
+        // @ts-ignore
         return returnResponse;
     }
     /**
@@ -328,7 +332,7 @@ class SyncFetch {
         for (const [header] of this.request.headers) {
             requestHeaders.push(header.toLowerCase());
         }
-        const corsHeaders = new Headers_js_1.default({
+        const corsHeaders = new Headers({
             'Access-Control-Request-Method': this.request.method,
             Origin: this.#window.location.origin
         });
@@ -512,7 +516,7 @@ class SyncFetch {
                 let locationURL = null;
                 if (locationHeader !== null) {
                     try {
-                        locationURL = new URL_js_1.default(locationHeader, this.request.url);
+                        locationURL = new URL(locationHeader, this.request.url);
                     }
                     catch {
                         throw new this.#window.DOMException(`URI requested responds with an invalid redirect URL: ${locationHeader}`, DOMExceptionNameEnum_js_1.default.uriMismatchError);
@@ -524,7 +528,7 @@ class SyncFetch {
                 if (FetchResponseRedirectUtility_js_1.default.isMaxRedirectsReached(this.redirectCount)) {
                     throw new this.#window.DOMException(`Maximum redirects reached at: ${this.request.url}`, DOMExceptionNameEnum_js_1.default.networkError);
                 }
-                const headers = new Headers_js_1.default(this.request.headers);
+                const headers = new Headers(this.request.headers);
                 const requestInit = {
                     method: this.request.method,
                     signal: this.request.signal,

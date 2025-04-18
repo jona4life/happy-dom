@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const CachedResponseStateEnum_js_1 = __importDefault(require("./CachedResponseStateEnum.cjs"));
-const Headers_js_1 = __importDefault(require("../../Headers.cjs"));
 const UPDATE_RESPONSE_HEADERS = ['Cache-Control', 'Last-Modified', 'Vary', 'ETag'];
 /**
  * Fetch response cache.
@@ -93,7 +92,7 @@ class ResponseCache {
                     status: response.status,
                     statusText: response.statusText,
                     url: response.url,
-                    headers: new Headers_js_1.default(response.headers),
+                    headers: new Headers(response.headers),
                     // We need to wait for the body to be consumed and then populated if set to true (e.g. by using Response.text()).
                     waitingForBody: response.waitingForBody,
                     body: response.body ?? null

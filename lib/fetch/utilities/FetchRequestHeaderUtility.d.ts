@@ -1,6 +1,5 @@
+/// <reference types="node" resolution-mode="require"/>
 import IBrowserFrame from '../../browser/types/IBrowserFrame.js';
-import Headers from '../Headers.js';
-import Request from '../Request.js';
 /**
  * Fetch request header utility.
  */

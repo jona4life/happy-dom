@@ -1,9 +1,5 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Blob_js_1 = __importDefault(require("../file/Blob.cjs"));
 /**
  * Clipboard API.
  *
@@ -92,7 +88,7 @@ class Clipboard {
             throw new this.#window.DOMException(`Failed to execute 'writeText' on 'Clipboard': The request is not allowed`);
         }
         this.#data = [
-            new this.#window.ClipboardItem({ 'text/plain': new Blob_js_1.default([text], { type: 'text/plain' }) })
+            new this.#window.ClipboardItem({ 'text/plain': new Blob([text], { type: 'text/plain' }) })
         ];
     }
 }

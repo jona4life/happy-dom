@@ -1,4 +1,3 @@
-import Blob from '../file/Blob.cjs';
 import Document from '../nodes/document/Document.cjs';
 import { Buffer } from 'buffer';
 /**

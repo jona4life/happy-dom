@@ -1,4 +1,3 @@
-import FormData from '../../form-data/FormData.cjs';
 /**
  * Multipart reader.
  *

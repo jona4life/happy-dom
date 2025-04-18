@@ -36,8 +36,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const URL_js_1 = __importDefault(require("../url/URL.cjs"));
-const Fetch_js_1 = __importDefault(require("./Fetch.cjs"));
 const SyncFetch_js_1 = __importDefault(require("./SyncFetch.cjs"));
 const WindowBrowserContext_js_1 = __importDefault(require("../window/WindowBrowserContext.cjs"));
 const PreloadUtility_js_1 = __importDefault(require("./preload/PreloadUtility.cjs"));
@@ -66,7 +64,7 @@ class ResourceFetch {
      * @returns Response.
      */
     async fetch(url, destination, options) {
-        const browserFrame = new WindowBrowserContext_js_1.default(this.window).getBrowserFrame();
+        // const browserFrame = new WindowBrowserContext(this.window).getBrowserFrame();
         // Preloaded resource
         if (destination === 'script' || destination === 'style') {
             const preloadKey = PreloadUtility_js_1.default.getKey({
@@ -80,25 +78,17 @@ class ResourceFetch {
                 this.window.document[PropertySymbol.preloads].delete(preloadKey);
                 const response = preloadEntry.response || (await preloadEntry.onResponseAvailable());
                 if (!response.ok) {
-                    throw new this.window.DOMException(`Failed to perform request to "${new URL_js_1.default(url, this.window.location.href).href}". Status ${preloadEntry.response.status} ${preloadEntry.response.statusText}.`);
+                    throw new this.window.DOMException(`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${preloadEntry.response.status} ${preloadEntry.response.statusText}.`);
                 }
                 return preloadEntry.response[PropertySymbol.buffer].toString();
             }
         }
-        const fetch = new Fetch_js_1.default({
-            browserFrame,
-            window: this.window,
-            url,
-            disableSameOriginPolicy: destination === 'script' || destination === 'style',
-            disablePreload: true,
-            init: {
-                credentials: options?.credentials,
-                referrerPolicy: options?.referrerPolicy
-            }
+        const response = await fetch(url, {
+            credentials: options?.credentials,
+            referrerPolicy: options?.referrerPolicy
         });
-        const response = await fetch.send();
         if (!response.ok) {
-            throw new this.window.DOMException(`Failed to perform request to "${new URL_js_1.default(url, this.window.location.href).href}". Status ${response.status} ${response.statusText}.`);
+            throw new this.window.DOMException(`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${response.status} ${response.statusText}.`);
         }
         return await response.text();
     }
@@ -128,7 +118,7 @@ class ResourceFetch {
                 this.window.document[PropertySymbol.preloads].delete(preloadKey);
                 const response = preloadEntry.response;
                 if (!response.ok) {
-                    throw new this.window.DOMException(`Failed to perform request to "${new URL_js_1.default(url, this.window.location.href).href}". Status ${preloadEntry.response.status} ${preloadEntry.response.statusText}.`);
+                    throw new this.window.DOMException(`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${preloadEntry.response.status} ${preloadEntry.response.statusText}.`);
                 }
                 return preloadEntry.response[PropertySymbol.buffer].toString();
             }
@@ -145,7 +135,7 @@ class ResourceFetch {
         });
         const response = fetch.send();
         if (!response.ok) {
-            throw new this.window.DOMException(`Failed to perform request to "${new URL_js_1.default(url, this.window.location.href).href}". Status ${response.status} ${response.statusText}.`);
+            throw new this.window.DOMException(`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${response.status} ${response.statusText}.`);
         }
         return response.body.toString();
     }

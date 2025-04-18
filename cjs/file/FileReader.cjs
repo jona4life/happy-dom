@@ -40,7 +40,6 @@ const whatwg_mimetype_1 = __importDefault(require("whatwg-mimetype"));
 const PropertySymbol = __importStar(require("../PropertySymbol.cjs"));
 const ProgressEvent_js_1 = __importDefault(require("../event/events/ProgressEvent.cjs"));
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../exception/DOMExceptionNameEnum.cjs"));
-const Blob_js_1 = __importDefault(require("./Blob.cjs"));
 const FileReaderReadyStateEnum_js_1 = __importDefault(require("./FileReaderReadyStateEnum.cjs"));
 const FileReaderFormatEnum_js_1 = __importDefault(require("./FileReaderFormatEnum.cjs"));
 const EventTarget_js_1 = __importDefault(require("../event/EventTarget.cjs"));
@@ -81,7 +80,7 @@ class FileReader extends EventTarget_js_1.default {
      * @param blob Blob.
      */
     readAsArrayBuffer(blob) {
-        if (!(blob instanceof Blob_js_1.default)) {
+        if (!(blob instanceof Blob)) {
             throw new this[PropertySymbol.window].TypeError(`Failed to execute 'readAsArrayBuffer' on 'FileReader': parameter 1 is not of type 'Blob'.`);
         }
         this.#readFile(blob, FileReaderFormatEnum_js_1.default.buffer);
@@ -92,7 +91,7 @@ class FileReader extends EventTarget_js_1.default {
      * @param blob Blob.
      */
     readAsBinaryString(blob) {
-        if (!(blob instanceof Blob_js_1.default)) {
+        if (!(blob instanceof Blob)) {
             throw new this[PropertySymbol.window].TypeError(`Failed to execute 'readAsBinaryString' on 'FileReader': parameter 1 is not of type 'Blob'.`);
         }
         this.#readFile(blob, FileReaderFormatEnum_js_1.default.binaryString);
@@ -103,7 +102,7 @@ class FileReader extends EventTarget_js_1.default {
      * @param blob Blob.
      */
     readAsDataURL(blob) {
-        if (!(blob instanceof Blob_js_1.default)) {
+        if (!(blob instanceof Blob)) {
             throw new this[PropertySymbol.window].TypeError(`Failed to execute 'readAsDataURL' on 'FileReader': parameter 1 is not of type 'Blob'.`);
         }
         this.#readFile(blob, FileReaderFormatEnum_js_1.default.dataURL);
@@ -115,7 +114,7 @@ class FileReader extends EventTarget_js_1.default {
      * @param [encoding] Encoding.
      */
     readAsText(blob, encoding = null) {
-        if (!(blob instanceof Blob_js_1.default)) {
+        if (!(blob instanceof Blob)) {
             throw new this[PropertySymbol.window].TypeError(`Failed to execute 'readAsText' on 'FileReader': parameter 1 is not of type 'Blob'.`);
         }
         this.#readFile(blob, FileReaderFormatEnum_js_1.default.text, encoding || 'UTF-8');

@@ -43,7 +43,7 @@ const DOMTokenList_js_1 = __importDefault(require("../../dom/DOMTokenList.cjs"))
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../../exception/DOMExceptionNameEnum.cjs"));
 const ResourceFetch_js_1 = __importDefault(require("../../fetch/ResourceFetch.cjs"));
 const WindowBrowserContext_js_1 = __importDefault(require("../../window/WindowBrowserContext.cjs"));
-const Fetch_js_1 = __importDefault(require("../../fetch/Fetch.cjs"));
+// import Fetch from '../../fetch/Fetch.cjs';
 const BrowserErrorCaptureEnum_js_1 = __importDefault(require("../../browser/enums/BrowserErrorCaptureEnum.cjs"));
 const ModuleFactory_js_1 = __importDefault(require("../../module/ModuleFactory.cjs"));
 const PreloadUtility_js_1 = __importDefault(require("../../fetch/preload/PreloadUtility.cjs"));
@@ -350,20 +350,22 @@ class HTMLLinkElement extends HTMLElement_js_1.default {
         }
         const preloadEntry = new PreloadEntry_js_1.default();
         window.document[PropertySymbol.preloads].set(preloadKey, preloadEntry);
-        const fetch = new Fetch_js_1.default({
-            browserFrame,
-            window,
-            url: absoluteURL,
-            disableSameOriginPolicy: as === 'script' || as === 'style',
-            disablePreload: true,
-            init: {
-                credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
-            }
-        });
+        // const fetch = new Fetch({
+        // 	browserFrame,
+        // 	window,
+        // 	url: absoluteURL,
+        // 	disableSameOriginPolicy: as === 'script' || as === 'style',
+        // 	disablePreload: true,
+        // 	init: {
+        // 		credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
+        // 	}
+        // });
         try {
-            const response = await fetch.send();
+            const response = await fetch(url, {
+                credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
+            });
             if (!response[PropertySymbol.buffer]) {
-                await response.buffer();
+                await response.arrayBuffer();
             }
             preloadEntry.responseAvailable(null, response);
         }

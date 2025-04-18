@@ -2,7 +2,6 @@ import DetachedBrowserPage from './DetachedBrowserPage.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import AsyncTaskManager from '../../async-task-manager/AsyncTaskManager.js';
 import IBrowserFrame from '../types/IBrowserFrame.js';
-import Response from '../../fetch/Response.js';
 import IGoToOptions from '../types/IGoToOptions.js';
 import { Script } from 'vm';
 import BrowserFrameURL from '../utilities/BrowserFrameURL.js';

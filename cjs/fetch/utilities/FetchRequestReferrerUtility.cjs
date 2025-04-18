@@ -32,11 +32,7 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const URL_js_1 = __importDefault(require("../../url/URL.cjs"));
 const PropertySymbol = __importStar(require("../../PropertySymbol.cjs"));
 const net_1 = require("net");
 const REQUEST_REFERRER_UNSUPPORTED_PROTOCOL_REGEXP = /^(about|blob|data):$/;
@@ -84,7 +80,7 @@ class FetchRequestReferrerUtility {
             return referrer;
         }
         else if (referrer) {
-            const referrerURL = referrer instanceof URL_js_1.default ? referrer : new URL_js_1.default(referrer, window.location.href);
+            const referrerURL = referrer instanceof URL ? referrer : new URL(referrer, window.location.href);
             return referrerURL.origin === window.location.origin ? referrerURL : 'client';
         }
         return 'client';
@@ -125,8 +121,8 @@ class FetchRequestReferrerUtility {
         if (request.referrer === 'about:client' && originURL.origin === 'null') {
             return 'no-referrer';
         }
-        const requestURL = new URL_js_1.default(request.url);
-        const referrerURL = request.referrer === 'about:client' ? new URL_js_1.default(originURL.href) : new URL_js_1.default(request.referrer);
+        const requestURL = new URL(request.url);
+        const referrerURL = request.referrer === 'about:client' ? new URL(originURL.href) : new URL(request.referrer);
         if (REQUEST_REFERRER_UNSUPPORTED_PROTOCOL_REGEXP.test(referrerURL.protocol)) {
             return 'no-referrer';
         }
@@ -137,7 +133,7 @@ class FetchRequestReferrerUtility {
             case 'no-referrer':
                 return 'no-referrer';
             case 'origin':
-                return new URL_js_1.default(referrerURL.origin);
+                return new URL(referrerURL.origin);
             case 'unsafe-url':
                 return referrerURL;
             case 'strict-origin':
@@ -145,7 +141,7 @@ class FetchRequestReferrerUtility {
                     !this.isURLPotentiallyTrustWorthy(requestURL)) {
                     return 'no-referrer';
                 }
-                return new URL_js_1.default(referrerURL.origin);
+                return new URL(referrerURL.origin);
             case 'strict-origin-when-cross-origin':
                 if (referrerURL.origin === requestURL.origin) {
                     return referrerURL;
@@ -154,7 +150,7 @@ class FetchRequestReferrerUtility {
                     !this.isURLPotentiallyTrustWorthy(requestURL)) {
                     return 'no-referrer';
                 }
-                return new URL_js_1.default(referrerURL.origin);
+                return new URL(referrerURL.origin);
             case 'same-origin':
                 if (referrerURL.origin === requestURL.origin) {
                     return referrerURL;
@@ -164,7 +160,7 @@ class FetchRequestReferrerUtility {
                 if (referrerURL.origin === requestURL.origin) {
                     return referrerURL;
                 }
-                return new URL_js_1.default(referrerURL.origin);
+                return new URL(referrerURL.origin);
             case 'no-referrer-when-downgrade':
                 if (this.isURLPotentiallyTrustWorthy(referrerURL) &&
                     !this.isURLPotentiallyTrustWorthy(requestURL)) {

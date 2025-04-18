@@ -1,9 +1,9 @@
 /// <reference types="node" resolution-mode="require"/>
+/// <reference types="node" resolution-mode="require"/>
 import AsyncTaskManager from '../../async-task-manager/AsyncTaskManager.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import Document from '../../nodes/document/Document.js';
 import IBrowserPage from './IBrowserPage.js';
-import Response from '../../fetch/Response.js';
 import IGoToOptions from './IGoToOptions.js';
 import { Script } from 'vm';
 import IReloadOptions from './IReloadOptions.js';
