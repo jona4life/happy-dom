@@ -36,10 +36,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const SyncFetch_js_1 = __importDefault(require("./SyncFetch.cjs"));
-const WindowBrowserContext_js_1 = __importDefault(require("../window/WindowBrowserContext.cjs"));
+// import WindowBrowserContext from '../window/WindowBrowserContext.cjs';
 const PreloadUtility_js_1 = __importDefault(require("./preload/PreloadUtility.cjs"));
 const PropertySymbol = __importStar(require("../PropertySymbol.cjs"));
+const sync_fetch_1 = __importDefault(require("sync-fetch"));
 /**
  * Helper class for performing fetch of resources.
  */
@@ -103,7 +103,7 @@ class ResourceFetch {
      * @returns Response.
      */
     fetchSync(url, destination, options) {
-        const browserFrame = new WindowBrowserContext_js_1.default(this.window).getBrowserFrame();
+        // const browserFrame = new WindowBrowserContext(this.window).getBrowserFrame();
         // Preloaded resource
         if (destination === 'script' || destination === 'style') {
             const preloadKey = PreloadUtility_js_1.default.getKey({
@@ -123,17 +123,10 @@ class ResourceFetch {
                 return preloadEntry.response[PropertySymbol.buffer].toString();
             }
         }
-        const fetch = new SyncFetch_js_1.default({
-            browserFrame,
-            window: this.window,
-            url,
-            disableSameOriginPolicy: true,
-            init: {
-                credentials: options?.credentials,
-                referrerPolicy: options?.referrerPolicy
-            }
+        const response = (0, sync_fetch_1.default)(url, {
+        // credentials: options?.credentials,
+        // referrerPolicy: options?.referrerPolicy
         });
-        const response = fetch.send();
         if (!response.ok) {
             throw new this.window.DOMException(`Failed to perform request to "${new URL(url, this.window.location.href).href}". Status ${response.status} ${response.statusText}.`);
         }

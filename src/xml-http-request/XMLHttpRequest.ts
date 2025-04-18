@@ -10,7 +10,6 @@ import XMLHttpResponseTypeEnum from './XMLHttpResponseTypeEnum.js';
 import ErrorEvent from '../event/events/ErrorEvent.js';
 // import Headers from '../fetch/Headers.js';
 // import Fetch from '../fetch/Fetch.js';
-import SyncFetch from '../fetch/SyncFetch.js';
 // import Request from '../fetch/Request.js';
 import ISyncResponse from '../fetch/types/ISyncResponse.js';
 // import AbortController from '../fetch/AbortController.js';
@@ -21,6 +20,7 @@ import XMLHttpRequestResponseDataParser from './XMLHttpRequestResponseDataParser
 import FetchRequestHeaderUtility from '../fetch/utilities/FetchRequestHeaderUtility.js';
 // import Response from '../fetch/Response.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
+import syncFetch from 'sync-fetch';
 
 /**
  * XMLHttpRequest.
@@ -443,8 +443,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 	 */
 	#sendSync(body?: any): void {
 		const window = this[PropertySymbol.window];
-		const browserFrame = new WindowBrowserContext(window).getBrowserFrame();
-
+		// const browserFrame = new WindowBrowserContext(window).getBrowserFrame();
 		if (body) {
 			this.#request = new Request(this.#request.url, {
 				method: this.#request.method,
@@ -457,16 +456,15 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 
 		this.#readyState = XMLHttpRequestReadyStateEnum.loading;
 
-		const fetch = new SyncFetch({
-			browserFrame,
-			window: window,
-			url: this.#request.url,
-			// @ts-ignore
-			init: this.#request
-		});
-
 		try {
-			this.#response = fetch.send();
+			// @ts-ignore
+			this.#response = syncFetch(this.#request.url, {
+				method: this.#request.method,
+				headers: this.#request.headers,
+				// signal: this.#abortController.signal,
+				// credentials: this.#request.credentials,
+				body
+			});
 		} catch (error) {
 			this.#readyState = XMLHttpRequestReadyStateEnum.done;
 			this.dispatchEvent(new ErrorEvent('error', { error, message: error.message }));
@@ -480,6 +478,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 		this.#responseBody = XMLHttpRequestResponseDataParser.parse({
 			window: window,
 			responseType: this.#responseType,
+			// @ts-ignore
 			data: this.#response.body,
 			contentType:
 				this.#response.headers.get('Content-Type') || this.#request.headers.get('Content-Type')

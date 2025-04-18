@@ -1,9 +1,9 @@
-import SyncFetch from './SyncFetch.js';
 import IRequestCredentials from './types/IRequestCredentials.js';
-import WindowBrowserContext from '../window/WindowBrowserContext.js';
+// import WindowBrowserContext from '../window/WindowBrowserContext.js';
 import PreloadUtility from './preload/PreloadUtility.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 import IRequestReferrerPolicy from './types/IRequestReferrerPolicy.js';
+import syncFetch from 'sync-fetch';
 
 /**
  * Helper class for performing fetch of resources.
@@ -93,7 +93,7 @@ export default class ResourceFetch {
 		destination: 'script' | 'style' | 'module',
 		options?: { credentials?: IRequestCredentials; referrerPolicy?: IRequestReferrerPolicy }
 	): string {
-		const browserFrame = new WindowBrowserContext(this.window).getBrowserFrame();
+		// const browserFrame = new WindowBrowserContext(this.window).getBrowserFrame();
 
 		// Preloaded resource
 		if (destination === 'script' || destination === 'style') {
@@ -122,18 +122,10 @@ export default class ResourceFetch {
 			}
 		}
 
-		const fetch = new SyncFetch({
-			browserFrame,
-			window: this.window,
-			url,
-			disableSameOriginPolicy: true,
-			init: {
-				credentials: options?.credentials,
-				referrerPolicy: options?.referrerPolicy
-			}
+		const response = syncFetch(url, {
+			// credentials: options?.credentials,
+			// referrerPolicy: options?.referrerPolicy
 		});
-
-		const response = fetch.send();
 
 		if (!response.ok) {
 			throw new this.window.DOMException(

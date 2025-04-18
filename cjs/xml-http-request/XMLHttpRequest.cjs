@@ -44,9 +44,6 @@ const DOMException_js_1 = __importDefault(require("../exception/DOMException.cjs
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../exception/DOMExceptionNameEnum.cjs"));
 const XMLHttpResponseTypeEnum_js_1 = __importDefault(require("./XMLHttpResponseTypeEnum.cjs"));
 const ErrorEvent_js_1 = __importDefault(require("../event/events/ErrorEvent.cjs"));
-// import Headers from '../fetch/Headers.cjs';
-// import Fetch from '../fetch/Fetch.cjs';
-const SyncFetch_js_1 = __importDefault(require("../fetch/SyncFetch.cjs"));
 // import AbortController from '../fetch/AbortController.cjs';
 const ProgressEvent_js_1 = __importDefault(require("../event/events/ProgressEvent.cjs"));
 const NodeTypeEnum_js_1 = __importDefault(require("../nodes/node/NodeTypeEnum.cjs"));
@@ -55,6 +52,7 @@ const XMLHttpRequestResponseDataParser_js_1 = __importDefault(require("./XMLHttp
 const FetchRequestHeaderUtility_js_1 = __importDefault(require("../fetch/utilities/FetchRequestHeaderUtility.cjs"));
 // import Response from '../fetch/Response.cjs';
 const WindowBrowserContext_js_1 = __importDefault(require("../window/WindowBrowserContext.cjs"));
+const sync_fetch_1 = __importDefault(require("sync-fetch"));
 /**
  * XMLHttpRequest.
  *
@@ -402,7 +400,7 @@ class XMLHttpRequest extends XMLHttpRequestEventTarget_js_1.default {
      */
     #sendSync(body) {
         const window = this[PropertySymbol.window];
-        const browserFrame = new WindowBrowserContext_js_1.default(window).getBrowserFrame();
+        // const browserFrame = new WindowBrowserContext(window).getBrowserFrame();
         if (body) {
             this.#request = new Request(this.#request.url, {
                 method: this.#request.method,
@@ -413,15 +411,15 @@ class XMLHttpRequest extends XMLHttpRequestEventTarget_js_1.default {
             });
         }
         this.#readyState = XMLHttpRequestReadyStateEnum_js_1.default.loading;
-        const fetch = new SyncFetch_js_1.default({
-            browserFrame,
-            window: window,
-            url: this.#request.url,
-            // @ts-ignore
-            init: this.#request
-        });
         try {
-            this.#response = fetch.send();
+            // @ts-ignore
+            this.#response = (0, sync_fetch_1.default)(this.#request.url, {
+                method: this.#request.method,
+                headers: this.#request.headers,
+                // signal: this.#abortController.signal,
+                // credentials: this.#request.credentials,
+                body
+            });
         }
         catch (error) {
             this.#readyState = XMLHttpRequestReadyStateEnum_js_1.default.done;
@@ -434,6 +432,7 @@ class XMLHttpRequest extends XMLHttpRequestEventTarget_js_1.default {
         this.#responseBody = XMLHttpRequestResponseDataParser_js_1.default.parse({
             window: window,
             responseType: this.#responseType,
+            // @ts-ignore
             data: this.#response.body,
             contentType: this.#response.headers.get('Content-Type') || this.#request.headers.get('Content-Type')
         });
