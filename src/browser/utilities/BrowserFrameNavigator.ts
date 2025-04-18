@@ -10,7 +10,7 @@ import FormData from '../../form-data/FormData.js';
 import HistoryScrollRestorationEnum from '../../history/HistoryScrollRestorationEnum.js';
 import IHistoryItem from '../../history/IHistoryItem.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
-import { prepareWindow } from 'src/window/BrowserWindow.js';
+import { prepareWindow } from '../../window/BrowserWindow.js';
 
 /**
  * Browser frame navigation utility.

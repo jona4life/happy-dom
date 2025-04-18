@@ -43,7 +43,7 @@ const BrowserFrameValidator_js_1 = __importDefault(require("./BrowserFrameValida
 const AsyncTaskManager_js_1 = __importDefault(require("../../async-task-manager/AsyncTaskManager.cjs"));
 const HistoryScrollRestorationEnum_js_1 = __importDefault(require("../../history/HistoryScrollRestorationEnum.cjs"));
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../../exception/DOMExceptionNameEnum.cjs"));
-const BrowserWindow_js_1 = require("src/window/BrowserWindow.cjs");
+const BrowserWindow_js_1 = require("../../window/BrowserWindow.cjs");
 /**
  * Browser frame navigation utility.
  */
