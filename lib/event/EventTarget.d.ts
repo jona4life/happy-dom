@@ -6,7 +6,6 @@ import TEventListener from './TEventListener.js';
  * Handles events.
  */
 export default class EventTarget {
-    #private;
     protected [PropertySymbol.window]: typeof globalThis;
     readonly [PropertySymbol.listeners]: {
         capturing: Map<string, TEventListener[]>;
@@ -68,5 +67,17 @@ export default class EventTarget {
      * @param listener Listener.
      */
     detachEvent(type: string, listener: TEventListener): void;
+    /**
+     * Goes through dispatch event phases.
+     *
+     * @param event Event.
+     */
+    _goThroughDispatchEventPhases(event: Event): void;
+    /**
+     * Handles dispatch event listeners.
+     *
+     * @param event Event.
+     */
+    _callDispatchEventListeners(event: Event): void;
 }
 //# sourceMappingURL=EventTarget.d.ts.map

@@ -1056,6 +1056,8 @@ const prepareWindow = (browserFrame, options) => {
     globalThis['removeEventListener'] = globalThisEventTarget.removeEventListener.bind(globalThis);
     globalThis['attachEvent'] = globalThisEventTarget.attachEvent.bind(globalThis);
     globalThis['detachEvent'] = globalThisEventTarget.detachEvent.bind(globalThis);
+    globalThis['_goThroughDispatchEventPhases'] = globalThisEventTarget._goThroughDispatchEventPhases.bind(globalThis);
+    globalThis['_callDispatchEventListeners'] = globalThisEventTarget._callDispatchEventListeners.bind(globalThis);
     globalThis[PropertySymbol.listeners] = globalThisEventTarget[PropertySymbol.listeners];
     globalThis[PropertySymbol.listenerOptions] =
         globalThisEventTarget[PropertySymbol.listenerOptions];

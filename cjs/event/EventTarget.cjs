@@ -128,11 +128,12 @@ class EventTarget {
             (event[PropertySymbol.type] !== 'load' || !event[PropertySymbol.target])) {
             event[PropertySymbol.dispatching] = true;
             event[PropertySymbol.target] = this[PropertySymbol.proxy] || this;
-            this.#goThroughDispatchEventPhases(event);
+            console.log(this, event);
+            this._goThroughDispatchEventPhases(event);
             event[PropertySymbol.dispatching] = false;
             return !(event[PropertySymbol.cancelable] && event[PropertySymbol.defaultPrevented]);
         }
-        this.#callDispatchEventListeners(event);
+        this._callDispatchEventListeners(event);
         return !(event[PropertySymbol.cancelable] && event[PropertySymbol.defaultPrevented]);
     }
     /**
@@ -166,7 +167,7 @@ class EventTarget {
      *
      * @param event Event.
      */
-    #goThroughDispatchEventPhases(event) {
+    _goThroughDispatchEventPhases(event) {
         const composedPath = event.composedPath();
         // Capturing phase
         event[PropertySymbol.eventPhase] = EventPhaseEnum_js_1.default.capturing;
@@ -209,7 +210,7 @@ class EventTarget {
      *
      * @param event Event.
      */
-    #callDispatchEventListeners(event) {
+    _callDispatchEventListeners(event) {
         const window = this[PropertySymbol.window];
         const browserSettings = window ? new WindowBrowserContext_js_1.default(window).getSettings() : null;
         const eventPhase = event.eventPhase === EventPhaseEnum_js_1.default.capturing ? 'capturing' : 'bubbling';

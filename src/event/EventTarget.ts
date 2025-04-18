@@ -19,16 +19,16 @@ export default class EventTarget {
 		capturing: Map<string, TEventListener[]>;
 		bubbling: Map<string, TEventListener[]>;
 	} = {
-		capturing: new Map(),
-		bubbling: new Map()
-	};
+			capturing: new Map(),
+			bubbling: new Map()
+		};
 	public readonly [PropertySymbol.listenerOptions]: {
 		capturing: Map<string, IEventListenerOptions[]>;
 		bubbling: Map<string, IEventListenerOptions[]>;
 	} = {
-		capturing: new Map(),
-		bubbling: new Map()
-	};
+			capturing: new Map(),
+			bubbling: new Map()
+		};
 
 	/**
 	 * Return a default description for the EventTarget class.
@@ -123,14 +123,16 @@ export default class EventTarget {
 			event[PropertySymbol.dispatching] = true;
 			event[PropertySymbol.target] = this[PropertySymbol.proxy] || this;
 
-			this.#goThroughDispatchEventPhases(event);
+			console.log(this, event);
+
+			this._goThroughDispatchEventPhases(event);
 
 			event[PropertySymbol.dispatching] = false;
 
 			return !(event[PropertySymbol.cancelable] && event[PropertySymbol.defaultPrevented]);
 		}
 
-		this.#callDispatchEventListeners(event);
+		this._callDispatchEventListeners(event);
 
 		return !(event[PropertySymbol.cancelable] && event[PropertySymbol.defaultPrevented]);
 	}
@@ -168,7 +170,7 @@ export default class EventTarget {
 	 *
 	 * @param event Event.
 	 */
-	#goThroughDispatchEventPhases(event: Event): void {
+	public _goThroughDispatchEventPhases(event: Event): void {
 		const composedPath = event.composedPath();
 
 		// Capturing phase
@@ -228,7 +230,7 @@ export default class EventTarget {
 	 *
 	 * @param event Event.
 	 */
-	#callDispatchEventListeners(event: Event): void {
+	public _callDispatchEventListeners(event: Event): void {
 		const window = this[PropertySymbol.window];
 		const browserSettings = window ? new WindowBrowserContext(window).getSettings() : null;
 		const eventPhase = event.eventPhase === EventPhaseEnum.capturing ? 'capturing' : 'bubbling';
