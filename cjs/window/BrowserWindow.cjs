@@ -38,7 +38,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.prepareWindow = void 0;
 const buffer_1 = require("buffer");
-const crypto_1 = require("crypto");
+// import { webcrypto } from 'crypto';
 const util_1 = require("util");
 const stream_1 = __importDefault(require("stream"));
 const web_1 = require("stream/web");
@@ -610,7 +610,7 @@ const prepareWindow = (browserFrame, options) => {
     globalThis['screenTop'] = 0;
     globalThis['screenX'] = 0;
     globalThis['screenY'] = 0;
-    globalThis['crypto'] = crypto_1.webcrypto;
+    // globalThis['crypto'] = webcrypto;
     globalThis['TextEncoder'] = util_1.TextEncoder;
     globalThis['TextDecoder'] = util_1.TextDecoder;
     globalThis['closed'] = false;
@@ -856,6 +856,44 @@ const prepareWindow = (browserFrame, options) => {
     globalThis['matchMedia'] = function (mediaQueryString) {
         return new MediaQueryList_js_1.default({ window: globalThis, media: mediaQueryString });
     }.bind(globalThis);
+    globalThis['requestAnimationFrame'] = function (callback) {
+        if (this.closed) {
+            return;
+        }
+        const settings = this._browserFrame.page?.context?.browser?.settings;
+        if (settings.timer.preventTimerLoops) {
+            const stack = new Error().stack;
+            const timerLoopStacks = this._timerLoopStacks;
+            if (timerLoopStacks.includes(stack)) {
+                return;
+            }
+            timerLoopStacks.push(stack);
+        }
+        const useTryCatch = !settings ||
+            (!settings.disableErrorCapturing &&
+                settings.errorCapture === BrowserErrorCaptureEnum_js_1.default.tryAndCatch);
+        const id = TIMER.setImmediate(() => {
+            // We need to call endImmediate() before the callback as the callback might throw an error.
+            this._browserFrame[PropertySymbol.asyncTaskManager].endImmediate(id);
+            if (useTryCatch) {
+                let result;
+                try {
+                    result = callback(this.performance.now());
+                }
+                catch (error) {
+                    this[PropertySymbol.dispatchError](error);
+                }
+                if (result instanceof Promise) {
+                    result.catch((error) => this[PropertySymbol.dispatchError](error));
+                }
+            }
+            else {
+                callback(this.performance.now());
+            }
+        });
+        this._browserFrame[PropertySymbol.asyncTaskManager].startImmediate(id);
+        return id;
+    };
     globalThis['cancelAnimationFrame'] = function (id) {
         // We need to make sure that the ID is an Immediate object, otherwise Node.js might throw an error.
         // This is only necessary if we are in a Node.js environment.
