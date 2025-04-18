@@ -179,6 +179,7 @@ import URL from './url/URL.js';
 import DetachedWindowAPI from './window/DetachedWindowAPI.js';
 import GlobalWindow from './window/GlobalWindow.js';
 import Window from './window/Window.js';
+import { prepareWindow } from './window/BrowserWindow.js';
 import XMLParser from './xml-parser/XMLParser.js';
 import XMLSerializer from './xml-serializer/XMLSerializer.js';
 
@@ -423,5 +424,7 @@ export {
 	Window,
 	XMLDocument,
 	XMLParser,
-	XMLSerializer
+	XMLSerializer,
+
+	prepareWindow
 };

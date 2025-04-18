@@ -73,6 +73,7 @@ export default class GlobalWindow extends Window {
 	/**
 	 * Setup of VM context.
 	 */
+	// @ts-ignore
 	protected override [PropertySymbol.setupVMContext](): void {
 		// Do nothing
 	}
