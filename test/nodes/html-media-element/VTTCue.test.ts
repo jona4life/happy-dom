@@ -4,7 +4,7 @@ import Window from '../../../src/window/Window.js';
 import TextTrackCue from '../../../src/nodes/html-media-element/TextTrackCue.js';
 
 describe('VTTCue', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

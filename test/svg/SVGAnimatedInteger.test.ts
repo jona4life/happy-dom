@@ -5,7 +5,7 @@ import * as PropertySymbol from '../../src/PropertySymbol.js';
 import SVGAnimatedInteger from '../../src/svg/SVGAnimatedInteger.js';
 
 describe('SVGAnimatedInteger', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

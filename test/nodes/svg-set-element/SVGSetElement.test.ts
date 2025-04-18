@@ -6,7 +6,7 @@ import SVGAnimationElement from '../../../src/nodes/svg-animation-element/SVGAni
 import BrowserWindow from '../../../src/window/BrowserWindow.js';
 
 describe('SVGSetElement', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let document: Document;
 	let element: SVGSetElement;
 

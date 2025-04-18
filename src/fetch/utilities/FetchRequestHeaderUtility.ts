@@ -1,6 +1,5 @@
 import IBrowserFrame from '../../browser/types/IBrowserFrame.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import CookieStringUtility from '../../cookie/urilities/CookieStringUtility.js';
 import Headers from '../Headers.js';
 import Request from '../Request.js';
@@ -74,7 +73,7 @@ export default class FetchRequestHeaderUtility {
 	 */
 	public static getRequestHeaders(options: {
 		browserFrame: IBrowserFrame;
-		window: BrowserWindow;
+		window: typeof globalThis;
 		request: Request;
 		baseHeaders?: Headers;
 	}): { [key: string]: string } {

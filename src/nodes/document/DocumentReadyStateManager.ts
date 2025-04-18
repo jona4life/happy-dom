@@ -1,12 +1,10 @@
-import BrowserWindow from '../../window/BrowserWindow.js';
-
 /**
  * Document ready state manager.
  */
 export default class DocumentReadyStateManager {
 	private totalTasks = 0;
 	private readyStateCallbacks: (() => void)[] = [];
-	private window: BrowserWindow = null;
+	private window: typeof globalThis = null;
 	private immediate: NodeJS.Immediate | null = null;
 	private isComplete = false;
 
@@ -15,7 +13,7 @@ export default class DocumentReadyStateManager {
 	 *
 	 * @param window
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		this.window = window;
 	}
 

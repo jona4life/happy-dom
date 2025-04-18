@@ -8,7 +8,6 @@ import HTMLSelectElement from '../html-select-element/HTMLSelectElement.js';
 import HTMLButtonElement from '../html-button-element/HTMLButtonElement.js';
 import IBrowserFrame from '../../browser/types/IBrowserFrame.js';
 import BrowserFrameNavigator from '../../browser/utilities/BrowserFrameNavigator.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import THTMLFormControlElement from './THTMLFormControlElement.js';
 import QuerySelector from '../../query-selector/QuerySelector.js';
 import RadioNodeList from './RadioNodeList.js';
@@ -641,9 +640,7 @@ export default class HTMLFormElement extends HTMLElement {
 			}
 
 			BrowserFrameNavigator.navigate({
-				windowClass: <typeof BrowserWindow>(
-					this[PropertySymbol.ownerDocument][PropertySymbol.defaultView].constructor
-				),
+				windowClass: globalThis,
 				frame: targetFrame,
 				url: url.href,
 				goToOptions: {
@@ -655,9 +652,7 @@ export default class HTMLFormElement extends HTMLElement {
 		}
 
 		BrowserFrameNavigator.navigate({
-			windowClass: <typeof BrowserWindow>(
-				this[PropertySymbol.ownerDocument][PropertySymbol.defaultView].constructor
-			),
+			windowClass: globalThis,
 			frame: targetFrame,
 			method: method,
 			url: action,

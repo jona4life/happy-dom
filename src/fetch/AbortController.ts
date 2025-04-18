@@ -1,6 +1,5 @@
 import AbortSignal from './AbortSignal.js';
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * AbortController.
@@ -9,9 +8,11 @@ import BrowserWindow from '../window/BrowserWindow.js';
  */
 export default class AbortController {
 	// Injected by WindowContextClassExtender
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	// @ts-ignore
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	// Public properties
+	// @ts-ignore
 	public readonly signal: AbortSignal = new this[PropertySymbol.window].AbortSignal();
 
 	/**

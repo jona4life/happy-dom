@@ -3,7 +3,6 @@ import CSSRule from '../CSSRule.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
 import CSSStyleDeclarationPropertyManager from './property-manager/CSSStyleDeclarationPropertyManager.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import CSSStyleDeclarationComputedStyle from './computed-style/CSSStyleDeclarationComputedStyle.js';
 
 /**
@@ -16,7 +15,7 @@ export default class CSSStyleDeclaration {
 	public readonly parentRule: CSSRule = null;
 
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 
 	// Private properties
 	#element: Element;
@@ -40,7 +39,7 @@ export default class CSSStyleDeclaration {
 	 */
 	constructor(
 		illegalConstructorSymbol: Symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options?: {
 			element?: Element;
 			computed?: boolean;

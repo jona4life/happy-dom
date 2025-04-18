@@ -6,7 +6,7 @@ import * as PropertySymbol from '../../src/PropertySymbol.js';
 import SVGLengthTypeEnum from '../../src/svg/SVGLengthTypeEnum.js';
 
 describe('SVGLength', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

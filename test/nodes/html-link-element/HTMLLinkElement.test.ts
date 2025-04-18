@@ -129,7 +129,7 @@ describe('HTMLLinkElement', () => {
 		it('Loads and evaluates an external CSS file when the attribute "href" and "rel" is set and the element is connected to DOM.', async () => {
 			const element = document.createElement('link');
 			const css = 'div { background: red; }';
-			let loadedWindow: BrowserWindow | null = null;
+			let loadedWindow: typeof globalThis | null = null;
 			let loadedURL: string | null = null;
 			let loadEvent: Event | null = null;
 			let loadEventTarget: EventTarget | null = null;
@@ -195,7 +195,7 @@ describe('HTMLLinkElement', () => {
 		it('Does not load and evaluate external CSS files if the element is not connected to DOM.', () => {
 			const element = document.createElement('link');
 			const css = 'div { background: red; }';
-			let loadedWindow: BrowserWindow | null = null;
+			let loadedWindow: typeof globalThis | null = null;
 			let loadedURL: string | null = null;
 
 			vi.spyOn(ResourceFetch.prototype, 'fetch').mockImplementation(async function (
@@ -221,7 +221,7 @@ describe('HTMLLinkElement', () => {
 			let loadEvent: Event | null = null;
 			let loadEventTarget: EventTarget | null = null;
 			let loadEventCurrentTarget: EventTarget | null = null;
-			let loadedWindow: BrowserWindow | null = null;
+			let loadedWindow: typeof globalThis | null = null;
 			let loadedURL: string | null = null;
 
 			vi.spyOn(ResourceFetch.prototype, 'fetch').mockImplementation(async function (
@@ -282,7 +282,7 @@ describe('HTMLLinkElement', () => {
 		it('Does not load external CSS file when "href" attribute has been set if the element is not connected to DOM.', () => {
 			const element = document.createElement('link');
 			const css = 'div { background: red; }';
-			let loadedWindow: BrowserWindow | null = null;
+			let loadedWindow: typeof globalThis | null = null;
 			let loadedURL: string | null = null;
 
 			vi.spyOn(ResourceFetch.prototype, 'fetch').mockImplementation(async function (

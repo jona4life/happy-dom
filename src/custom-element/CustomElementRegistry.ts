@@ -1,7 +1,6 @@
 import * as PropertySymbol from '../PropertySymbol.js';
 import HTMLElement from '../nodes/html-element/HTMLElement.js';
 import Node from '../nodes/node/Node.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import NamespaceURI from '../config/NamespaceURI.js';
 import StringUtility from '../utilities/StringUtility.js';
 import CustomElementUtility from './CustomElementUtility.js';
@@ -15,14 +14,14 @@ export default class CustomElementRegistry {
 	public [PropertySymbol.classRegistry]: Map<typeof HTMLElement, string> = new Map();
 	public [PropertySymbol.callbacks]: Map<string, Array<() => void>> = new Map();
 	public [PropertySymbol.destroyed]: boolean = false;
-	#window: BrowserWindow;
+	#window: typeof globalThis;
 
 	/**
 	 * Constructor.
 	 *
 	 * @param window Window.
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		if (!window) {
 			throw new TypeError('Illegal constructor');
 		}

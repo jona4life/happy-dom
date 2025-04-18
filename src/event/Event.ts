@@ -1,7 +1,6 @@
 import IEventInit from './IEventInit.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 import Node from '../nodes/node/Node.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import ShadowRoot from '../nodes/shadow-root/ShadowRoot.js';
 import EventTarget from './EventTarget.js';
 import NodeTypeEnum from '../nodes/node/NodeTypeEnum.js';
@@ -151,7 +150,7 @@ export default class Event {
 		}
 
 		const composedPath = [];
-		let eventTarget: Node | ShadowRoot | BrowserWindow = <Node | ShadowRoot>(
+		let eventTarget: Node | ShadowRoot | typeof globalThis = <Node | ShadowRoot>(
 			(<unknown>this[PropertySymbol.target])
 		);
 

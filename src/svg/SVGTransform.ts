@@ -1,5 +1,4 @@
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import SVGMatrix from './SVGMatrix.js';
 import SVGTransformTypeEnum from './SVGTransformTypeEnum.js';
 
@@ -21,7 +20,7 @@ export default class SVGTransform {
 	public static SVG_TRANSFORM_SKEWY = SVGTransformTypeEnum.skewY;
 
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: () => string;
 	public [PropertySymbol.setAttribute]: (value: string) => void;
 	public [PropertySymbol.attributeValue]: string | null = null;
@@ -40,7 +39,7 @@ export default class SVGTransform {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options?: {
 			readOnly?: boolean;
 			getAttribute?: () => string | null;

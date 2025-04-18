@@ -1,4 +1,3 @@
-import BrowserWindow from '../../window/BrowserWindow.js';
 import Document from '../document/Document.js';
 import HTMLElement from '../html-element/HTMLElement.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
@@ -29,7 +28,7 @@ export default class HTMLObjectElement extends HTMLElement {
 	 *
 	 * @returns Window
 	 */
-	public get contentWindow(): BrowserWindow | null {
+	public get contentWindow(): typeof globalThis | null {
 		return null;
 	}
 

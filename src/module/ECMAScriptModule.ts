@@ -1,4 +1,3 @@
-import BrowserWindow from '../window/BrowserWindow.js';
 import { URL } from 'url';
 import IModule from './IModule.js';
 import ECMAScriptModuleCompiler from './ECMAScriptModuleCompiler.js';
@@ -15,7 +14,7 @@ const EMPTY_COMPILED_RESULT = { imports: [], execute: () => {} };
  */
 export default class ECMAScriptModule implements IModule {
 	public readonly url: URL;
-	public readonly [PropertySymbol.window]: BrowserWindow;
+	public readonly [PropertySymbol.window]: typeof globalThis;
 	readonly #source: string;
 	#preloaded: boolean = false;
 	#compiled: IECMAScriptModuleCompiledResult | null = null;
@@ -28,7 +27,7 @@ export default class ECMAScriptModule implements IModule {
 	 * @param url Module URL.
 	 * @param source Source code.
 	 */
-	constructor(window: BrowserWindow, url: URL | Location, source: string) {
+	constructor(window: typeof globalThis, url: URL | Location, source: string) {
 		this[PropertySymbol.window] = window;
 		this.url = <URL>url;
 		this.#source = source;

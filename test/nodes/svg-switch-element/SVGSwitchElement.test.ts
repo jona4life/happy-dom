@@ -6,7 +6,7 @@ import BrowserWindow from '../../../src/window/BrowserWindow.js';
 import SVGGraphicsElement from '../../../src/nodes/svg-graphics-element/SVGGraphicsElement.js';
 
 describe('SVGSwitchElement', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let document: Document;
 	let element: SVGSwitchElement;
 

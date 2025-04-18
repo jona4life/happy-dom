@@ -5,7 +5,7 @@ import * as PropertySymbol from '../../src/PropertySymbol.js';
 import SVGStringList from '../../src/svg/SVGStringList.js';
 
 describe('SVGStringList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

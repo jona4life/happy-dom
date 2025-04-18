@@ -7,7 +7,7 @@ import SVGTransformTypeEnum from '../../src/svg/SVGTransformTypeEnum.js';
 import SVGMatrix from '../../src/svg/SVGMatrix.js';
 
 describe('SVGTransform', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

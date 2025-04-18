@@ -6,7 +6,7 @@ import SVGAnimatedRect from '../../src/svg/SVGAnimatedRect.js';
 import SVGRect from '../../src/svg/SVGRect.js';
 
 describe('SVGAnimatedRect', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

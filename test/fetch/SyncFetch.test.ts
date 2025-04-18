@@ -26,7 +26,7 @@ const PLATFORM =
 
 describe('SyncFetch', () => {
 	let browserFrame: IBrowserFrame;
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		const browser = new Browser();

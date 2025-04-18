@@ -11,7 +11,7 @@ import DOMException from '../../src/exception/DOMException.js';
 const URL = 'https://localhost:8080/base/';
 
 describe('ResourceFetch', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let resourceFetch: ResourceFetch;
 
 	beforeEach(() => {

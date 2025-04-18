@@ -6,7 +6,7 @@ import SVGElement from '../../../src/nodes/svg-element/SVGElement.js';
 import Window from '../../../src/window/Window.js';
 
 describe('SVGMetadataElement', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let document: Document;
 	let element: SVGMetadataElement;
 

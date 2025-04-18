@@ -1,7 +1,6 @@
 import ClassMethodBinder from '../utilities/ClassMethodBinder.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import SVGLength from './SVGLength.js';
 
 const ATTRIBUTE_SEPARATOR_REGEXP = /[\t\f\n\r, ]+/;
@@ -14,7 +13,7 @@ const ATTRIBUTE_SEPARATOR_REGEXP = /[\t\f\n\r, ]+/;
 export default class SVGLengthList {
 	[index: number]: SVGLength;
 
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: (() => string | null) | null = null;
 	public [PropertySymbol.setAttribute]: ((value: string) => void) | null = null;
 	public [PropertySymbol.readOnly]: boolean = false;
@@ -35,7 +34,7 @@ export default class SVGLengthList {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options: {
 			readOnly?: boolean;
 			getAttribute: () => string | null;

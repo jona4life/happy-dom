@@ -176,7 +176,6 @@ import NodeFilter from './tree-walker/NodeFilter.js';
 import NodeIterator from './tree-walker/NodeIterator.js';
 import TreeWalker from './tree-walker/TreeWalker.js';
 import URL from './url/URL.js';
-import BrowserWindow from './window/BrowserWindow.js';
 import DetachedWindowAPI from './window/DetachedWindowAPI.js';
 import GlobalWindow from './window/GlobalWindow.js';
 import Window from './window/Window.js';
@@ -255,7 +254,6 @@ export {
 	BrowserFrame,
 	BrowserNavigationCrossOriginPolicyEnum,
 	BrowserPage,
-	BrowserWindow,
 	Clipboard,
 	ClipboardEvent,
 	ClipboardItem,

@@ -19,7 +19,6 @@ import Response from './Response.js';
 import Event from '../event/Event.js';
 import AbortSignal from './AbortSignal.js';
 import IBrowserFrame from '../browser/types/IBrowserFrame.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import CachedResponseStateEnum from './cache/response/CachedResponseStateEnum.js';
 import FetchRequestHeaderUtility from './utilities/FetchRequestHeaderUtility.js';
 import FetchRequestValidationUtility from './utilities/FetchRequestValidationUtility.js';
@@ -62,7 +61,7 @@ export default class Fetch {
 	private disableSameOriginPolicy: boolean;
 	private disablePreload: boolean;
 	#browserFrame: IBrowserFrame;
-	#window: BrowserWindow;
+	#window: typeof globalThis;
 	#unfilteredHeaders: Headers | null = null;
 
 	/**
@@ -82,7 +81,7 @@ export default class Fetch {
 	 */
 	constructor(options: {
 		browserFrame: IBrowserFrame;
-		window: BrowserWindow;
+		window: typeof globalThis;
 		url: IRequestInfo;
 		init?: IRequestInit;
 		redirectCount?: number;

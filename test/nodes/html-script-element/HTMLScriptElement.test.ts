@@ -380,7 +380,7 @@ describe('HTMLScriptElement', () => {
 
 		it('Loads external script synchronously with relative URL.', async () => {
 			const window = new Window({ url: 'https://localhost:8080/base/' });
-			let fetchedWindow: BrowserWindow | null = null;
+			let fetchedWindow: typeof globalThis | null = null;
 			let fetchedURL: string | null = null;
 			let loadEvent: Event | null = null;
 			let loadEventTarget: EventTarget | null = null;

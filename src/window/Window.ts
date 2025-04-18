@@ -1,6 +1,6 @@
 import DetachedWindowAPI from './DetachedWindowAPI.js';
 import IOptionalBrowserSettings from '../browser/types/IOptionalBrowserSettings.js';
-import BrowserWindow from './BrowserWindow.js';
+import { prepareWindow } from './BrowserWindow.js';
 import DetachedBrowser from '../browser/detached-browser/DetachedBrowser.js';
 
 /**
@@ -9,7 +9,7 @@ import DetachedBrowser from '../browser/detached-browser/DetachedBrowser.js';
  * Reference:
  * https://developer.mozilla.org/en-US/docs/Web/API/Window.
  */
-export default class Window extends BrowserWindow {
+export default class Window {
 	// Detached Window API.
 	public readonly happyDOM: DetachedWindowAPI;
 
@@ -36,7 +36,7 @@ export default class Window extends BrowserWindow {
 		console?: Console;
 		settings?: IOptionalBrowserSettings;
 	}) {
-		const browser = new DetachedBrowser(BrowserWindow, {
+		const browser = new DetachedBrowser(globalThis, {
 			console: options?.console,
 			settings: options?.settings
 		});
@@ -50,12 +50,12 @@ export default class Window extends BrowserWindow {
 			});
 		}
 
-		super(browserFrame, {
+		prepareWindow(browserFrame, {
 			url: options?.url
 		});
 
-		browserFrame.window = this;
+		browserFrame.window = globalThis;
 
-		this.happyDOM = new DetachedWindowAPI(browserFrame);
+		globalThis.happyDOM = new DetachedWindowAPI(browserFrame);
 	}
 }

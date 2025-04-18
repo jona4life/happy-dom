@@ -211,6 +211,7 @@ export default class XMLHttpRequest extends XMLHttpRequestEventTarget {
 		this.#aborted = false;
 		this.#response = null;
 		this.#responseBody = null;
+		// @ts-ignore
 		this.#abortController = new window.AbortController();
 		this.#request = new window.Request(url, {
 			method,

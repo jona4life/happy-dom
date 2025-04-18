@@ -5,7 +5,7 @@ import * as PropertySymbol from '../../src/PropertySymbol.js';
 import SVGAnimatedEnumeration from '../../src/svg/SVGAnimatedEnumeration.js';
 
 describe('SVGAnimatedEnumeration', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

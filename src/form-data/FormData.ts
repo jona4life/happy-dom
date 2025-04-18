@@ -3,7 +3,6 @@ import * as PropertySymbol from '../PropertySymbol.js';
 import File from '../file/File.js';
 import HTMLInputElement from '../nodes/html-input-element/HTMLInputElement.js';
 import HTMLFormElement from '../nodes/html-form-element/HTMLFormElement.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 type FormDataEntry = {
 	name: string;
@@ -17,7 +16,7 @@ type FormDataEntry = {
  */
 export default class FormData implements Iterable<[string, string | File]> {
 	// Injected by WindowContextClassExtender
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	#entries: FormDataEntry[] = [];
 

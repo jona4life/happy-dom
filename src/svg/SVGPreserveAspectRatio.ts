@@ -1,7 +1,6 @@
 import * as PropertySymbol from '../PropertySymbol.js';
 import SVGPreserveAspectRatioMeetOrSliceEnum from './SVGPreserveAspectRatioMeetOrSliceEnum.js';
 import SVGPreserveAspectRatioAlignEnum from './SVGPreserveAspectRatioAlignEnum.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 const ALIGN_KEYS = Object.values(SVGPreserveAspectRatioAlignEnum);
 ALIGN_KEYS.length = ALIGN_KEYS.indexOf(0);
@@ -32,7 +31,7 @@ export default class SVGPreserveAspectRatio {
 	public static SVG_PRESERVEASPECTRATIO_XMAXYMAX = SVGPreserveAspectRatioAlignEnum.xMaxYMax;
 
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: (() => string | null) | null = null;
 	public [PropertySymbol.setAttribute]: ((value: string) => void) | null = null;
 	public [PropertySymbol.attributeValue]: string | null = null;
@@ -50,7 +49,7 @@ export default class SVGPreserveAspectRatio {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options?: {
 			readOnly?: boolean;
 			getAttribute?: () => string | null;

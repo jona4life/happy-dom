@@ -1,4 +1,3 @@
-import BrowserWindow from '../window/BrowserWindow.js';
 import URL from '../url/URL.js';
 import Fetch from './Fetch.js';
 import SyncFetch from './SyncFetch.js';
@@ -12,14 +11,14 @@ import IRequestReferrerPolicy from './types/IRequestReferrerPolicy.js';
  * Helper class for performing fetch of resources.
  */
 export default class ResourceFetch {
-	private window: BrowserWindow;
+	private window: typeof globalThis;
 
 	/**
 	 * Constructor.
 	 *
 	 * @param window Window.
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		this.window = window;
 	}
 

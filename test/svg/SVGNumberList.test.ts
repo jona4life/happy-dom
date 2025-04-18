@@ -6,7 +6,7 @@ import * as PropertySymbol from '../../src/PropertySymbol.js';
 import SVGNumberList from '../../src/svg/SVGNumberList.js';
 
 describe('SVGNumberList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

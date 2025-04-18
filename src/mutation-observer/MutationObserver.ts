@@ -1,6 +1,5 @@
 import * as PropertySymbol from '../PropertySymbol.js';
 import Node from '../nodes/node/Node.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import IMutationObserverInit from './IMutationObserverInit.js';
 import MutationObserverListener from './MutationObserverListener.js';
 import MutationRecord from './MutationRecord.js';
@@ -12,7 +11,7 @@ import MutationRecord from './MutationRecord.js';
  */
 export default class MutationObserver {
 	// Injected by WindowContextClassExtender
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 	#callback: (records: MutationRecord[], observer: MutationObserver) => void;
 	#listeners: MutationObserverListener[] = [];
 	#destroyed: boolean = false;

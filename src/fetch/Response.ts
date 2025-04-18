@@ -10,7 +10,6 @@ import FormData from '../form-data/FormData.js';
 import FetchBodyUtility from './utilities/FetchBodyUtility.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
 import MultipartFormDataParser from './multipart/MultipartFormDataParser.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import ICachedResponse from './cache/response/ICachedResponse.js';
 import { Buffer } from 'buffer';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
@@ -27,8 +26,8 @@ const REDIRECT_STATUS_CODES = [301, 302, 303, 307, 308];
  */
 export default class Response implements Response {
 	// Injected by WindowContextClassExtender
-	protected declare static [PropertySymbol.window]: BrowserWindow;
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare static [PropertySymbol.window]: typeof globalThis;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	// Public properties
 	public readonly body: ReadableStream | null = null;

@@ -1,5 +1,4 @@
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import DOMMatrix from '../dom/dom-matrix/DOMMatrix.js';
 
 const TRANSFORM_REGEXP = /([a-zA-Z0-9]+)\(([^)]+)\)/;
@@ -12,7 +11,7 @@ const TRANSFORM_PARAMETER_SPLIT_REGEXP = /[\s,]+/;
  */
 export default class SVGMatrix {
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: (() => string | null) | null = null;
 	public [PropertySymbol.setAttribute]: ((value: string) => void) | null = null;
 	public [PropertySymbol.attributeValue]: string | null = null;
@@ -30,7 +29,7 @@ export default class SVGMatrix {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options?: {
 			readOnly?: boolean;
 			getAttribute?: () => string | null;

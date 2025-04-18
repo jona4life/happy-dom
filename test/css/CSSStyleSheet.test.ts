@@ -6,7 +6,7 @@ import BrowserWindow from '../../src/window/BrowserWindow.js';
 import Window from '../../src/window/Window.js';
 
 describe('CSSStyleSheet', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let cssStyleSheet: CSSStyleSheet;
 
 	beforeEach(() => {

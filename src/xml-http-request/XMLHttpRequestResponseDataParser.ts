@@ -1,5 +1,4 @@
 import XMLHttpResponseTypeEnum from './XMLHttpResponseTypeEnum.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import Blob from '../file/Blob.js';
 import Document from '../nodes/document/Document.js';
 import { Buffer } from 'buffer';
@@ -19,7 +18,7 @@ export default class XMLHttpRequestResponseDataParser {
 	 * @returns Parsed response.
 	 **/
 	public static parse(options: {
-		window: BrowserWindow;
+		window: typeof globalThis;
 		responseType: string;
 		data?: Buffer;
 		contentType?: string;

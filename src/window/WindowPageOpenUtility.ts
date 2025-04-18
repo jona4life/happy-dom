@@ -1,4 +1,3 @@
-import BrowserWindow from './BrowserWindow.js';
 import CrossOriginBrowserWindow from './CrossOriginBrowserWindow.js';
 import IBrowserFrame from '../browser/types/IBrowserFrame.js';
 import FetchCORSUtility from '../fetch/utilities/FetchCORSUtility.js';
@@ -26,7 +25,7 @@ export default class WindowPageOpenUtility {
 			target?: string;
 			features?: string;
 		}
-	): BrowserWindow | CrossOriginBrowserWindow | null {
+	): typeof globalThis | CrossOriginBrowserWindow | null {
 		const features = this.getWindowFeatures(options?.features || '');
 		const target = options?.target !== undefined ? String(options.target) : null;
 		const originURL = new URL(browserFrame.window.location.href);

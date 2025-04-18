@@ -5,7 +5,7 @@ import Window from '../../../src/window/Window.js';
 import * as PropertySymbol from '../../../src/PropertySymbol.js';
 
 describe('TextTrackCueList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

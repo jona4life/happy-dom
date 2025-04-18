@@ -1,6 +1,5 @@
 import MimeTypeArray from './MimeTypeArray.js';
 import PluginArray from './PluginArray.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import Permissions from '../permissions/Permissions.js';
 import Clipboard from '../clipboard/Clipboard.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
@@ -16,7 +15,7 @@ import FormData from '../form-data/FormData.js';
  * https://html.spec.whatwg.org/multipage/system-state.html#dom-navigator.
  */
 export default class Navigator {
-	#window: BrowserWindow;
+	#window: typeof globalThis;
 	#clipboard: Clipboard;
 	#permissions: Permissions;
 
@@ -25,7 +24,7 @@ export default class Navigator {
 	 *
 	 * @param window Owner window.
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		if (!window) {
 			throw new TypeError('Invalid constructor');
 		}

@@ -1,4 +1,3 @@
-import BrowserWindow from '../window/BrowserWindow.js';
 import { URL } from 'url';
 import IModule from './IModule.js';
 
@@ -7,7 +6,7 @@ import IModule from './IModule.js';
  */
 export default class UnresolvedModule implements IModule {
 	public readonly url: URL;
-	readonly #window: BrowserWindow;
+	readonly #window: typeof globalThis;
 	#hooks: { resolve: (value: unknown) => void; reject: (error: Error) => void }[] = [];
 	#error: Error | null = null;
 
@@ -17,7 +16,7 @@ export default class UnresolvedModule implements IModule {
 	 * @param window Window.
 	 * @param url Module URL.
 	 */
-	constructor(window: BrowserWindow, url: URL) {
+	constructor(window: typeof globalThis, url: URL) {
 		this.#window = window;
 		this.url = url;
 	}

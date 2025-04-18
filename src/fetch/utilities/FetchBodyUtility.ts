@@ -10,7 +10,6 @@ import IRequestBody from '../types/IRequestBody.js';
 import IResponseBody from '../types/IResponseBody.js';
 import { Buffer } from 'buffer';
 import Stream from 'stream';
-import BrowserWindow from '../../window/BrowserWindow.js';
 
 /**
  * Fetch body utility.
@@ -105,7 +104,7 @@ export default class FetchBodyUtility {
 	 * @returns New stream.
 	 */
 	public static cloneBodyStream(
-		window: BrowserWindow,
+		window: typeof globalThis,
 		requestOrResponse: {
 			body: ReadableStream | null;
 			bodyUsed: boolean;
@@ -163,7 +162,7 @@ export default class FetchBodyUtility {
 	 * @returns Promise.
 	 */
 	public static async consumeBodyStream(
-		window: BrowserWindow,
+		window: typeof globalThis,
 		body: ReadableStream | null
 	): Promise<Buffer> {
 		if (body === null || !(body instanceof ReadableStream)) {

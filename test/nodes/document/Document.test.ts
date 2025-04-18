@@ -1551,9 +1551,9 @@ describe('Document', () => {
 				const jsURL = 'https://localhost:8080/path/to/file.js';
 				const cssResponse = 'body { background-color: red; }';
 				const jsResponse = 'globalThis.test = "test";';
-				let resourceFetchCSSWindow: BrowserWindow | null = null;
+				let resourceFetchCSSWindow: typeof globalThis | null = null;
 				let resourceFetchCSSURL: string | null = null;
-				let resourceFetchJSWindow: BrowserWindow | null = null;
+				let resourceFetchJSWindow: typeof globalThis | null = null;
 				let resourceFetchJSURL: string | null = null;
 				let event: Event | null = null;
 				let target: EventTarget | null = null;

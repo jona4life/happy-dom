@@ -6,7 +6,7 @@ import SVGAnimatedLengthList from '../../src/svg/SVGAnimatedLengthList.js';
 import SVGLengthList from '../../src/svg/SVGLengthList.js';
 
 describe('SVGAnimatedLengthList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

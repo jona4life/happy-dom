@@ -5,7 +5,6 @@ import IBrowserFrame from '../browser/types/IBrowserFrame.js';
 import IBrowserPage from '../browser/types/IBrowserPage.js';
 import IBrowserSettings from '../browser/types/IBrowserSettings.js';
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from './BrowserWindow.js';
 
 /**
  * API for accessing the Browser in a Window context without exposing the Browser as accessible properties.
@@ -15,14 +14,14 @@ import BrowserWindow from './BrowserWindow.js';
 export default class WindowBrowserContext {
 	private static [PropertySymbol.browserFrames]: Map<number, IBrowserFrame> = new Map();
 	private static [PropertySymbol.windowInternalId] = 0;
-	#window: BrowserWindow;
+	#window: typeof globalThis;
 
 	/**
 	 * Browser window.
 	 *
 	 * @param window Window.
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		this.#window = window;
 	}
 
@@ -94,7 +93,7 @@ export default class WindowBrowserContext {
 	 * @param browserFrame Browser frame.
 	 */
 	public static setWindowBrowserFrameRelation(
-		window: BrowserWindow,
+		window: typeof globalThis,
 		browserFrame: IBrowserFrame
 	): void {
 		const browserFrames = this[PropertySymbol.browserFrames];
@@ -111,7 +110,7 @@ export default class WindowBrowserContext {
 	 * @param window Window.
 	 * @param browserFrame Browser frame.
 	 */
-	public static removeWindowBrowserFrameRelation(window: BrowserWindow): void {
+	public static removeWindowBrowserFrameRelation(window: typeof globalThis): void {
 		this[PropertySymbol.browserFrames].delete(window[PropertySymbol.internalId]);
 	}
 }

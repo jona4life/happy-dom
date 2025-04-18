@@ -7,7 +7,7 @@ import TextTrack from '../../../src/nodes/html-media-element/TextTrack.js';
 import EventTarget from '../../../src/event/EventTarget.js';
 
 describe('TextTrackList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

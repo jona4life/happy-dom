@@ -1,5 +1,4 @@
 import BrowserErrorCaptureEnum from '../browser/enums/BrowserErrorCaptureEnum.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
 import IECMAScriptModuleCompiledResult from './IECMAScriptModuleCompiledResult.js';
 import IECMAScriptModuleImport from './IECMAScriptModuleImport.js';
@@ -65,7 +64,7 @@ const MULTILINE_COMMENT_REGEXP = /\/\*|\*\//gm;
  * ECMAScript module compiler.
  */
 export default class ECMAScriptModuleCompiler {
-	public readonly window: BrowserWindow;
+	public readonly window: typeof globalThis;
 
 	/**
 	 * Constructor.
@@ -73,7 +72,7 @@ export default class ECMAScriptModuleCompiler {
 	 * @param window Window.
 	 * @param url Module URL.
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		this.window = window;
 	}
 

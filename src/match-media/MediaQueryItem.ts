@@ -1,5 +1,4 @@
 import CSSMeasurementConverter from '../css/declaration/measurement-converter/CSSMeasurementConverter.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
 import IMediaQueryRange from './IMediaQueryRange.js';
 import IMediaQueryRule from './IMediaQueryRule.js';
@@ -14,7 +13,7 @@ export default class MediaQueryItem {
 	public rules: IMediaQueryRule[];
 	public ranges: IMediaQueryRange[];
 	private rootFontSize: string | number | null = null;
-	private window: BrowserWindow;
+	private window: typeof globalThis;
 
 	/**
 	 * Constructor.
@@ -28,7 +27,7 @@ export default class MediaQueryItem {
 	 * @param [options.ranges] Ranges.
 	 */
 	constructor(options: {
-		window: BrowserWindow;
+		window: typeof globalThis;
 		rootFontSize?: string | number | null;
 		mediaTypes?: MediaQueryTypeEnum[];
 		not?: boolean;

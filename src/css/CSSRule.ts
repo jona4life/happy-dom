@@ -1,7 +1,6 @@
 import CSSStyleSheet from './CSSStyleSheet.js';
 import CSSRuleTypeEnum from './CSSRuleTypeEnum.js';
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * CSSRule interface.
@@ -24,7 +23,7 @@ export default class CSSRule {
 	public static REGION_STYLE_RULE = CSSRuleTypeEnum.regionStyleRule;
 
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 
 	// Public properties
 	public parentRule: CSSRule = null;
@@ -37,7 +36,7 @@ export default class CSSRule {
 	 * @param illegalConstructorSymbol Illegal constructor symbol.
 	 * @param window Window.
 	 */
-	constructor(illegalConstructorSymbol: Symbol, window: BrowserWindow) {
+	constructor(illegalConstructorSymbol: Symbol, window: typeof globalThis) {
 		if (illegalConstructorSymbol !== PropertySymbol.illegalConstructor) {
 			throw new TypeError('Illegal constructor');
 		}

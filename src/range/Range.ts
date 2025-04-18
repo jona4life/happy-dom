@@ -12,7 +12,6 @@ import Comment from '../nodes/comment/Comment.js';
 import Text from '../nodes/text/Text.js';
 import DOMRectList from '../dom/DOMRectList.js';
 import IRangeBoundaryPoint from './IRangeBoundaryPoint.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import HTMLParser from '../html-parser/HTMLParser.js';
 
 /**
@@ -26,7 +25,7 @@ import HTMLParser from '../html-parser/HTMLParser.js';
  */
 export default class Range {
 	// Injected by WindowContextClassExtender
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	public static readonly END_TO_END: number = RangeHowEnum.endToEnd;
 	public static readonly END_TO_START: number = RangeHowEnum.endToStart;

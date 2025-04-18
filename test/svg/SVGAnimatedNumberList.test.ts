@@ -6,7 +6,7 @@ import SVGAnimatedNumberList from '../../src/svg/SVGAnimatedNumberList.js';
 import SVGNumberList from '../../src/svg/SVGNumberList.js';
 
 describe('SVGAnimatedNumberList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

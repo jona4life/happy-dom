@@ -1,7 +1,6 @@
 import Document from '../nodes/document/Document.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 import XMLParser from '../xml-parser/XMLParser.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import HTMLParser from '../html-parser/HTMLParser.js';
 
 /**
@@ -12,7 +11,7 @@ import HTMLParser from '../html-parser/HTMLParser.js';
  */
 export default class DOMParser {
 	// Injected by WindowContextClassExtender
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	/**
 	 * Parses HTML and returns a root element.

@@ -6,7 +6,7 @@ import * as PropertySymbol from '../../src/PropertySymbol.js';
 import SVGAngleTypeEnum from '../../src/svg/SVGAngleTypeEnum.js';
 
 describe('SVGAngle', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

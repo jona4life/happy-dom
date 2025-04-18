@@ -6,7 +6,7 @@ import SVGAnimatedLength from '../../src/svg/SVGAnimatedLength.js';
 import SVGLength from '../../src/svg/SVGLength.js';
 
 describe('SVGAnimatedLength', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

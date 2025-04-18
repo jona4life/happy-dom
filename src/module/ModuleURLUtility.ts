@@ -1,6 +1,5 @@
 import { URL } from 'url';
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import Location from '../location/Location.js';
 
 /**
@@ -15,7 +14,7 @@ export default class ModuleURLUtility {
 	 * @param url Module URL.
 	 */
 	public static getURL(
-		window: BrowserWindow,
+		window: typeof globalThis,
 		parentURL: URL | Location | string,
 		url: string
 	): URL {

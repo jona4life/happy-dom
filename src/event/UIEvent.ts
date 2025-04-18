@@ -1,4 +1,3 @@
-import BrowserWindow from '../window/BrowserWindow.js';
 import Event from './Event.js';
 import IUIEventInit from './IUIEventInit.js';
 
@@ -15,7 +14,7 @@ export default class UIEvent extends Event {
 	public readonly layerY: number = 0;
 	public readonly pageX: number = 0;
 	public readonly pageY: number = 0;
-	public readonly view: BrowserWindow | null;
+	public readonly view: typeof globalThis | null;
 
 	/**
 	 * Constructor.

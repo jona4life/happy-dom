@@ -1,4 +1,3 @@
-import BrowserWindow from '../window/BrowserWindow.js';
 import ClipboardItem from './ClipboardItem.js';
 import Blob from '../file/Blob.js';
 
@@ -9,7 +8,7 @@ import Blob from '../file/Blob.js';
  * https://developer.mozilla.org/en-US/docs/Web/API/Clipboard.
  */
 export default class Clipboard {
-	#window: BrowserWindow;
+	#window: typeof globalThis;
 	#data: ClipboardItem[] = [];
 
 	/**
@@ -17,7 +16,7 @@ export default class Clipboard {
 	 *
 	 * @param window Owner window.
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		if (!window) {
 			throw new TypeError('Illegal constructor');
 		}

@@ -1,7 +1,6 @@
 import ClassMethodBinder from '../utilities/ClassMethodBinder.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import SVGTransform from './SVGTransform.js';
 
 const TRANSFORM_REGEXP = /([a-zA-Z0-9]+)\(([^)]+)\)/gm;
@@ -15,7 +14,7 @@ const EMPTY_MATRIX = 'matrix(1 0 0 1 0 0)';
 export default class SVGTransformList {
 	[index: number]: SVGTransform;
 
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: (() => string | null) | null = null;
 	public [PropertySymbol.setAttribute]: ((value: string) => void) | null = null;
 	public [PropertySymbol.readOnly]: boolean = false;
@@ -36,7 +35,7 @@ export default class SVGTransformList {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options: {
 			readOnly?: boolean;
 			getAttribute: () => string | null;

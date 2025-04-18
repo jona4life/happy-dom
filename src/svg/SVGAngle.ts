@@ -1,6 +1,5 @@
 import SVGAngleTypeEnum from './SVGAngleTypeEnum.js';
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 const ATTRIBUTE_REGEXP = /^(\d+|\d+\.\d+)(deg|rad|grad|turn|)$/;
 
@@ -18,7 +17,7 @@ export default class SVGAngle {
 	public static SVG_ANGLETYPE_GRAD = SVGAngleTypeEnum.grad;
 
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: (() => string | null) | null = null;
 	public [PropertySymbol.setAttribute]: ((value: string) => void) | null = null;
 	public [PropertySymbol.attributeValue]: string = '';
@@ -36,7 +35,7 @@ export default class SVGAngle {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options?: {
 			readOnly?: boolean;
 			getAttribute?: () => string | null;

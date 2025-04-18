@@ -2,7 +2,6 @@ import IBrowserFrame from '../types/IBrowserFrame.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import IGoToOptions from '../types/IGoToOptions.js';
 import Response from '../../fetch/Response.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import BrowserFrameFactory from './BrowserFrameFactory.js';
 import BrowserFrameURL from './BrowserFrameURL.js';
 import BrowserFrameValidator from './BrowserFrameValidator.js';
@@ -11,6 +10,7 @@ import FormData from '../../form-data/FormData.js';
 import HistoryScrollRestorationEnum from '../../history/HistoryScrollRestorationEnum.js';
 import IHistoryItem from '../../history/IHistoryItem.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
+import { prepareWindow } from 'src/window/BrowserWindow.js';
 
 /**
  * Browser frame navigation utility.
@@ -31,10 +31,7 @@ export default class BrowserFrameNavigator {
 	 * @returns Response.
 	 */
 	public static async navigate(options: {
-		windowClass: new (
-			browserFrame: IBrowserFrame,
-			options?: { url?: string; width?: number; height?: number }
-		) => BrowserWindow | null;
+		windowClass: typeof globalThis | null;
 		frame: IBrowserFrame;
 		url: string;
 		goToOptions?: IGoToOptions;
@@ -42,7 +39,7 @@ export default class BrowserFrameNavigator {
 		formData?: FormData | null;
 		disableHistory?: boolean;
 	}): Promise<Response | null> {
-		const { windowClass, frame, url, formData, method, goToOptions, disableHistory } = options;
+		const { frame, url, formData, method, goToOptions, disableHistory } = options;
 		const exceptionObserver = frame.page.context.browser[PropertySymbol.exceptionObserver];
 		const referrer = goToOptions?.referrer || frame.window.location.origin;
 		const targetURL = BrowserFrameURL.getRelativeURL(frame, url);
@@ -134,7 +131,9 @@ export default class BrowserFrameNavigator {
 
 		// Create new Window
 		frame[PropertySymbol.asyncTaskManager] = new AsyncTaskManager(frame);
-		(<BrowserWindow>frame.window) = new windowClass(frame, { url: targetURL.href, width, height });
+		// @ts-ignore
+		prepareWindow(frame, { url: targetURL.href, width, height });
+		frame.window = globalThis;
 		frame.window[PropertySymbol.parent] = parentWindow;
 		frame.window[PropertySymbol.top] = topWindow;
 		(<number>frame.window.devicePixelRatio) = devicePixelRatio;
@@ -264,10 +263,7 @@ export default class BrowserFrameNavigator {
 	 * @param [options.goToOptions] Go to options.
 	 */
 	public static navigateBack(options: {
-		windowClass: new (
-			browserFrame: IBrowserFrame,
-			options?: { url?: string; width?: number; height?: number }
-		) => BrowserWindow | null;
+		windowClass: typeof globalThis | null;
 		frame: IBrowserFrame;
 		goToOptions?: IGoToOptions;
 	}): Promise<Response | null> {
@@ -323,10 +319,7 @@ export default class BrowserFrameNavigator {
 	 * @param [options.goToOptions] Go to options.
 	 */
 	public static navigateForward(options: {
-		windowClass: new (
-			browserFrame: IBrowserFrame,
-			options?: { url?: string; width?: number; height?: number }
-		) => BrowserWindow | null;
+		windowClass: typeof globalThis | null;
 		frame: IBrowserFrame;
 		goToOptions?: IGoToOptions;
 	}): Promise<Response | null> {
@@ -383,10 +376,7 @@ export default class BrowserFrameNavigator {
 	 * @param options.steps Steps.
 	 */
 	public static navigateSteps(options: {
-		windowClass: new (
-			browserFrame: IBrowserFrame,
-			options?: { url?: string; width?: number; height?: number }
-		) => BrowserWindow | null;
+		windowClass: typeof globalThis | null;
 		frame: IBrowserFrame;
 		goToOptions?: IGoToOptions;
 		steps?: number;
@@ -447,10 +437,7 @@ export default class BrowserFrameNavigator {
 	 * @param options.goToOptions Go to options.
 	 */
 	public static reload(options: {
-		windowClass: new (
-			browserFrame: IBrowserFrame,
-			options?: { url?: string; width?: number; height?: number }
-		) => BrowserWindow | null;
+		windowClass: typeof globalThis | null;
 		frame: IBrowserFrame;
 		goToOptions?: IGoToOptions;
 	}): Promise<Response | null> {

@@ -6,7 +6,7 @@ import SVGAnimatedTransformList from '../../src/svg/SVGAnimatedTransformList.js'
 import SVGTransformList from '../../src/svg/SVGTransformList.js';
 
 describe('SVGAnimatedTransformList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

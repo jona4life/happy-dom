@@ -7,7 +7,7 @@ import SVGLengthTypeEnum from '../../src/svg/SVGLengthTypeEnum.js';
 import SVGLengthList from '../../src/svg/SVGLengthList.js';
 
 describe('SVGLengthList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

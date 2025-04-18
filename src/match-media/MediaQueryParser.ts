@@ -1,6 +1,5 @@
 import MediaQueryItem from './MediaQueryItem.js';
 import MediaQueryTypeEnum from './MediaQueryTypeEnum.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * Media query RegExp.
@@ -44,7 +43,7 @@ export default class MediaQueryParser {
 	 * @returns Media query items.
 	 */
 	public static parse(options: {
-		window: BrowserWindow;
+		window: typeof globalThis;
 		mediaQuery: string;
 		rootFontSize?: string | number | null;
 	}): MediaQueryItem[] {

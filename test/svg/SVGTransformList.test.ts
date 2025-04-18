@@ -7,7 +7,7 @@ import SVGTransformList from '../../src/svg/SVGTransformList.js';
 import SVGTransformTypeEnum from '../../src/svg/SVGTransformTypeEnum.js';
 
 describe('SVGTransformList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

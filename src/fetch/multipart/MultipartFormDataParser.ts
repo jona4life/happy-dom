@@ -4,7 +4,6 @@ import * as PropertySymbol from '../../PropertySymbol.js';
 import MultipartReader from './MultipartReader.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
 import { Buffer } from 'buffer';
-import BrowserWindow from '../../window/BrowserWindow.js';
 
 /**
  * Multipart form data factory.
@@ -22,7 +21,7 @@ export default class MultipartFormDataParser {
 	 * @returns Form data.
 	 */
 	public static async streamToFormData(
-		window: BrowserWindow,
+		window: typeof globalThis,
 		body: ReadableStream,
 		contentType: string
 	): Promise<{ formData: FormData; buffer: Buffer }> {

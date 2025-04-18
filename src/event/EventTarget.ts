@@ -7,14 +7,13 @@ import BrowserErrorCaptureEnum from '../browser/enums/BrowserErrorCaptureEnum.js
 import TEventListener from './TEventListener.js';
 import TEventListenerObject from './TEventListenerObject.js';
 import TEventListenerFunction from './TEventListenerFunction.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * Handles events.
  */
 export default class EventTarget {
 	// Injected by WindowContextClassExtender
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	public readonly [PropertySymbol.listeners]: {
 		capturing: Map<string, TEventListener[]>;
@@ -253,6 +252,7 @@ export default class EventTarget {
 				// We can end up in a never ending loop if the listener for the error event on Window also throws an error.
 				if (
 					window &&
+					// @ts-ignore
 					(this !== <EventTarget>window || event.type !== 'error') &&
 					!browserSettings?.disableErrorCapturing &&
 					browserSettings?.errorCapture === BrowserErrorCaptureEnum.tryAndCatch
@@ -314,6 +314,7 @@ export default class EventTarget {
 				// We can end up in a never ending loop if the listener for the error event on Window also throws an error.
 				if (
 					window &&
+					// @ts-ignore
 					(this !== <EventTarget>window || event.type !== 'error') &&
 					!browserSettings?.disableErrorCapturing &&
 					browserSettings?.errorCapture === BrowserErrorCaptureEnum.tryAndCatch

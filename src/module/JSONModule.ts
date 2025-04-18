@@ -1,4 +1,3 @@
-import BrowserWindow from '../window/BrowserWindow.js';
 import { URL } from 'url';
 import IModule from './IModule.js';
 
@@ -7,7 +6,7 @@ import IModule from './IModule.js';
  */
 export default class JSONModule implements IModule {
 	public readonly url: URL;
-	readonly #window: BrowserWindow;
+	readonly #window: typeof globalThis;
 	readonly #source: string;
 	#exports: { default: object } | null = null;
 
@@ -18,7 +17,7 @@ export default class JSONModule implements IModule {
 	 * @param url Module URL.
 	 * @param source Source code.
 	 */
-	constructor(window: BrowserWindow, url: URL, source: string) {
+	constructor(window: typeof globalThis, url: URL, source: string) {
 		this.#window = window;
 		this.url = url;
 		this.#source = source;

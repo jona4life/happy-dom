@@ -1,4 +1,3 @@
-import BrowserWindow from '../window/BrowserWindow.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
 import Element from '../nodes/element/Element.js';
@@ -9,14 +8,14 @@ import Element from '../nodes/element/Element.js';
  * @see https://html.spec.whatwg.org/multipage/custom-elements.html#custom-element-reactions-stack
  */
 export default class CustomElementReactionStack {
-	private window: BrowserWindow;
+	private window: typeof globalThis;
 
 	/**
 	 * Constructor.
 	 *
 	 * @param window Window.
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		this.window = window;
 	}
 

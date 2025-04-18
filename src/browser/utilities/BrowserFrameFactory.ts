@@ -1,6 +1,5 @@
 import IBrowserFrame from '../types/IBrowserFrame.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import IBrowserPage from '../types/IBrowserPage.js';
 
 /**
@@ -53,7 +52,7 @@ export default class BrowserFrameFactory {
 						}
 
 						(<IBrowserPage | null>frame.page) = null;
-						(<BrowserWindow | null>frame.window) = null;
+						frame.window = null;
 						frame[PropertySymbol.openerFrame] = null;
 						frame[PropertySymbol.openerWindow] = null;
 
@@ -76,7 +75,7 @@ export default class BrowserFrameFactory {
 							}
 
 							(<IBrowserPage | null>frame.page) = null;
-							(<BrowserWindow | null>frame.window) = null;
+							(<typeof globalThis | null>frame.window) = null;
 							frame[PropertySymbol.openerFrame] = null;
 							frame[PropertySymbol.openerWindow] = null;
 

@@ -8,7 +8,7 @@ import { Script } from 'vm';
 import BrowserFrameURL from '../utilities/BrowserFrameURL.js';
 import BrowserFrameScriptEvaluator from '../utilities/BrowserFrameScriptEvaluator.js';
 import BrowserFrameNavigator from '../utilities/BrowserFrameNavigator.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
+import { prepareWindow } from '../../window/BrowserWindow.js';
 import IReloadOptions from '../types/IReloadOptions.js';
 import Document from '../../nodes/document/Document.js';
 import CrossOriginBrowserWindow from '../../window/CrossOriginBrowserWindow.js';
@@ -23,11 +23,11 @@ export default class DetachedBrowserFrame implements IBrowserFrame {
 	public readonly parentFrame: DetachedBrowserFrame | null = null;
 	public readonly page: DetachedBrowserPage;
 	// Needs to be injected from the outside when the browser frame is constructed.
-	public window: BrowserWindow;
+	public window: typeof globalThis;
 	public [PropertySymbol.asyncTaskManager] = new AsyncTaskManager(this);
 	public [PropertySymbol.listeners]: { navigation: Array<() => void> } = { navigation: [] };
 	public [PropertySymbol.openerFrame]: IBrowserFrame | null = null;
-	public [PropertySymbol.openerWindow]: BrowserWindow | CrossOriginBrowserWindow | null = null;
+	public [PropertySymbol.openerWindow]: typeof globalThis | CrossOriginBrowserWindow | null = null;
 	public [PropertySymbol.popup] = false;
 	public [PropertySymbol.history]: IHistoryItem[] = [
 		{
@@ -50,7 +50,8 @@ export default class DetachedBrowserFrame implements IBrowserFrame {
 	constructor(page: DetachedBrowserPage) {
 		this.page = page;
 		if (page.context.browser.contexts[0]?.pages[0]?.mainFrame) {
-			this.window = new this.page.context.browser.windowClass(this);
+			prepareWindow(this);
+			this.window = globalThis;
 		}
 
 		// Attach process level error capturing.

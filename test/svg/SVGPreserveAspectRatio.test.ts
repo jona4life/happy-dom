@@ -7,7 +7,7 @@ import SVGPreserveAspectRatioMeetOrSliceEnum from '../../src/svg/SVGPreserveAspe
 import SVGPreserveAspectRatioAlignEnum from '../../src/svg/SVGPreserveAspectRatioAlignEnum.js';
 
 describe('SVGPreserveAspectRatio', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

@@ -1,5 +1,3 @@
-import BrowserWindow from '../../../window/BrowserWindow.js';
-
 /**
  * CSS Measurement Converter.
  */
@@ -16,7 +14,7 @@ export default class CSSMeasurementConverter {
 	 * @returns Measurement in pixels.
 	 */
 	public static toPixels(options: {
-		window: BrowserWindow;
+		window: typeof globalThis;
 		value: string;
 		rootFontSize: string | number;
 		parentFontSize: string | number;

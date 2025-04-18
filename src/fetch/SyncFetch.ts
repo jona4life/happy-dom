@@ -7,7 +7,6 @@ import FS from 'fs';
 import Path from 'path';
 import Request from './Request.js';
 import IBrowserFrame from '../browser/types/IBrowserFrame.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import ChildProcess from 'child_process';
 import ISyncResponse from './types/ISyncResponse.js';
 import Headers from './Headers.js';
@@ -45,7 +44,7 @@ export default class SyncFetch {
 	private disableSameOriginPolicy: boolean;
 	private interceptor?: IFetchInterceptor;
 	#browserFrame: IBrowserFrame;
-	#window: BrowserWindow;
+	#window: typeof globalThis;
 	#unfilteredHeaders: Headers | null = null;
 
 	/**
@@ -64,7 +63,7 @@ export default class SyncFetch {
 	 */
 	constructor(options: {
 		browserFrame: IBrowserFrame;
-		window: BrowserWindow;
+		window: typeof globalThis;
 		url: IRequestInfo;
 		init?: IRequestInit;
 		redirectCount?: number;

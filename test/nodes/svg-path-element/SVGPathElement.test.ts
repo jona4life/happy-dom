@@ -6,7 +6,7 @@ import SVGGeometryElement from '../../../src/nodes/svg-geometry-element/SVGGeome
 import Document from '../../../src/nodes/document/Document.js';
 
 describe('SVGPathElement', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let document: Document;
 	let element: SVGPathElement;
 

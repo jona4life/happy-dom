@@ -6,7 +6,7 @@ import BrowserWindow from '../../../src/window/BrowserWindow.js';
 import SVGElement from '../../../src/nodes/svg-element/SVGElement.js';
 
 describe('SVGTitleElement', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let document: Document;
 	let element: SVGTitleElement;
 

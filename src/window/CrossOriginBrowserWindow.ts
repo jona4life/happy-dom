@@ -1,5 +1,4 @@
 import EventTarget from '../event/EventTarget.js';
-import BrowserWindow from './BrowserWindow.js';
 import DOMException from '../exception/DOMException.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
 import Location from '../location/Location.js';
@@ -16,12 +15,12 @@ export default class CrossOriginBrowserWindow
 	public readonly location: Location;
 
 	// Internal properties
-	public [PropertySymbol.self]: BrowserWindow | CrossOriginBrowserWindow = this;
-	public declare [PropertySymbol.top]: BrowserWindow | CrossOriginBrowserWindow;
-	public declare [PropertySymbol.parent]: BrowserWindow | CrossOriginBrowserWindow;
+	public [PropertySymbol.self]: typeof globalThis | CrossOriginBrowserWindow = this;
+	public declare [PropertySymbol.top]: typeof globalThis | CrossOriginBrowserWindow;
+	public declare [PropertySymbol.parent]: typeof globalThis | CrossOriginBrowserWindow;
 
 	// Private properties
-	#targetWindow: BrowserWindow;
+	#targetWindow: typeof globalThis;
 
 	/**
 	 * Constructor.
@@ -29,7 +28,7 @@ export default class CrossOriginBrowserWindow
 	 * @param target Target window.
 	 * @param [parent] Parent window.
 	 */
-	constructor(target: BrowserWindow, parent?: BrowserWindow) {
+	constructor(target: typeof globalThis, parent?: typeof globalThis) {
 		super();
 
 		this[PropertySymbol.parent] = parent ?? this;
@@ -40,12 +39,14 @@ export default class CrossOriginBrowserWindow
 			{
 				get: () => {
 					throw new DOMException(
+						// @ts-ignore
 						`Blocked a frame with origin "${this.parent.location.origin}" from accessing a cross-origin frame.`,
 						DOMExceptionNameEnum.securityError
 					);
 				},
 				set: () => {
 					throw new DOMException(
+						// @ts-ignore
 						`Blocked a frame with origin "${this.parent.location.origin}" from accessing a cross-origin frame.`,
 						DOMExceptionNameEnum.securityError
 					);
@@ -60,7 +61,7 @@ export default class CrossOriginBrowserWindow
 	 *
 	 * @returns Self.
 	 */
-	public get self(): BrowserWindow | CrossOriginBrowserWindow {
+	public get self(): typeof globalThis | CrossOriginBrowserWindow {
 		return this[PropertySymbol.self];
 	}
 
@@ -69,7 +70,7 @@ export default class CrossOriginBrowserWindow
 	 *
 	 * @param self Self.
 	 */
-	public set self(self: BrowserWindow | CrossOriginBrowserWindow | null) {
+	public set self(self: typeof globalThis | CrossOriginBrowserWindow | null) {
 		this[PropertySymbol.self] = self;
 	}
 
@@ -78,7 +79,7 @@ export default class CrossOriginBrowserWindow
 	 *
 	 * @returns Top.
 	 */
-	public get top(): BrowserWindow | CrossOriginBrowserWindow {
+	public get top(): typeof globalThis | CrossOriginBrowserWindow {
 		return this[PropertySymbol.top];
 	}
 
@@ -87,7 +88,7 @@ export default class CrossOriginBrowserWindow
 	 *
 	 * @returns Parent.
 	 */
-	public get parent(): BrowserWindow | CrossOriginBrowserWindow {
+	public get parent(): typeof globalThis | CrossOriginBrowserWindow {
 		return this[PropertySymbol.parent];
 	}
 
@@ -96,7 +97,7 @@ export default class CrossOriginBrowserWindow
 	 *
 	 * @param parent Parent.
 	 */
-	public set parent(parent: BrowserWindow | null) {
+	public set parent(parent: typeof globalThis | null) {
 		this[PropertySymbol.parent] = parent;
 	}
 
@@ -105,7 +106,7 @@ export default class CrossOriginBrowserWindow
 	 *
 	 * @returns Opener.
 	 */
-	public get opener(): BrowserWindow | CrossOriginBrowserWindow | null {
+	public get opener(): typeof globalThis | CrossOriginBrowserWindow | null {
 		return this.#targetWindow.opener;
 	}
 

@@ -5,7 +5,7 @@ import * as PropertySymbol from '../../src/PropertySymbol.js';
 import SVGAnimatedBoolean from '../../src/svg/SVGAnimatedBoolean.js';
 
 describe('SVGAnimatedBoolean', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

@@ -1,5 +1,4 @@
 import Request from '../Request.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import Response from '../Response.js';
 import ISyncResponse from './ISyncResponse.js';
 
@@ -14,7 +13,7 @@ export default interface IFetchInterceptor {
 	 */
 	beforeAsyncRequest?: (context: {
 		request: Request;
-		window: BrowserWindow;
+		window: typeof globalThis;
 	}) => Promise<Response | void>;
 
 	/**
@@ -27,7 +26,7 @@ export default interface IFetchInterceptor {
 	 */
 	beforeSyncRequest?: (context: {
 		request: Request;
-		window: BrowserWindow;
+		window: typeof globalThis;
 	}) => ISyncResponse | void;
 
 	/**
@@ -41,7 +40,7 @@ export default interface IFetchInterceptor {
 	afterAsyncResponse?: (context: {
 		request: Request;
 		response: Response;
-		window: BrowserWindow;
+		window: typeof globalThis;
 	}) => Promise<Response | void>;
 
 	/**
@@ -55,6 +54,6 @@ export default interface IFetchInterceptor {
 	afterSyncResponse?: (context: {
 		request: Request;
 		response: ISyncResponse;
-		window: BrowserWindow;
+		window: typeof globalThis;
 	}) => ISyncResponse | void;
 }

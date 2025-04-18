@@ -1,5 +1,4 @@
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * SVG Animated Integer.
@@ -8,7 +7,7 @@ import BrowserWindow from '../window/BrowserWindow.js';
  */
 export default class SVGAnimatedInteger {
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: (() => string | null) | null = null;
 	public [PropertySymbol.setAttribute]: ((value: string) => void) | null = null;
 
@@ -23,7 +22,7 @@ export default class SVGAnimatedInteger {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options: {
 			getAttribute: () => string | null;
 			setAttribute: (value: string) => void;

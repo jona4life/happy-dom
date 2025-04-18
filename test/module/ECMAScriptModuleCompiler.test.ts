@@ -5,7 +5,7 @@ import Window from '../../src/window/Window.js';
 import BrowserErrorCaptureEnum from '../../src/browser/enums/BrowserErrorCaptureEnum.js';
 
 describe('ECMAScriptModuleCompiler', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window({

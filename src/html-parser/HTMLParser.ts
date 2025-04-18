@@ -10,7 +10,6 @@ import HTMLElementConfig from '../config/HTMLElementConfig.js';
 import HTMLElementConfigContentModelEnum from '../config/HTMLElementConfigContentModelEnum.js';
 import SVGElementConfig from '../config/SVGElementConfig.js';
 import StringUtility from '../utilities/StringUtility.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import DocumentType from '../nodes/document-type/DocumentType.js';
 import HTMLHeadElement from '../nodes/html-head-element/HTMLHeadElement.js';
 import HTMLBodyElement from '../nodes/html-body-element/HTMLBodyElement.js';
@@ -114,7 +113,7 @@ interface IHTMLDocumentStructure {
  * HTML parser.
  */
 export default class HTMLParser {
-	private window: BrowserWindow;
+	private window: typeof globalThis;
 	private evaluateScripts: boolean = false;
 	private rootNode: Element | DocumentFragment | Document | null = null;
 	private rootDocument: Document | null = null;
@@ -135,7 +134,7 @@ export default class HTMLParser {
 	 * @param [options.evaluateScripts] Set to "true" to enable script execution
 	 */
 	constructor(
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options?: {
 			evaluateScripts?: boolean;
 		}
@@ -204,6 +203,7 @@ export default class HTMLParser {
 			this.documentStructure = {
 				nodes: {
 					doctype: null,
+					// @ts-ignore
 					documentElement: this.rootNode,
 					head,
 					body
@@ -431,6 +431,7 @@ export default class HTMLParser {
 							attribute[PropertySymbol.prefix] = namespaceURI && nameParts[1] ? nameParts[0] : null;
 							attribute[PropertySymbol.value] = value;
 
+							// @ts-ignore
 							attributes[PropertySymbol.setNamedItem](attribute);
 						}
 					} else if (!attributes.getNamedItem(name)) {

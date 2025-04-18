@@ -6,7 +6,7 @@ import BrowserWindow from '../../../src/window/BrowserWindow.js';
 import SVGTextPositioningElement from '../../../src/nodes/svg-text-positioning-element/SVGTextPositioningElement.js';
 
 describe('SVGTSpanElement', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let document: Document;
 	let element: SVGTSpanElement;
 

@@ -1,6 +1,5 @@
 import * as PropertySymbol from '../PropertySymbol.js';
 import SVGLength from './SVGLength.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * SVG Animated Length.
@@ -9,7 +8,7 @@ import BrowserWindow from '../window/BrowserWindow.js';
  */
 export default class SVGAnimatedLength {
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: () => string;
 	public [PropertySymbol.setAttribute]: (value: string) => void;
 	public [PropertySymbol.baseVal]: SVGLength | null = null;
@@ -26,7 +25,7 @@ export default class SVGAnimatedLength {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options: {
 			getAttribute: () => string | null;
 			setAttribute: (value: string) => void;

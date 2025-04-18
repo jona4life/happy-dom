@@ -1,6 +1,5 @@
 import PermissionStatus from './PermissionStatus.js';
 import PermissionNameEnum from './PermissionNameEnum.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * Permissions API.
@@ -12,14 +11,14 @@ export default class Permissions {
 	#permissionStatus: {
 		[name in PermissionNameEnum]?: PermissionStatus;
 	} = {};
-	#window: BrowserWindow;
+	#window: typeof globalThis;
 
 	/**
 	 * Constructor.
 	 *
 	 * @param window Window.
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		if (!window?.document) {
 			new TypeError('Invalid constructor');
 		}

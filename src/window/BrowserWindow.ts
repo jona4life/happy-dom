@@ -10,11 +10,8 @@ import Base64 from '../base64/Base64.js';
 import BrowserErrorCaptureEnum from '../browser/enums/BrowserErrorCaptureEnum.js';
 import IBrowserFrame from '../browser/types/IBrowserFrame.js';
 import Clipboard from '../clipboard/Clipboard.js';
-import ClipboardItem from '../clipboard/ClipboardItem.js';
 import CSS from '../css/CSS.js';
 import CSSRule from '../css/CSSRule.js';
-import CSSStyleSheet from '../css/CSSStyleSheet.js';
-import CSSUnitValue from '../css/CSSUnitValue.js';
 import CSSStyleDeclaration from '../css/declaration/CSSStyleDeclaration.js';
 import CSSContainerRule from '../css/rules/CSSContainerRule.js';
 import CSSFontFaceRule from '../css/rules/CSSFontFaceRule.js';
@@ -24,13 +21,8 @@ import CSSMediaRule from '../css/rules/CSSMediaRule.js';
 import CSSStyleRule from '../css/rules/CSSStyleRule.js';
 import CSSSupportsRule from '../css/rules/CSSSupportsRule.js';
 import CustomElementRegistry from '../custom-element/CustomElementRegistry.js';
-import DOMParser from '../dom-parser/DOMParser.js';
-import DataTransfer from '../event/DataTransfer.js';
-import DataTransferItem from '../event/DataTransferItem.js';
-import DataTransferItemList from '../event/DataTransferItemList.js';
 import Event from '../event/Event.js';
 import EventTarget from '../event/EventTarget.js';
-import MessagePort from '../event/MessagePort.js';
 import Touch from '../event/Touch.js';
 import UIEvent from '../event/UIEvent.js';
 import AnimationEvent from '../event/events/AnimationEvent.js';
@@ -50,26 +42,18 @@ import StorageEvent from '../event/events/StorageEvent.js';
 import SubmitEvent from '../event/events/SubmitEvent.js';
 import TouchEvent from '../event/events/TouchEvent.js';
 import WheelEvent from '../event/events/WheelEvent.js';
-import DOMException from '../exception/DOMException.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
-import AbortController from '../fetch/AbortController.js';
-import AbortSignal from '../fetch/AbortSignal.js';
 import Fetch from '../fetch/Fetch.js';
-import Headers from '../fetch/Headers.js';
-import Request from '../fetch/Request.js';
 import Response from '../fetch/Response.js';
 import IRequestInfo from '../fetch/types/IRequestInfo.js';
 import IRequestInit from '../fetch/types/IRequestInit.js';
 import Blob from '../file/Blob.js';
 import File from '../file/File.js';
-import FileReader from '../file/FileReader.js';
-import FormData from '../form-data/FormData.js';
 import History from '../history/History.js';
 import IntersectionObserver from '../intersection-observer/IntersectionObserver.js';
 import IntersectionObserverEntry from '../intersection-observer/IntersectionObserverEntry.js';
 import Location from '../location/Location.js';
 import MediaQueryList from '../match-media/MediaQueryList.js';
-import MutationObserver from '../mutation-observer/MutationObserver.js';
 import MutationRecord from '../mutation-observer/MutationRecord.js';
 import MimeType from '../navigator/MimeType.js';
 import MimeTypeArray from '../navigator/MimeTypeArray.js';
@@ -78,20 +62,15 @@ import Plugin from '../navigator/Plugin.js';
 import PluginArray from '../navigator/PluginArray.js';
 import Attr from '../nodes/attr/Attr.js';
 import CharacterData from '../nodes/character-data/CharacterData.js';
-import Comment from '../nodes/comment/Comment.js';
-import DocumentFragment from '../nodes/document-fragment/DocumentFragment.js';
 import DocumentType from '../nodes/document-type/DocumentType.js';
-import Document from '../nodes/document/Document.js';
 import DocumentReadyStateEnum from '../nodes/document/DocumentReadyStateEnum.js';
 import DocumentReadyStateManager from '../nodes/document/DocumentReadyStateManager.js';
 import DOMRect from '../dom/DOMRect.js';
 import DOMRectReadOnly from '../dom/DOMRectReadOnly.js';
 import Element from '../nodes/element/Element.js';
 import HTMLCollection from '../nodes/element/HTMLCollection.js';
-import NamedNodeMap from '../nodes/element/NamedNodeMap.js';
 import HTMLAnchorElement from '../nodes/html-anchor-element/HTMLAnchorElement.js';
 import HTMLAreaElement from '../nodes/html-area-element/HTMLAreaElement.js';
-import Audio from '../nodes/html-audio-element/Audio.js';
 import HTMLAudioElement from '../nodes/html-audio-element/HTMLAudioElement.js';
 import HTMLBaseElement from '../nodes/html-base-element/HTMLBaseElement.js';
 import HTMLBodyElement from '../nodes/html-body-element/HTMLBodyElement.js';
@@ -104,7 +83,6 @@ import HTMLDataListElement from '../nodes/html-data-list-element/HTMLDataListEle
 import HTMLDetailsElement from '../nodes/html-details-element/HTMLDetailsElement.js';
 import HTMLDialogElement from '../nodes/html-dialog-element/HTMLDialogElement.js';
 import HTMLDivElement from '../nodes/html-div-element/HTMLDivElement.js';
-import HTMLDocument from '../nodes/html-document/HTMLDocument.js';
 import HTMLElement from '../nodes/html-element/HTMLElement.js';
 import HTMLEmbedElement from '../nodes/html-embed-element/HTMLEmbedElement.js';
 import HTMLFieldSetElement from '../nodes/html-field-set-element/HTMLFieldSetElement.js';
@@ -117,7 +95,6 @@ import HTMLHRElement from '../nodes/html-hr-element/HTMLHRElement.js';
 import HTMLHtmlElement from '../nodes/html-html-element/HTMLHtmlElement.js';
 import HTMLIFrameElement from '../nodes/html-iframe-element/HTMLIFrameElement.js';
 import HTMLImageElement from '../nodes/html-image-element/HTMLImageElement.js';
-import Image from '../nodes/html-image-element/Image.js';
 import FileList from '../nodes/html-input-element/FileList.js';
 import HTMLInputElement from '../nodes/html-input-element/HTMLInputElement.js';
 import HTMLLabelElement from '../nodes/html-label-element/HTMLLabelElement.js';
@@ -126,15 +103,9 @@ import HTMLLIElement from '../nodes/html-li-element/HTMLLIElement.js';
 import HTMLLinkElement from '../nodes/html-link-element/HTMLLinkElement.js';
 import HTMLMapElement from '../nodes/html-map-element/HTMLMapElement.js';
 import HTMLMediaElement from '../nodes/html-media-element/HTMLMediaElement.js';
-import MediaStream from '../nodes/html-media-element/MediaStream.js';
-import MediaStreamTrack from '../nodes/html-media-element/MediaStreamTrack.js';
 import RemotePlayback from '../nodes/html-media-element/RemotePlayback.js';
-import TextTrack from '../nodes/html-media-element/TextTrack.js';
-import TextTrackCue from '../nodes/html-media-element/TextTrackCue.js';
 import TextTrackCueList from '../nodes/html-media-element/TextTrackCueList.js';
-import TextTrackList from '../nodes/html-media-element/TextTrackList.js';
 import TimeRanges from '../nodes/html-media-element/TimeRanges.js';
-import VTTCue from '../nodes/html-media-element/VTTCue.js';
 import HTMLMenuElement from '../nodes/html-menu-element/HTMLMenuElement.js';
 import HTMLMetaElement from '../nodes/html-meta-element/HTMLMetaElement.js';
 import HTMLMeterElement from '../nodes/html-meter-element/HTMLMeterElement.js';
@@ -175,38 +146,21 @@ import NodeList from '../nodes/node/NodeList.js';
 import ProcessingInstruction from '../nodes/processing-instruction/ProcessingInstruction.js';
 import ShadowRoot from '../nodes/shadow-root/ShadowRoot.js';
 import SVGElement from '../nodes/svg-element/SVGElement.js';
-import Text from '../nodes/text/Text.js';
-import XMLDocument from '../nodes/xml-document/XMLDocument.js';
-import PermissionStatus from '../permissions/PermissionStatus.js';
 import Permissions from '../permissions/Permissions.js';
-import Range from '../range/Range.js';
 import ResizeObserver from '../resize-observer/ResizeObserver.js';
 import Screen from '../screen/Screen.js';
-import Selection from '../selection/Selection.js';
 import Storage from '../storage/Storage.js';
 import NodeFilter from '../tree-walker/NodeFilter.js';
-import NodeIterator from '../tree-walker/NodeIterator.js';
-import TreeWalker from '../tree-walker/TreeWalker.js';
 import URL from '../url/URL.js';
 import ValidityState from '../validity-state/ValidityState.js';
-import XMLHttpRequest from '../xml-http-request/XMLHttpRequest.js';
-import XMLHttpRequestEventTarget from '../xml-http-request/XMLHttpRequestEventTarget.js';
-import XMLHttpRequestUpload from '../xml-http-request/XMLHttpRequestUpload.js';
-import XMLSerializer from '../xml-serializer/XMLSerializer.js';
 import CrossOriginBrowserWindow from './CrossOriginBrowserWindow.js';
-import INodeJSGlobal from './INodeJSGlobal.js';
 import VMGlobalPropertyScript from './VMGlobalPropertyScript.js';
 import WindowPageOpenUtility from './WindowPageOpenUtility.js';
-import {
-	PerformanceObserver,
-	PerformanceEntry,
-	PerformanceObserverEntryList as IPerformanceObserverEntryList
-} from 'node:perf_hooks';
+import { PerformanceObserver, PerformanceEntry } from 'node:perf_hooks';
 import EventPhaseEnum from '../event/EventPhaseEnum.js';
 import HTMLOptionsCollection from '../nodes/html-select-element/HTMLOptionsCollection.js';
 import WindowContextClassExtender from './WindowContextClassExtender.js';
 import WindowBrowserContext from './WindowBrowserContext.js';
-import CanvasCaptureMediaStreamTrack from '../nodes/html-canvas-element/CanvasCaptureMediaStreamTrack.js';
 import SVGSVGElement from '../nodes/svg-svg-element/SVGSVGElement.js';
 import SVGGraphicsElement from '../nodes/svg-graphics-element/SVGGraphicsElement.js';
 import SVGAnimateElement from '../nodes/svg-animate-element/SVGAnimateElement.js';
@@ -306,8 +260,6 @@ import DOMPoint from '../dom/DOMPoint.js';
 import SVGAnimatedLengthList from '../svg/SVGAnimatedLengthList.js';
 import CustomElementReactionStack from '../custom-element/CustomElementReactionStack.js';
 import IScrollToOptions from './IScrollToOptions.js';
-import IModule from '../module/IModule.js';
-import IModuleImportMap from '../module/IModuleImportMap.js';
 
 const TIMER = {
 	setTimeout: globalThis.setTimeout.bind(globalThis),
@@ -332,831 +284,525 @@ class PerformanceObserverEntryList {
 		throw new TypeError('Illegal constructor');
 	}
 }
-/**
- * Zero Timeout.
- */
-class Timeout {
-	public callback: () => void;
-	/**
-	 * Constructor.
-	 * @param callback Callback.
-	 */
-	constructor(callback: () => void) {
-		this.callback = callback;
-	}
-}
 
-/**
- * Browser window.
- *
- * Reference:
- * https://developer.mozilla.org/en-US/docs/Web/API/Window.
- */
-export default class BrowserWindow extends EventTarget implements INodeJSGlobal {
-	// Nodes
-	public readonly Node = Node;
-	public readonly Attr = Attr;
-	public readonly ShadowRoot = ShadowRoot;
-	public readonly ProcessingInstruction = ProcessingInstruction;
-	public readonly Element = Element;
-	public readonly CharacterData = CharacterData;
-	public readonly DocumentType = DocumentType;
+export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: string }): void => {
+	// Assigning Node-related classes to globalThis
+	globalThis['Node'] = Node;
+	globalThis['Attr'] = Attr;
+	globalThis['ShadowRoot'] = ShadowRoot;
+	globalThis['ProcessingInstruction'] = ProcessingInstruction;
+	globalThis['Element'] = Element;
+	globalThis['CharacterData'] = CharacterData;
+	globalThis['DocumentType'] = DocumentType;
 
-	// Nodes that can be created using "new" keyword (populated by WindowContextClassExtender)
-	public declare readonly Document: typeof Document;
-	public declare readonly HTMLDocument: typeof HTMLDocument;
-	public declare readonly XMLDocument: typeof XMLDocument;
-	public declare readonly DocumentFragment: typeof DocumentFragment;
-	public declare readonly Text: typeof Text;
-	public declare readonly Comment: typeof Comment;
-	public declare readonly Image: typeof Image;
-	public declare readonly Audio: typeof Audio;
+	// Assigning HTML Element classes to globalThis
+	globalThis['HTMLAnchorElement'] = HTMLAnchorElement;
+	globalThis['HTMLButtonElement'] = HTMLButtonElement;
+	globalThis['HTMLOptGroupElement'] = HTMLOptGroupElement;
+	globalThis['HTMLOptionElement'] = HTMLOptionElement;
+	globalThis['HTMLElement'] = HTMLElement;
+	globalThis['HTMLUnknownElement'] = HTMLUnknownElement;
+	globalThis['HTMLTemplateElement'] = HTMLTemplateElement;
+	globalThis['HTMLInputElement'] = HTMLInputElement;
+	globalThis['HTMLSelectElement'] = HTMLSelectElement;
+	globalThis['HTMLTextAreaElement'] = HTMLTextAreaElement;
+	globalThis['HTMLImageElement'] = HTMLImageElement;
+	globalThis['HTMLStyleElement'] = HTMLStyleElement;
+	globalThis['HTMLLabelElement'] = HTMLLabelElement;
+	globalThis['HTMLSlotElement'] = HTMLSlotElement;
+	globalThis['HTMLMetaElement'] = HTMLMetaElement;
+	globalThis['HTMLMediaElement'] = HTMLMediaElement;
+	globalThis['HTMLAudioElement'] = HTMLAudioElement;
+	globalThis['HTMLVideoElement'] = HTMLVideoElement;
+	globalThis['HTMLBaseElement'] = HTMLBaseElement;
+	globalThis['HTMLDialogElement'] = HTMLDialogElement;
+	globalThis['HTMLScriptElement'] = HTMLScriptElement;
+	globalThis['HTMLLinkElement'] = HTMLLinkElement;
+	globalThis['HTMLIFrameElement'] = HTMLIFrameElement;
+	globalThis['HTMLFormElement'] = HTMLFormElement;
+	globalThis['HTMLUListElement'] = HTMLUListElement;
+	globalThis['HTMLTrackElement'] = HTMLTrackElement;
+	globalThis['HTMLTableRowElement'] = HTMLTableRowElement;
+	globalThis['HTMLTitleElement'] = HTMLTitleElement;
+	globalThis['HTMLTimeElement'] = HTMLTimeElement;
+	globalThis['HTMLTableSectionElement'] = HTMLTableSectionElement;
+	globalThis['HTMLTableCellElement'] = HTMLTableCellElement;
+	globalThis['HTMLTableElement'] = HTMLTableElement;
+	globalThis['HTMLSpanElement'] = HTMLSpanElement;
+	globalThis['HTMLSourceElement'] = HTMLSourceElement;
+	globalThis['HTMLQuoteElement'] = HTMLQuoteElement;
+	globalThis['HTMLProgressElement'] = HTMLProgressElement;
+	globalThis['HTMLPreElement'] = HTMLPreElement;
+	globalThis['HTMLPictureElement'] = HTMLPictureElement;
+	globalThis['HTMLParamElement'] = HTMLParamElement;
+	globalThis['HTMLParagraphElement'] = HTMLParagraphElement;
+	globalThis['HTMLOutputElement'] = HTMLOutputElement;
+	globalThis['HTMLOListElement'] = HTMLOListElement;
+	globalThis['HTMLObjectElement'] = HTMLObjectElement;
+	globalThis['HTMLMeterElement'] = HTMLMeterElement;
+	globalThis['HTMLMenuElement'] = HTMLMenuElement;
+	globalThis['HTMLMapElement'] = HTMLMapElement;
+	globalThis['HTMLLIElement'] = HTMLLIElement;
+	globalThis['HTMLLegendElement'] = HTMLLegendElement;
+	globalThis['HTMLModElement'] = HTMLModElement;
+	globalThis['HTMLHtmlElement'] = HTMLHtmlElement;
+	globalThis['HTMLHRElement'] = HTMLHRElement;
+	globalThis['HTMLHeadElement'] = HTMLHeadElement;
+	globalThis['HTMLHeadingElement'] = HTMLHeadingElement;
+	globalThis['HTMLFieldSetElement'] = HTMLFieldSetElement;
+	globalThis['HTMLEmbedElement'] = HTMLEmbedElement;
+	globalThis['HTMLDListElement'] = HTMLDListElement;
+	globalThis['HTMLDivElement'] = HTMLDivElement;
+	globalThis['HTMLDetailsElement'] = HTMLDetailsElement;
+	globalThis['HTMLDataListElement'] = HTMLDataListElement;
+	globalThis['HTMLDataElement'] = HTMLDataElement;
+	globalThis['HTMLTableColElement'] = HTMLTableColElement;
+	globalThis['HTMLTableCaptionElement'] = HTMLTableCaptionElement;
+	globalThis['HTMLCanvasElement'] = HTMLCanvasElement;
+	globalThis['HTMLBRElement'] = HTMLBRElement;
+	globalThis['HTMLBodyElement'] = HTMLBodyElement;
+	globalThis['HTMLAreaElement'] = HTMLAreaElement;
 
-	// HTML Element classes
-	public readonly HTMLAnchorElement = HTMLAnchorElement;
-	public readonly HTMLButtonElement = HTMLButtonElement;
-	public readonly HTMLOptGroupElement = HTMLOptGroupElement;
-	public readonly HTMLOptionElement = HTMLOptionElement;
-	public readonly HTMLElement = HTMLElement;
-	public readonly HTMLUnknownElement = HTMLUnknownElement;
-	public readonly HTMLTemplateElement = HTMLTemplateElement;
-	public readonly HTMLInputElement = HTMLInputElement;
-	public readonly HTMLSelectElement = HTMLSelectElement;
-	public readonly HTMLTextAreaElement = HTMLTextAreaElement;
-	public readonly HTMLImageElement = HTMLImageElement;
-	public readonly HTMLStyleElement = HTMLStyleElement;
-	public readonly HTMLLabelElement = HTMLLabelElement;
-	public readonly HTMLSlotElement = HTMLSlotElement;
-	public readonly HTMLMetaElement = HTMLMetaElement;
-	public readonly HTMLMediaElement = HTMLMediaElement;
-	public readonly HTMLAudioElement = HTMLAudioElement;
-	public readonly HTMLVideoElement = HTMLVideoElement;
-	public readonly HTMLBaseElement = HTMLBaseElement;
-	public readonly HTMLDialogElement = HTMLDialogElement;
-	public readonly HTMLScriptElement = HTMLScriptElement;
-	public readonly HTMLLinkElement = HTMLLinkElement;
-	public readonly HTMLIFrameElement = HTMLIFrameElement;
-	public readonly HTMLFormElement = HTMLFormElement;
-	public readonly HTMLUListElement = HTMLUListElement;
-	public readonly HTMLTrackElement = HTMLTrackElement;
-	public readonly HTMLTableRowElement = HTMLTableRowElement;
-	public readonly HTMLTitleElement = HTMLTitleElement;
-	public readonly HTMLTimeElement = HTMLTimeElement;
-	public readonly HTMLTableSectionElement = HTMLTableSectionElement;
-	public readonly HTMLTableCellElement = HTMLTableCellElement;
-	public readonly HTMLTableElement = HTMLTableElement;
-	public readonly HTMLSpanElement = HTMLSpanElement;
-	public readonly HTMLSourceElement = HTMLSourceElement;
-	public readonly HTMLQuoteElement = HTMLQuoteElement;
-	public readonly HTMLProgressElement = HTMLProgressElement;
-	public readonly HTMLPreElement = HTMLPreElement;
-	public readonly HTMLPictureElement = HTMLPictureElement;
-	public readonly HTMLParamElement = HTMLParamElement;
-	public readonly HTMLParagraphElement = HTMLParagraphElement;
-	public readonly HTMLOutputElement = HTMLOutputElement;
-	public readonly HTMLOListElement = HTMLOListElement;
-	public readonly HTMLObjectElement = HTMLObjectElement;
-	public readonly HTMLMeterElement = HTMLMeterElement;
-	public readonly HTMLMenuElement = HTMLMenuElement;
-	public readonly HTMLMapElement = HTMLMapElement;
-	public readonly HTMLLIElement = HTMLLIElement;
-	public readonly HTMLLegendElement = HTMLLegendElement;
-	public readonly HTMLModElement = HTMLModElement;
-	public readonly HTMLHtmlElement = HTMLHtmlElement;
-	public readonly HTMLHRElement = HTMLHRElement;
-	public readonly HTMLHeadElement = HTMLHeadElement;
-	public readonly HTMLHeadingElement = HTMLHeadingElement;
-	public readonly HTMLFieldSetElement = HTMLFieldSetElement;
-	public readonly HTMLEmbedElement = HTMLEmbedElement;
-	public readonly HTMLDListElement = HTMLDListElement;
-	public readonly HTMLDivElement = HTMLDivElement;
-	public readonly HTMLDetailsElement = HTMLDetailsElement;
-	public readonly HTMLDataListElement = HTMLDataListElement;
-	public readonly HTMLDataElement = HTMLDataElement;
-	public readonly HTMLTableColElement = HTMLTableColElement;
-	public readonly HTMLTableCaptionElement = HTMLTableCaptionElement;
-	public readonly HTMLCanvasElement = HTMLCanvasElement;
-	public readonly HTMLBRElement = HTMLBRElement;
-	public readonly HTMLBodyElement = HTMLBodyElement;
-	public readonly HTMLAreaElement = HTMLAreaElement;
-
-	// SVG Element classes
-	public readonly SVGSVGElement = SVGSVGElement;
-	public readonly SVGAnimateElement = SVGAnimateElement;
-	public readonly SVGAnimateMotionElement = SVGAnimateMotionElement;
-	public readonly SVGAnimateTransformElement = SVGAnimateTransformElement;
-	public readonly SVGCircleElement = SVGCircleElement;
-	public readonly SVGClipPathElement = SVGClipPathElement;
-	public readonly SVGDefsElement = SVGDefsElement;
-	public readonly SVGDescElement = SVGDescElement;
-	public readonly SVGEllipseElement = SVGEllipseElement;
-	public readonly SVGFEBlendElement = SVGFEBlendElement;
-	public readonly SVGFEColorMatrixElement = SVGFEColorMatrixElement;
-	public readonly SVGFEComponentTransferElement = SVGFEComponentTransferElement;
-	public readonly SVGFECompositeElement = SVGFECompositeElement;
-	public readonly SVGFEConvolveMatrixElement = SVGFEConvolveMatrixElement;
-	public readonly SVGFEDiffuseLightingElement = SVGFEDiffuseLightingElement;
-	public readonly SVGFEDisplacementMapElement = SVGFEDisplacementMapElement;
-	public readonly SVGFEDistantLightElement = SVGFEDistantLightElement;
-	public readonly SVGFEDropShadowElement = SVGFEDropShadowElement;
-	public readonly SVGFEFloodElement = SVGFEFloodElement;
-	public readonly SVGFEFuncAElement = SVGFEFuncAElement;
-	public readonly SVGFEFuncBElement = SVGFEFuncBElement;
-	public readonly SVGFEFuncGElement = SVGFEFuncGElement;
-	public readonly SVGFEFuncRElement = SVGFEFuncRElement;
-	public readonly SVGFEGaussianBlurElement = SVGFEGaussianBlurElement;
-	public readonly SVGFEImageElement = SVGFEImageElement;
-	public readonly SVGFEMergeElement = SVGFEMergeElement;
-	public readonly SVGFEMergeNodeElement = SVGFEMergeNodeElement;
-	public readonly SVGFEMorphologyElement = SVGFEMorphologyElement;
-	public readonly SVGFEOffsetElement = SVGFEOffsetElement;
-	public readonly SVGFEPointLightElement = SVGFEPointLightElement;
-	public readonly SVGFESpecularLightingElement = SVGFESpecularLightingElement;
-	public readonly SVGFESpotLightElement = SVGFESpotLightElement;
-	public readonly SVGFETileElement = SVGFETileElement;
-	public readonly SVGFETurbulenceElement = SVGFETurbulenceElement;
-	public readonly SVGFilterElement = SVGFilterElement;
-	public readonly SVGForeignObjectElement = SVGForeignObjectElement;
-	public readonly SVGGElement = SVGGElement;
-	public readonly SVGImageElement = SVGImageElement;
-	public readonly SVGLineElement = SVGLineElement;
-	public readonly SVGLinearGradientElement = SVGLinearGradientElement;
-	public readonly SVGMarkerElement = SVGMarkerElement;
-	public readonly SVGMaskElement = SVGMaskElement;
-	public readonly SVGMetadataElement = SVGMetadataElement;
-	public readonly SVGMPathElement = SVGMPathElement;
-	public readonly SVGPathElement = SVGPathElement;
-	public readonly SVGPatternElement = SVGPatternElement;
-	public readonly SVGPolygonElement = SVGPolygonElement;
-	public readonly SVGPolylineElement = SVGPolylineElement;
-	public readonly SVGRadialGradientElement = SVGRadialGradientElement;
-	public readonly SVGRectElement = SVGRectElement;
-	public readonly SVGScriptElement = SVGScriptElement;
-	public readonly SVGSetElement = SVGSetElement;
-	public readonly SVGStopElement = SVGStopElement;
-	public readonly SVGStyleElement = SVGStyleElement;
-	public readonly SVGSwitchElement = SVGSwitchElement;
-	public readonly SVGSymbolElement = SVGSymbolElement;
-	public readonly SVGTextElement = SVGTextElement;
-	public readonly SVGTextPathElement = SVGTextPathElement;
-	public readonly SVGTitleElement = SVGTitleElement;
-	public readonly SVGTSpanElement = SVGTSpanElement;
-	public readonly SVGUseElement = SVGUseElement;
-	public readonly SVGViewElement = SVGViewElement;
+	// Assigning SVG Element classes to globalThis
+	globalThis['SVGSVGElement'] = SVGSVGElement;
+	globalThis['SVGAnimateElement'] = SVGAnimateElement;
+	globalThis['SVGAnimateMotionElement'] = SVGAnimateMotionElement;
+	globalThis['SVGAnimateTransformElement'] = SVGAnimateTransformElement;
+	globalThis['SVGCircleElement'] = SVGCircleElement;
+	globalThis['SVGClipPathElement'] = SVGClipPathElement;
+	globalThis['SVGDefsElement'] = SVGDefsElement;
+	globalThis['SVGDescElement'] = SVGDescElement;
+	globalThis['SVGEllipseElement'] = SVGEllipseElement;
+	globalThis['SVGFEBlendElement'] = SVGFEBlendElement;
+	globalThis['SVGFEColorMatrixElement'] = SVGFEColorMatrixElement;
+	globalThis['SVGFEComponentTransferElement'] = SVGFEComponentTransferElement;
+	globalThis['SVGFECompositeElement'] = SVGFECompositeElement;
+	globalThis['SVGFEConvolveMatrixElement'] = SVGFEConvolveMatrixElement;
+	globalThis['SVGFEDiffuseLightingElement'] = SVGFEDiffuseLightingElement;
+	globalThis['SVGFEDisplacementMapElement'] = SVGFEDisplacementMapElement;
+	globalThis['SVGFEDistantLightElement'] = SVGFEDistantLightElement;
+	globalThis['SVGFEDropShadowElement'] = SVGFEDropShadowElement;
+	globalThis['SVGFEFloodElement'] = SVGFEFloodElement;
+	globalThis['SVGFEFuncAElement'] = SVGFEFuncAElement;
+	globalThis['SVGFEFuncBElement'] = SVGFEFuncBElement;
+	globalThis['SVGFEFuncGElement'] = SVGFEFuncGElement;
+	globalThis['SVGFEFuncRElement'] = SVGFEFuncRElement;
+	globalThis['SVGFEGaussianBlurElement'] = SVGFEGaussianBlurElement;
+	globalThis['SVGFEImageElement'] = SVGFEImageElement;
+	globalThis['SVGFEMergeElement'] = SVGFEMergeElement;
+	globalThis['SVGFEMergeNodeElement'] = SVGFEMergeNodeElement;
+	globalThis['SVGFEMorphologyElement'] = SVGFEMorphologyElement;
+	globalThis['SVGFEOffsetElement'] = SVGFEOffsetElement;
+	globalThis['SVGFEPointLightElement'] = SVGFEPointLightElement;
+	globalThis['SVGFESpecularLightingElement'] = SVGFESpecularLightingElement;
+	globalThis['SVGFESpotLightElement'] = SVGFESpotLightElement;
+	globalThis['SVGFETileElement'] = SVGFETileElement;
+	globalThis['SVGFETurbulenceElement'] = SVGFETurbulenceElement;
+	globalThis['SVGFilterElement'] = SVGFilterElement;
+	globalThis['SVGForeignObjectElement'] = SVGForeignObjectElement;
+	globalThis['SVGGElement'] = SVGGElement;
+	globalThis['SVGImageElement'] = SVGImageElement;
+	globalThis['SVGLineElement'] = SVGLineElement;
+	globalThis['SVGLinearGradientElement'] = SVGLinearGradientElement;
+	globalThis['SVGMarkerElement'] = SVGMarkerElement;
+	globalThis['SVGMaskElement'] = SVGMaskElement;
+	globalThis['SVGMetadataElement'] = SVGMetadataElement;
+	globalThis['SVGMPathElement'] = SVGMPathElement;
+	globalThis['SVGPathElement'] = SVGPathElement;
+	globalThis['SVGPatternElement'] = SVGPatternElement;
+	globalThis['SVGPolygonElement'] = SVGPolygonElement;
+	globalThis['SVGPolylineElement'] = SVGPolylineElement;
+	globalThis['SVGRadialGradientElement'] = SVGRadialGradientElement;
+	globalThis['SVGRectElement'] = SVGRectElement;
+	globalThis['SVGScriptElement'] = SVGScriptElement;
+	globalThis['SVGSetElement'] = SVGSetElement;
+	globalThis['SVGStopElement'] = SVGStopElement;
+	globalThis['SVGStyleElement'] = SVGStyleElement;
+	globalThis['SVGSwitchElement'] = SVGSwitchElement;
+	globalThis['SVGSymbolElement'] = SVGSymbolElement;
+	globalThis['SVGTextElement'] = SVGTextElement;
+	globalThis['SVGTextPathElement'] = SVGTextPathElement;
+	globalThis['SVGTitleElement'] = SVGTitleElement;
+	globalThis['SVGTSpanElement'] = SVGTSpanElement;
+	globalThis['SVGUseElement'] = SVGUseElement;
+	globalThis['SVGViewElement'] = SVGViewElement;
 
 	// Abstract SVG Element classes
-	public readonly SVGElement = SVGElement;
-	public readonly SVGAnimationElement = SVGAnimationElement;
-	public readonly SVGComponentTransferFunctionElement = SVGComponentTransferFunctionElement;
-	public readonly SVGGeometryElement = SVGGeometryElement;
-	public readonly SVGGradientElement = SVGGradientElement;
-	public readonly SVGTextPositioningElement = SVGTextPositioningElement;
-	public readonly SVGGraphicsElement = SVGGraphicsElement;
+	globalThis['SVGElement'] = SVGElement;
+	globalThis['SVGAnimationElement'] = SVGAnimationElement;
+	globalThis['SVGComponentTransferFunctionElement'] = SVGComponentTransferFunctionElement;
+	globalThis['SVGGeometryElement'] = SVGGeometryElement;
+	globalThis['SVGGradientElement'] = SVGGradientElement;
+	globalThis['SVGTextPositioningElement'] = SVGTextPositioningElement;
+	globalThis['SVGGraphicsElement'] = SVGGraphicsElement;
 
 	// Event classes
-	public readonly Event = Event;
-	public readonly UIEvent = UIEvent;
-	public readonly CustomEvent = CustomEvent;
-	public readonly AnimationEvent = AnimationEvent;
-	public readonly KeyboardEvent = KeyboardEvent;
-	public readonly MessageEvent = MessageEvent;
-	public readonly MouseEvent = MouseEvent;
-	public readonly PointerEvent = PointerEvent;
-	public readonly FocusEvent = FocusEvent;
-	public readonly WheelEvent = WheelEvent;
-	public readonly InputEvent = InputEvent;
-	public readonly ErrorEvent = ErrorEvent;
-	public readonly StorageEvent = StorageEvent;
-	public readonly SubmitEvent = SubmitEvent;
-	public readonly ProgressEvent = ProgressEvent;
-	public readonly MediaQueryListEvent = MediaQueryListEvent;
-	public readonly HashChangeEvent = HashChangeEvent;
-	public readonly ClipboardEvent = ClipboardEvent;
-	public readonly TouchEvent = TouchEvent;
-	public readonly Touch = Touch;
+	// @ts-ignore
+	globalThis['Event'] = Event;
+	globalThis['UIEvent'] = UIEvent;
+	globalThis['CustomEvent'] = CustomEvent;
+	globalThis['AnimationEvent'] = AnimationEvent;
+	globalThis['KeyboardEvent'] = KeyboardEvent;
+	globalThis['MessageEvent'] = MessageEvent;
+	globalThis['MouseEvent'] = MouseEvent;
+	globalThis['PointerEvent'] = PointerEvent;
+	globalThis['FocusEvent'] = FocusEvent;
+	globalThis['WheelEvent'] = WheelEvent;
+	globalThis['InputEvent'] = InputEvent;
+	globalThis['ErrorEvent'] = ErrorEvent;
+	globalThis['StorageEvent'] = StorageEvent;
+	globalThis['SubmitEvent'] = SubmitEvent;
+	globalThis['ProgressEvent'] = ProgressEvent;
+	globalThis['MediaQueryListEvent'] = MediaQueryListEvent;
+	globalThis['HashChangeEvent'] = HashChangeEvent;
+	globalThis['ClipboardEvent'] = ClipboardEvent;
+	globalThis['TouchEvent'] = TouchEvent;
+	globalThis['Touch'] = Touch;
 
-	// Non-implemented event classes
-	public readonly AudioProcessingEvent = Event;
-	public readonly BeforeInputEvent = Event;
-	public readonly BeforeUnloadEvent = Event;
-	public readonly BlobEvent = Event;
-	public readonly CloseEvent = Event;
-	public readonly CompositionEvent = Event;
-	public readonly CSSFontFaceLoadEvent = Event;
-	public readonly DeviceLightEvent = Event;
-	public readonly DeviceMotionEvent = Event;
-	public readonly DeviceOrientationEvent = Event;
-	public readonly DeviceProximityEvent = Event;
-	public readonly DOMTransactionEvent = Event;
-	public readonly DragEvent = Event;
-	public readonly EditingBeforeInputEvent = Event;
-	public readonly FetchEvent = Event;
-	public readonly GamepadEvent = Event;
-	public readonly IDBVersionChangeEvent = Event;
-	public readonly MediaStreamEvent = Event;
-	public readonly MutationEvent = Event;
-	public readonly OfflineAudioCompletionEvent = Event;
-	public readonly OverconstrainedError = Event;
-	public readonly PageTransitionEvent = Event;
-	public readonly PaymentRequestUpdateEvent = Event;
-	public readonly PopStateEvent = Event;
-	public readonly RelatedEvent = Event;
-	public readonly RTCDataChannelEvent = Event;
-	public readonly RTCIdentityErrorEvent = Event;
-	public readonly RTCIdentityEvent = Event;
-	public readonly RTCPeerConnectionIceEvent = Event;
-	public readonly SensorEvent = Event;
-	public readonly SVGEvent = Event;
-	public readonly SVGZoomEvent = Event;
-	public readonly TimeEvent = Event;
-	public readonly TrackEvent = Event;
-	public readonly TransitionEvent = Event;
-	public readonly UserProximityEvent = Event;
-	public readonly WebGLContextEvent = Event;
-	public readonly TextEvent = Event;
+	// Assigning Event-related classes to globalThis
+	globalThis['AudioProcessingEvent'] = Event;
+	globalThis['BeforeInputEvent'] = Event;
+	globalThis['BeforeUnloadEvent'] = Event;
+	globalThis['BlobEvent'] = Event;
+	globalThis['CloseEvent'] = Event;
+	globalThis['CompositionEvent'] = Event;
+	globalThis['CSSFontFaceLoadEvent'] = Event;
+	globalThis['DeviceLightEvent'] = Event;
+	globalThis['DeviceMotionEvent'] = Event;
+	globalThis['DeviceOrientationEvent'] = Event;
+	globalThis['DeviceProximityEvent'] = Event;
+	globalThis['DOMTransactionEvent'] = Event;
+	globalThis['DragEvent'] = Event;
+	globalThis['EditingBeforeInputEvent'] = Event;
+	globalThis['FetchEvent'] = Event;
+	globalThis['GamepadEvent'] = Event;
+	globalThis['IDBVersionChangeEvent'] = Event;
+	globalThis['MediaStreamEvent'] = Event;
+	globalThis['MutationEvent'] = Event;
+	globalThis['OfflineAudioCompletionEvent'] = Event;
+	globalThis['OverconstrainedError'] = Event;
+	globalThis['PageTransitionEvent'] = Event;
+	globalThis['PaymentRequestUpdateEvent'] = Event;
+	globalThis['PopStateEvent'] = Event;
+	globalThis['RelatedEvent'] = Event;
+	globalThis['RTCDataChannelEvent'] = Event;
+	globalThis['RTCIdentityErrorEvent'] = Event;
+	globalThis['RTCIdentityEvent'] = Event;
+	globalThis['RTCPeerConnectionIceEvent'] = Event;
+	globalThis['SensorEvent'] = Event;
+	globalThis['SVGEvent'] = Event;
+	globalThis['SVGZoomEvent'] = Event;
+	globalThis['TimeEvent'] = Event;
+	globalThis['TrackEvent'] = Event;
+	globalThis['TransitionEvent'] = Event;
+	globalThis['UserProximityEvent'] = Event;
+	globalThis['WebGLContextEvent'] = Event;
+	globalThis['TextEvent'] = Event;
 
-	// Other classes that has to be bound to the Window context (populated by WindowContextClassExtender)
-	public declare readonly NodeIterator: typeof NodeIterator;
-	public declare readonly TreeWalker: typeof TreeWalker;
-	public declare readonly MutationObserver: typeof MutationObserver;
-	public declare readonly MessagePort: typeof MessagePort;
-	public declare readonly DataTransfer: typeof DataTransfer;
-	public declare readonly DataTransferItem: typeof DataTransferItem;
-	public declare readonly DataTransferItemList: typeof DataTransferItemList;
-	public declare readonly XMLSerializer: typeof XMLSerializer;
-	public declare readonly CSSStyleSheet: typeof CSSStyleSheet;
-	public declare readonly DOMException: typeof DOMException;
-	public declare readonly CSSUnitValue: typeof CSSUnitValue;
-	public declare readonly Selection: typeof Selection;
-	public declare readonly Headers: typeof Headers;
-	public declare readonly Request: typeof Request;
-	public declare readonly Response: typeof Response;
-	public declare readonly EventTarget: typeof EventTarget;
-	public declare readonly XMLHttpRequestUpload: typeof XMLHttpRequestUpload;
-	public declare readonly XMLHttpRequestEventTarget: typeof XMLHttpRequestEventTarget;
-	public declare readonly AbortController: typeof AbortController;
-	public declare readonly AbortSignal: typeof AbortSignal;
-	public declare readonly FormData: typeof FormData;
-	public declare readonly PermissionStatus: typeof PermissionStatus;
-	public declare readonly ClipboardItem: typeof ClipboardItem;
-	public declare readonly XMLHttpRequest: typeof XMLHttpRequest;
-	public declare readonly DOMParser: typeof DOMParser;
-	public declare readonly Range: typeof Range;
-	public declare readonly VTTCue: typeof VTTCue;
-	public declare readonly FileReader: typeof FileReader;
-	public declare readonly MediaStream: typeof MediaStream;
-	public declare readonly MediaStreamTrack: typeof MediaStreamTrack;
-	public declare readonly CanvasCaptureMediaStreamTrack: typeof CanvasCaptureMediaStreamTrack;
-	public declare readonly NamedNodeMap: typeof NamedNodeMap;
-	public declare readonly TextTrack: typeof TextTrack;
-	public declare readonly TextTrackList: typeof TextTrackList;
-	public declare readonly TextTrackCue: typeof TextTrackCue;
-	public declare readonly RemotePlayback: typeof RemotePlayback;
+	globalThis['RemotePlayback'] = RemotePlayback;
+	globalThis['Permissions'] = Permissions;
+	globalThis['History'] = History;
+	globalThis['Navigator'] = Navigator;
+	globalThis['Clipboard'] = Clipboard;
+	globalThis['TimeRanges'] = TimeRanges;
+	globalThis['TextTrackCueList'] = TextTrackCueList;
+	globalThis['ValidityState'] = ValidityState;
+	globalThis['MutationRecord'] = MutationRecord;
+	globalThis['IntersectionObserver'] = IntersectionObserver;
+	globalThis['IntersectionObserverEntry'] = IntersectionObserverEntry;
+	globalThis['CSSStyleDeclaration'] = CSSStyleDeclaration;
+	globalThis['CSSRule'] = CSSRule;
+	globalThis['CSSContainerRule'] = CSSContainerRule;
+	globalThis['CSSFontFaceRule'] = CSSFontFaceRule;
+	globalThis['CSSKeyframeRule'] = CSSKeyframeRule;
+	globalThis['CSSKeyframesRule'] = CSSKeyframesRule;
+	globalThis['CSSMediaRule'] = CSSMediaRule;
+	globalThis['CSSStyleRule'] = CSSStyleRule;
+	globalThis['CSSSupportsRule'] = CSSSupportsRule;
+	globalThis['DOMRect'] = DOMRect;
+	globalThis['DOMRectReadOnly'] = DOMRectReadOnly;
+	globalThis['Plugin'] = Plugin;
+	globalThis['PluginArray'] = PluginArray;
+	globalThis['Location'] = Location;
+	globalThis['CustomElementRegistry'] = CustomElementRegistry;
+	globalThis['ResizeObserver'] = ResizeObserver;
+	globalThis['URL'] = URL;
+	globalThis['Blob'] = Blob;
+	globalThis['File'] = File;
+	globalThis['Storage'] = Storage;
+	globalThis['MimeType'] = MimeType;
+	globalThis['MimeTypeArray'] = MimeTypeArray;
+	globalThis['NodeFilter'] = NodeFilter;
+	globalThis['HTMLCollection'] = HTMLCollection;
+	globalThis['HTMLFormControlsCollection'] = HTMLFormControlsCollection;
+	globalThis['HTMLOptionsCollection'] = HTMLOptionsCollection;
+	globalThis['NodeList'] = NodeList;
+	globalThis['RadioNodeList'] = RadioNodeList;
+	globalThis['FileList'] = FileList;
+	globalThis['Screen'] = Screen;
+	globalThis['DOMMatrixReadOnly'] = DOMMatrixReadOnly;
+	globalThis['DOMMatrix'] = DOMMatrix;
+	globalThis['SVGAngle'] = SVGAngle;
+	globalThis['SVGAnimatedAngle'] = SVGAnimatedAngle;
+	globalThis['SVGAnimatedBoolean'] = SVGAnimatedBoolean;
+	globalThis['SVGAnimatedEnumeration'] = SVGAnimatedEnumeration;
+	globalThis['SVGAnimatedInteger'] = SVGAnimatedInteger;
+	globalThis['SVGAnimatedLength'] = SVGAnimatedLength;
+	globalThis['SVGAnimatedNumber'] = SVGAnimatedNumber;
+	globalThis['SVGAnimatedNumberList'] = SVGAnimatedNumberList;
+	globalThis['SVGAnimatedPreserveAspectRatio'] = SVGAnimatedPreserveAspectRatio;
+	globalThis['SVGAnimatedRect'] = SVGAnimatedRect;
+	globalThis['SVGAnimatedString'] = SVGAnimatedString;
+	globalThis['SVGAnimatedTransformList'] = SVGAnimatedTransformList;
+	globalThis['SVGLength'] = SVGLength;
+	globalThis['SVGLengthList'] = SVGLengthList;
+	globalThis['SVGMatrix'] = SVGMatrix;
+	globalThis['SVGNumber'] = SVGNumber;
+	globalThis['SVGNumberList'] = SVGNumberList;
+	globalThis['SVGPoint'] = SVGPoint;
+	globalThis['SVGPointList'] = SVGPointList;
+	globalThis['SVGPreserveAspectRatio'] = SVGPreserveAspectRatio;
+	globalThis['SVGRect'] = SVGRect;
+	globalThis['SVGStringList'] = SVGStringList;
+	globalThis['SVGTransform'] = SVGTransform;
+	globalThis['SVGTransformList'] = SVGTransformList;
+	globalThis['SVGAnimatedLengthList'] = SVGAnimatedLengthList;
+	globalThis['SVGUnitTypes'] = SVGUnitTypes;
+	globalThis['DOMPoint'] = DOMPoint;
 
-	// Other classes that don't have to be bound to the Window context
-	public readonly Permissions = Permissions;
-	public readonly History = History;
-	public readonly Navigator = Navigator;
-	public readonly Clipboard = Clipboard;
-	public readonly TimeRanges = TimeRanges;
-	public readonly TextTrackCueList = TextTrackCueList;
-	public readonly ValidityState = ValidityState;
-	public readonly MutationRecord = MutationRecord;
-	public readonly IntersectionObserver = IntersectionObserver;
-	public readonly IntersectionObserverEntry = IntersectionObserverEntry;
-	public readonly CSSStyleDeclaration = CSSStyleDeclaration;
-	public readonly CSSRule = CSSRule;
-	public readonly CSSContainerRule = CSSContainerRule;
-	public readonly CSSFontFaceRule = CSSFontFaceRule;
-	public readonly CSSKeyframeRule = CSSKeyframeRule;
-	public readonly CSSKeyframesRule = CSSKeyframesRule;
-	public readonly CSSMediaRule = CSSMediaRule;
-	public readonly CSSStyleRule = CSSStyleRule;
-	public readonly CSSSupportsRule = CSSSupportsRule;
-	public readonly DOMRect = DOMRect;
-	public readonly DOMRectReadOnly = DOMRectReadOnly;
-	public readonly Plugin = Plugin;
-	public readonly PluginArray = PluginArray;
-	public readonly Location = Location;
-	public readonly CustomElementRegistry = CustomElementRegistry;
-	public readonly ResizeObserver = ResizeObserver;
-	public readonly URL = URL;
-	public readonly Blob = Blob;
-	public readonly File = File;
-	public readonly Storage = Storage;
-	public readonly MimeType = MimeType;
-	public readonly MimeTypeArray = MimeTypeArray;
-	public readonly NodeFilter = NodeFilter;
-	public readonly HTMLCollection = HTMLCollection;
-	public readonly HTMLFormControlCollection = HTMLFormControlsCollection;
-	public readonly HTMLOptionsCollection = HTMLOptionsCollection;
-	public readonly NodeList = NodeList;
-	public readonly RadioNodeList = RadioNodeList;
-	public readonly FileList = FileList;
-	public readonly Screen = Screen;
-	public readonly DOMMatrixReadOnly = DOMMatrixReadOnly;
-	public readonly DOMMatrix = DOMMatrix;
-	public readonly SVGAngle = SVGAngle;
-	public readonly SVGAnimatedAngle = SVGAnimatedAngle;
-	public readonly SVGAnimatedBoolean = SVGAnimatedBoolean;
-	public readonly SVGAnimatedEnumeration = SVGAnimatedEnumeration;
-	public readonly SVGAnimatedInteger = SVGAnimatedInteger;
-	public readonly SVGAnimatedLength = SVGAnimatedLength;
-	public readonly SVGAnimatedNumber = SVGAnimatedNumber;
-	public readonly SVGAnimatedNumberList = SVGAnimatedNumberList;
-	public readonly SVGAnimatedPreserveAspectRatio = SVGAnimatedPreserveAspectRatio;
-	public readonly SVGAnimatedRect = SVGAnimatedRect;
-	public readonly SVGAnimatedString = SVGAnimatedString;
-	public readonly SVGAnimatedTransformList = SVGAnimatedTransformList;
-	public readonly SVGLength = SVGLength;
-	public readonly SVGLengthList = SVGLengthList;
-	public readonly SVGMatrix = SVGMatrix;
-	public readonly SVGNumber = SVGNumber;
-	public readonly SVGNumberList = SVGNumberList;
-	public readonly SVGPoint = SVGPoint;
-	public readonly SVGPointList = SVGPointList;
-	public readonly SVGPreserveAspectRatio = SVGPreserveAspectRatio;
-	public readonly SVGRect = SVGRect;
-	public readonly SVGStringList = SVGStringList;
-	public readonly SVGTransform = SVGTransform;
-	public readonly SVGTransformList = SVGTransformList;
-	public readonly SVGAnimatedLengthList = SVGAnimatedLengthList;
-	public readonly SVGUnitTypes = SVGUnitTypes;
-	public readonly DOMPoint = DOMPoint;
-	public readonly Window = <typeof BrowserWindow>this.constructor;
-
-	// Node.js Classes
-	public readonly URLSearchParams = URLSearchParams;
-	public readonly WritableStream = Stream.Writable;
-	public readonly ReadableStream = ReadableStream;
-	public readonly TransformStream = Stream.Transform;
-	public readonly PerformanceObserver = PerformanceObserver;
-	public readonly PerformanceEntry = PerformanceEntry;
-	public readonly PerformanceObserverEntryList: new () => IPerformanceObserverEntryList = <
-		new () => IPerformanceObserverEntryList
-	>PerformanceObserverEntryList;
+	globalThis['URLSearchParams'] = URLSearchParams;
+	globalThis['WritableStream'] = Stream.Writable;
+	globalThis['ReadableStream'] = ReadableStream;
+	globalThis['TransformStream'] = Stream.Transform;
+	globalThis['PerformanceObserver'] = PerformanceObserver;
+	globalThis['PerformanceEntry'] = PerformanceEntry;
+	globalThis['PerformanceObserverEntryList'] = PerformanceObserverEntryList;
 
 	// Events
-	public onload: ((event: Event) => void) | null = null;
-	public onerror: ((event: ErrorEvent) => void) | null = null;
+	globalThis['onload'] = null;
+	globalThis['onerror'] = null;
 
 	// Public properties.
-	public readonly document: Document;
-	public readonly customElements: CustomElementRegistry = new CustomElementRegistry(this);
-	public readonly window: BrowserWindow = this;
-	public readonly globalThis: BrowserWindow = this;
-	public readonly performance: typeof performance = performance;
-	public readonly screenLeft: number = 0;
-	public readonly screenTop: number = 0;
-	public readonly screenX: number = 0;
-	public readonly screenY: number = 0;
-	public readonly crypto: typeof webcrypto = webcrypto;
-	public readonly TextEncoder: typeof TextEncoder = TextEncoder;
-	public readonly TextDecoder: typeof TextDecoder = TextDecoder;
-	public readonly closed = false;
-	public console: Console;
-	public name = '';
+	globalThis['window'] = globalThis;
+	globalThis['customElements'] = new CustomElementRegistry(globalThis);
+	globalThis['performance'] = performance;
+	globalThis['screenLeft'] = 0;
+	globalThis['screenTop'] = 0;
+	globalThis['screenX'] = 0;
+	globalThis['screenY'] = 0;
+	globalThis['crypto'] = webcrypto;
+	globalThis['TextEncoder'] = TextEncoder;
+	globalThis['TextDecoder'] = TextDecoder;
+	globalThis['closed'] = false;
+	globalThis['name'] = '';
 
 	// Node.js Globals (populated by VMGlobalPropertyScript)
-	public declare Array: typeof Array;
-	public declare ArrayBuffer: typeof ArrayBuffer;
-	public declare Boolean: typeof Boolean;
-	public Buffer: typeof Buffer = Buffer;
-	public declare DataView: typeof DataView;
-	public declare Date: typeof Date;
-	public declare Error: typeof Error;
-	public declare EvalError: typeof EvalError;
-	public declare Float32Array: typeof Float32Array;
-	public declare Float64Array: typeof Float64Array;
-	public declare Function: typeof Function;
-	public declare Infinity: typeof Infinity;
-	public declare Int16Array: typeof Int16Array;
-	public declare Int32Array: typeof Int32Array;
-	public declare Int8Array: typeof Int8Array;
-	public declare Intl: typeof Intl;
-	public declare JSON: typeof JSON;
-	public declare Map: MapConstructor;
-	public declare Math: typeof Math;
-	public declare NaN: typeof NaN;
-	public declare Number: typeof Number;
-	public declare Object: typeof Object;
-	public declare Promise: typeof Promise;
-	public declare RangeError: typeof RangeError;
-	public declare ReferenceError: typeof ReferenceError;
-	public declare RegExp: typeof RegExp;
-	public declare Set: SetConstructor;
-	public declare String: typeof String;
-	public declare Symbol: Function;
-	public declare SyntaxError: typeof SyntaxError;
-	public declare TypeError: typeof TypeError;
-	public declare URIError: typeof URIError;
-	public declare Uint16Array: typeof Uint16Array;
-	public declare Uint32Array: typeof Uint32Array;
-	public declare Uint8Array: typeof Uint8Array;
-	public declare Uint8ClampedArray: typeof Uint8ClampedArray;
-	public declare WeakMap: WeakMapConstructor;
-	public declare WeakSet: WeakSetConstructor;
-	public declare decodeURI: typeof decodeURI;
-	public declare decodeURIComponent: typeof decodeURIComponent;
-	public declare encodeURI: typeof encodeURI;
-	public declare encodeURIComponent: typeof encodeURIComponent;
-	public declare eval: typeof eval;
-	/**
-	 * @deprecated
-	 */
-	public declare escape: (str: string) => string;
-	public declare global: typeof globalThis;
-	public declare isFinite: typeof isFinite;
-	public declare isNaN: typeof isNaN;
-	public declare parseFloat: typeof parseFloat;
-	public declare parseInt: typeof parseInt;
-	public declare undefined: typeof undefined;
-	/**
-	 * @deprecated
-	 */
-	public declare unescape: (str: string) => string;
-	public declare gc: () => void;
-	public declare v8debug?: unknown;
+	globalThis['Buffer'] = Buffer;
 
 	// Public internal properties
 
 	// Used for tracking capture event listeners to improve performance when they are not used.
 	// See EventTarget class.
-	public [PropertySymbol.mutationObservers]: MutationObserver[] = [];
-	public readonly [PropertySymbol.readyStateManager] = new DocumentReadyStateManager(this);
-	public [PropertySymbol.location]: Location;
-	public [PropertySymbol.history]: History;
-	public [PropertySymbol.navigator]: Navigator;
-	public [PropertySymbol.screen]: Screen;
-	public [PropertySymbol.sessionStorage]: Storage;
-	public [PropertySymbol.localStorage]: Storage;
-	public [PropertySymbol.self]: BrowserWindow = this;
-	public [PropertySymbol.top]: BrowserWindow = this;
-	public [PropertySymbol.parent]: BrowserWindow = this;
-	public [PropertySymbol.window]: BrowserWindow = this;
-	public [PropertySymbol.internalId]: number = -1;
-	public [PropertySymbol.customElementReactionStack] = new CustomElementReactionStack(this);
-	public [PropertySymbol.modules]: {
-		json: Map<string, IModule>;
-		css: Map<string, IModule>;
-		esm: Map<string, IModule>;
-	} = {
+	globalThis[PropertySymbol.mutationObservers] = [];
+	globalThis[PropertySymbol.readyStateManager] = new DocumentReadyStateManager(globalThis);
+	globalThis[PropertySymbol.self] = globalThis;
+	globalThis[PropertySymbol.top] = globalThis;
+	globalThis[PropertySymbol.parent] = globalThis;
+	globalThis[PropertySymbol.window] = globalThis;
+	globalThis[PropertySymbol.internalId] = -1;
+	globalThis[PropertySymbol.customElementReactionStack] = new CustomElementReactionStack(
+		globalThis
+	);
+	globalThis[PropertySymbol.modules] = {
 		json: new Map(),
 		css: new Map(),
 		esm: new Map()
 	};
-	public [PropertySymbol.moduleImportMap]: IModuleImportMap | null = null;
+	globalThis[PropertySymbol.moduleImportMap] = null;
 
 	// Private properties
-	#browserFrame: IBrowserFrame;
-	#innerWidth: number | null = null;
-	#innerHeight: number | null = null;
-	#outerWidth: number | null = null;
-	#outerHeight: number | null = null;
-	#devicePixelRatio: number | null = null;
-	#zeroDelayTimeout: { timeouts: Array<Timeout> | null } = { timeouts: null };
-	#timerLoopStacks: string[] = [];
+	globalThis['#innerWidth'] = null;
+	globalThis['#innerHeight'] = null;
+	globalThis['#outerWidth'] = null;
+	globalThis['#outerHeight'] = null;
+	globalThis['#devicePixelRatio'] = null;
+	globalThis['#zeroDelayTimeout'] = { timeouts: null };
+	globalThis['#timerLoopStacks'] = [];
 
-	/**
-	 * Constructor.
-	 *
-	 * @param browserFrame Browser frame.
-	 * @param [options] Options.
-	 * @param [options.url] URL.
-	 */
-	constructor(browserFrame: IBrowserFrame, options?: { url?: string }) {
-		super();
-
-		this.#browserFrame = browserFrame;
-
-		this.console = browserFrame.page.console;
-
-		this[PropertySymbol.navigator] = new Navigator(this);
-		this[PropertySymbol.screen] = new Screen();
-		this[PropertySymbol.sessionStorage] = new Storage();
-		this[PropertySymbol.localStorage] = new Storage();
-		this[PropertySymbol.location] = new Location(this.#browserFrame, options?.url ?? 'about:blank');
-		this[PropertySymbol.history] = new History(this.#browserFrame, this);
-
-		WindowBrowserContext.setWindowBrowserFrameRelation(this, this.#browserFrame);
-
-		this[PropertySymbol.setupVMContext]();
-
-		WindowContextClassExtender.extendClasses(this);
-
-		// Document
-		this.document = new this.HTMLDocument();
-		this.document[PropertySymbol.defaultView] = this;
-
-		// Ready state manager
-		this[PropertySymbol.readyStateManager].waitUntilComplete().then(() => {
-			this.document[PropertySymbol.readyState] = DocumentReadyStateEnum.complete;
-			this.document.dispatchEvent(new Event('readystatechange'));
-
-			// Not sure why target is set to document here, but this is how it works in the browser
-			const loadEvent = new Event('load');
-
-			loadEvent[PropertySymbol.currentTarget] = this;
-			loadEvent[PropertySymbol.target] = this.document;
-			loadEvent[PropertySymbol.eventPhase] = EventPhaseEnum.atTarget;
-
-			this.dispatchEvent(loadEvent);
-
-			loadEvent[PropertySymbol.currentTarget] = null;
-			loadEvent[PropertySymbol.eventPhase] = EventPhaseEnum.none;
-			loadEvent[PropertySymbol.dispatching] = false;
-		});
-
-		this[PropertySymbol.bindMethods]();
-	}
-
-	/**
-	 * Returns self.
-	 *
-	 * @returns Self.
-	 */
-	public get self(): BrowserWindow {
-		return this[PropertySymbol.self];
-	}
-
-	/**
-	 * Returns self.
-	 *
-	 * @param self Self.
-	 */
-	public set self(self: BrowserWindow | null) {
-		this[PropertySymbol.self] = self;
-	}
-
-	/**
-	 * Returns top.
-	 *
-	 * @returns Top.
-	 */
-	public get top(): BrowserWindow {
-		return this[PropertySymbol.top];
-	}
-
-	/**
-	 * Returns parent.
-	 *
-	 * @returns Parent.
-	 */
-	public get parent(): BrowserWindow {
-		return this[PropertySymbol.parent];
-	}
-
-	/**
-	 * Returns parent.
-	 *
-	 * @param parent Parent.
-	 */
-	public set parent(parent: BrowserWindow | null) {
-		this[PropertySymbol.parent] = parent;
-	}
-
-	/**
-	 * Returns location.
-	 */
-	public get location(): Location {
-		return this[PropertySymbol.location];
-	}
-
-	/**
-	 * Returns location.
-	 *
-	 * @param href Href.
-	 */
-	public set location(href: string) {
-		this[PropertySymbol.location].href = href;
-	}
-
-	/**
-	 * Returns history.
-	 */
-	public get history(): History {
-		return this[PropertySymbol.history];
-	}
-
-	/**
-	 * Returns navigator.
-	 */
-	public get navigator(): Navigator {
-		return this[PropertySymbol.navigator];
-	}
-
-	/**
-	 * Returns screen.
-	 */
-	public get screen(): Screen {
-		return this[PropertySymbol.screen];
-	}
-
-	/**
-	 * Returns session storage.
-	 */
-	public get sessionStorage(): Storage {
-		return this[PropertySymbol.sessionStorage];
-	}
-
-	/**
-	 * Returns local storage.
-	 */
-	public get localStorage(): Storage {
-		return this[PropertySymbol.localStorage];
-	}
-
-	/**
-	 * Returns opener.
-	 *
-	 * @returns Opener.
-	 */
-	public get opener(): BrowserWindow | CrossOriginBrowserWindow | null {
-		return this.#browserFrame[PropertySymbol.openerWindow];
-	}
-
-	/**
-	 * The number of pixels that the document is currently scrolled horizontally.
-	 *
-	 * @returns Scroll X.
-	 */
-	public get scrollX(): number {
-		return this.document?.documentElement?.scrollLeft ?? 0;
-	}
-
-	/**
-	 * The read-only Window property pageXOffset is an alias for scrollX.
-	 *
-	 * @returns Scroll X.
-	 */
-	public get pageXOffset(): number {
-		return this.scrollX;
-	}
-
-	/**
-	 * The number of pixels that the document is currently scrolled vertically.
-	 *
-	 * @returns Scroll Y.
-	 */
-	public get scrollY(): number {
-		return this.document?.documentElement?.scrollTop ?? 0;
-	}
-
-	/**
-	 * The read-only Window property pageYOffset is an alias for scrollY.
-	 *
-	 * @returns Scroll Y.
-	 */
-	public get pageYOffset(): number {
-		return this.scrollY;
-	}
-
-	/**
-	 * The CSS interface holds useful CSS-related methods.
-	 *
-	 * @returns CSS interface.
-	 */
-	public get CSS(): CSS {
-		return new CSS();
-	}
-
-	/**
-	 * Returns inner width.
-	 *
-	 * @returns Inner width.
-	 */
-	public get innerWidth(): number {
-		if (this.#innerWidth === null) {
-			return this.#browserFrame.page.viewport.width;
+	Object.defineProperty(globalThis, 'self', {
+		get() {
+			return globalThis[PropertySymbol.self];
+		},
+		set(self: typeof globalThis | null) {
+			globalThis[PropertySymbol.self] = self;
 		}
-		return this.#innerWidth;
-	}
+	});
 
-	/**
-	 * Sets inner width.
-	 *
-	 * @param value Inner width.
-	 */
-	public set innerWidth(value: number) {
-		this.#innerWidth = value;
-	}
-
-	/**
-	 * Returns inner height.
-	 *
-	 * @returns Inner height.
-	 */
-	public get innerHeight(): number {
-		// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
-		if (this.#innerHeight === null) {
-			return this.#browserFrame.page.viewport.height;
+	Object.defineProperty(globalThis, 'top', {
+		get() {
+			return globalThis[PropertySymbol.top];
 		}
-		return this.#innerHeight;
-	}
+	});
 
-	/**
-	 * Sets inner height.
-	 *
-	 * @param value Inner height.
-	 */
-	public set innerHeight(value: number) {
-		this.#innerHeight = value;
-	}
-
-	/**
-	 * Returns outer width.
-	 *
-	 * @returns Outer width.
-	 */
-	public get outerWidth(): number {
-		// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
-		if (this.#outerWidth === null) {
-			return this.#browserFrame.page.viewport.width;
+	Object.defineProperty(globalThis, 'parent', {
+		get() {
+			return globalThis[PropertySymbol.parent];
+		},
+		set(parent: typeof globalThis | null) {
+			globalThis[PropertySymbol.parent] = parent;
 		}
-		return this.#outerWidth;
-	}
+	});
 
-	/**
-	 * Sets outer width.
-	 *
-	 * @param value Outer width.
-	 */
-	public set outerWidth(value: number) {
-		this.#outerWidth = value;
-	}
-
-	/**
-	 * Returns outer height.
-	 *
-	 * @returns Outer height.
-	 */
-	public get outerHeight(): number {
-		if (this.#outerHeight === null) {
-			return this.#browserFrame.page.viewport.height;
+	Object.defineProperty(globalThis, 'location', {
+		get() {
+			return globalThis[PropertySymbol.location];
+		},
+		set(href: string) {
+			globalThis[PropertySymbol.location].href = href;
 		}
-		return this.#outerHeight;
-	}
+	});
 
-	/**
-	 * Sets outer height.
-	 *
-	 * @param value Outer height.
-	 */
-	public set outerHeight(value: number) {
-		this.#outerHeight = value;
-	}
-
-	/**
-	 * Returns device pixel ratio.
-	 *
-	 * @returns Device pixel ratio.
-	 */
-	public get devicePixelRatio(): number {
-		// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
-		if (this.#devicePixelRatio === null) {
-			return this.#browserFrame.page.viewport.devicePixelRatio;
+	Object.defineProperty(globalThis, 'history', {
+		get() {
+			return globalThis[PropertySymbol.history];
 		}
-		return this.#devicePixelRatio;
-	}
+	});
 
-	/**
-	 * Sets device pixel ratio.
-	 *
-	 * @param value Device pixel ratio.
-	 */
-	public set devicePixelRatio(value: number) {
-		this.#devicePixelRatio = value;
-	}
+	Object.defineProperty(globalThis, 'navigator', {
+		get() {
+			return globalThis[PropertySymbol.navigator];
+		}
+	});
 
-	/**
-	 * Returns an object containing the values of all CSS properties of an element.
-	 *
-	 * @param element Element.
-	 * @returns CSS style declaration.
-	 */
-	public getComputedStyle(element: Element): CSSStyleDeclaration {
+	Object.defineProperty(globalThis, 'screen', {
+		get() {
+			return globalThis[PropertySymbol.screen];
+		}
+	});
+
+	Object.defineProperty(globalThis, 'sessionStorage', {
+		get() {
+			return globalThis[PropertySymbol.sessionStorage];
+		}
+	});
+
+	Object.defineProperty(globalThis, 'localStorage', {
+		get() {
+			return globalThis[PropertySymbol.localStorage];
+		}
+	});
+
+	Object.defineProperty(globalThis, 'opener', {
+		get() {
+			return globalThis.#browserFrame[PropertySymbol.openerWindow];
+		}
+	});
+
+	Object.defineProperty(globalThis, 'scrollX', {
+		get() {
+			return globalThis.document?.documentElement?.scrollLeft ?? 0;
+		}
+	});
+
+	Object.defineProperty(globalThis, 'pageXOffset', {
+		get() {
+			return globalThis.scrollX;
+		}
+	});
+
+	Object.defineProperty(globalThis, 'scrollY', {
+		get() {
+			return globalThis.document?.documentElement?.scrollTop ?? 0;
+		}
+	});
+
+	Object.defineProperty(globalThis, 'pageYOffset', {
+		get() {
+			return globalThis.scrollY;
+		}
+	});
+
+	Object.defineProperty(globalThis, 'CSS', {
+		get() {
+			return new CSS();
+		}
+	});
+
+	Object.defineProperty(globalThis, 'innerWidth', {
+		get() {
+			if (globalThis.#innerWidth === null) {
+				return globalThis.#browserFrame.page.viewport.width;
+			}
+			return globalThis.#innerWidth;
+		},
+		set(value: number) {
+			globalThis.#innerWidth = value;
+		}
+	});
+
+	Object.defineProperty(globalThis, 'innerHeight', {
+		get() {
+			// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
+			if (globalThis.#innerHeight === null) {
+				return globalThis.#browserFrame.page.viewport.height;
+			}
+			return globalThis.#innerHeight;
+		},
+		set(value: number) {
+			globalThis.#innerHeight = value;
+		}
+	});
+
+	Object.defineProperty(globalThis, 'outerWidth', {
+		get() {
+			// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
+			if (globalThis.#outerWidth === null) {
+				return globalThis.#browserFrame.page.viewport.width;
+			}
+			return globalThis.#outerWidth;
+		},
+		set(value: number) {
+			globalThis.#outerWidth = value;
+		}
+	});
+
+	Object.defineProperty(globalThis, 'outerHeight', {
+		get() {
+			if (globalThis.#outerHeight === null) {
+				return globalThis.#browserFrame.page.viewport.height;
+			}
+			return globalThis.#outerHeight;
+		},
+		set(value: number) {
+			globalThis.#outerHeight = value;
+		}
+	});
+
+	Object.defineProperty(globalThis, 'devicePixelRatio', {
+		get() {
+			// It seems like this value can be defined according to spec, but changing it has no effect on the actual viewport.
+			if (globalThis.#devicePixelRatio === null) {
+				return globalThis.#browserFrame.page.viewport.devicePixelRatio;
+			}
+			return globalThis.#devicePixelRatio;
+		},
+		set(value: number) {
+			globalThis.#devicePixelRatio = value;
+		}
+	});
+
+	globalThis['getComputedStyle'] = function (element: Element) {
 		element[PropertySymbol.computedStyle] =
 			element[PropertySymbol.computedStyle] ||
 			new CSSStyleDeclaration(PropertySymbol.illegalConstructor, this, { element, computed: true });
 		return element[PropertySymbol.computedStyle];
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Returns selection.
-	 *
-	 * @returns Selection.
-	 */
-	public getSelection(): Selection {
+	globalThis['getSelection'] = function () {
 		return this.document.getSelection();
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Scrolls to a particular set of coordinates.
-	 *
-	 * @param x X position or options object.
-	 * @param y Y position.
-	 */
-	public scroll(x: IScrollToOptions | number, y?: number): void {
+	globalThis['scroll'] = function (x: IScrollToOptions | number, y?: number): void {
 		if (typeof x !== 'object' && arguments.length === 1) {
 			throw new this.TypeError(
 				"Failed to execute 'scroll' on 'Window': The provided value is not of type 'ScrollToOptions'."
@@ -1186,30 +832,18 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 				this.document.documentElement.scrollLeft = isNaN(left) ? 0 : left;
 			}
 		}
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Scrolls to a particular set of coordinates.
-	 *
-	 * @param x X position or options object.
-	 * @param y Y position.
-	 */
-	public scrollTo(x: IScrollToOptions | number, y?: number): void {
+	globalThis['scrollTo'] = function (x: IScrollToOptions | number, y?: number): void {
 		if (typeof x !== 'object' && arguments.length === 1) {
 			throw new this.TypeError(
 				"Failed to execute 'scrollTo' on 'Window': The provided value is not of type 'ScrollToOptions'."
 			);
 		}
 		this.scroll(x, y);
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Scrolls by a relative amount from the current position.
-	 *
-	 * @param x Pixels to scroll by from top or scroll options object.
-	 * @param y Pixels to scroll by from left.
-	 */
-	public scrollBy(x: IScrollToOptions | number, y?: number): void {
+	globalThis['scrollBy'] = function (x: IScrollToOptions | number, y?: number): void {
 		if (typeof x !== 'object' && arguments.length === 1) {
 			throw new this.TypeError(
 				"Failed to execute 'scrollBy' on 'Window': The provided value is not of type 'ScrollToOptions'."
@@ -1221,422 +855,118 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 			top: this.document.documentElement.scrollTop + (options.top ?? 0),
 			behavior: options.behavior
 		});
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Shifts focus away from the window.
-	 */
-	public blur(): void {
-		// TODO: Implement.
-	}
-
-	/**
-	 * Gives focus to the window.
-	 */
-	public focus(): void {
-		// TODO: Implement.
-	}
-
-	/**
-	 * Loads a specified resource into a new or existing browsing context (that is, a tab, a window, or an iframe) under a specified name.
-	 *
-	 * @param [url] URL.
-	 * @param [target] Target.
-	 * @param [features] Window features.
-	 * @returns Window.
-	 */
-	public open(
+	globalThis['open'] = function (
 		url?: string,
 		target?: string,
 		features?: string
-	): BrowserWindow | CrossOriginBrowserWindow | null {
-		return WindowPageOpenUtility.openPage(this.#browserFrame, {
+	): typeof globalThis | CrossOriginBrowserWindow | null {
+		return WindowPageOpenUtility.openPage(globalThis.#browserFrame, {
 			url,
 			target,
 			features
 		});
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Closes the window.
-	 */
-	public close(): void {
+	globalThis['close'] = function (): void {
 		// When using a Window instance directly, the Window instance is the main frame and we will close the page and destroy the browser.
 		// When using the Browser API we should only close the page when the Window instance is connected to the main frame (we should not close child frames such as iframes).
-		if (this.#browserFrame.page?.mainFrame === this.#browserFrame) {
-			this[PropertySymbol.destroy]();
-			this.#browserFrame.page.close();
+		if (globalThis.#browserFrame.page?.mainFrame === globalThis.#browserFrame) {
+			globalThis[PropertySymbol.destroy]();
+			globalThis.#browserFrame.page.close();
 		}
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Returns a new MediaQueryList object that can then be used to determine if the document matches the media query string.
-	 *
-	 * @param mediaQueryString A string specifying the media query to parse into a MediaQueryList.
-	 * @returns A new MediaQueryList.
-	 */
-	public matchMedia(mediaQueryString: string): MediaQueryList {
-		return new MediaQueryList({ window: this, media: mediaQueryString });
-	}
+	globalThis['matchMedia'] = function (mediaQueryString: string): MediaQueryList {
+		return new MediaQueryList({ window: globalThis, media: mediaQueryString });
+	}.bind(globalThis);
 
-	/**
-	 * Sets a timer which executes a function once the timer expires.
-	 *
-	 * @param callback Function to be executed.
-	 * @param [delay=0] Delay in ms.
-	 * @param args Arguments passed to the callback function.
-	 * @returns Timeout ID.
-	 */
-	public setTimeout(callback: Function, delay = 0, ...args: unknown[]): NodeJS.Timeout {
-		if (this.closed) {
-			return;
-		}
-
-		const settings = this.#browserFrame.page?.context?.browser?.settings;
-
-		if (settings.timer.preventTimerLoops) {
-			const stack = new Error().stack;
-			const timerLoopStacks = this.#timerLoopStacks;
-			if (timerLoopStacks.includes(stack)) {
-				return;
-			}
-			timerLoopStacks.push(stack);
-		}
-
-		// We can group timeouts with a delay of 0 into one timeout to improve performance.
-		// Grouping timeouts will also improve the performance of the async task manager.
-		// It also makes the async task manager more stable as many timeouts may cause waitUntilComplete() to be resolved too early.
-		if (!delay) {
-			const zeroDelayTimeout = this.#zeroDelayTimeout;
-
-			if (!zeroDelayTimeout.timeouts) {
-				const useTryCatch =
-					!settings ||
-					(!settings.disableErrorCapturing &&
-						settings.errorCapture === BrowserErrorCaptureEnum.tryAndCatch);
-
-				const id = TIMER.setTimeout(() => {
-					// We need to call endTimer() before the callback as the callback might throw an error.
-					this.#browserFrame[PropertySymbol.asyncTaskManager].endTimer(id);
-					const timeouts = zeroDelayTimeout.timeouts;
-					zeroDelayTimeout.timeouts = null;
-					for (const timeout of timeouts) {
-						if (useTryCatch) {
-							let result: any;
-							try {
-								result = timeout.callback();
-							} catch (error) {
-								this[PropertySymbol.dispatchError](error);
-							}
-							if (result instanceof Promise) {
-								result.catch((error: Error) => this[PropertySymbol.dispatchError](error));
-							}
-						} else {
-							timeout.callback();
-						}
-					}
-				}, 0);
-
-				zeroDelayTimeout.timeouts = [];
-				this.#browserFrame[PropertySymbol.asyncTaskManager].startTimer(id);
-			}
-
-			const timeout = new Timeout(() => callback(...args));
-
-			zeroDelayTimeout.timeouts.push(timeout);
-
-			return <NodeJS.Timeout>(<unknown>timeout);
-		}
-
-		const useTryCatch =
-			!settings ||
-			(!settings.disableErrorCapturing &&
-				settings.errorCapture === BrowserErrorCaptureEnum.tryAndCatch);
-
-		const id = TIMER.setTimeout(
-			() => {
-				// We need to call endTimer() before the callback as the callback might throw an error.
-				this.#browserFrame[PropertySymbol.asyncTaskManager].endTimer(id);
-				if (useTryCatch) {
-					let result: any;
-					try {
-						result = callback(...args);
-					} catch (error) {
-						this[PropertySymbol.dispatchError](error);
-					}
-					if (result instanceof Promise) {
-						result.catch((error: Error) => this[PropertySymbol.dispatchError](error));
-					}
-				} else {
-					callback(...args);
-				}
-			},
-			settings?.timer.maxTimeout !== -1 && delay && delay > settings?.timer.maxTimeout
-				? settings?.timer.maxTimeout
-				: delay
-		);
-		this.#browserFrame[PropertySymbol.asyncTaskManager].startTimer(id);
-		return id;
-	}
-
-	/**
-	 * Cancels a timeout previously established by calling setTimeout().
-	 *
-	 * @param id ID of the timeout.
-	 */
-	public clearTimeout(id: NodeJS.Timeout): void {
-		if (id && id instanceof Timeout) {
-			const zeroDelayTimeout = this.#zeroDelayTimeout;
-			if (!zeroDelayTimeout.timeouts) {
-				return;
-			}
-			const index = zeroDelayTimeout.timeouts.indexOf(<Timeout>(<unknown>id));
-			if (index !== -1) {
-				zeroDelayTimeout.timeouts.splice(index, 1);
-			}
-			return;
-		}
-		// We need to make sure that the ID is a Timeout object, otherwise Node.js might throw an error.
-		// This is only necessary if we are in a Node.js environment.
-		if (IS_NODE_JS_TIMEOUT_ENVIRONMENT && (!id || id.constructor.name !== 'Timeout')) {
-			return;
-		}
-		TIMER.clearTimeout(id);
-		this.#browserFrame[PropertySymbol.asyncTaskManager].endTimer(id);
-	}
-
-	/**
-	 * Calls a function with a fixed time delay between each call.
-	 *
-	 * @param callback Function to be executed.
-	 * @param [delay=0] Delay in ms.
-	 * @param args Arguments passed to the callback function.
-	 * @returns Interval ID.
-	 */
-	public setInterval(callback: Function, delay = 0, ...args: unknown[]): NodeJS.Timeout {
-		if (this.closed) {
-			return;
-		}
-		const settings = this.#browserFrame.page?.context?.browser?.settings;
-		const useTryCatch =
-			!settings ||
-			(!settings.disableErrorCapturing &&
-				settings.errorCapture === BrowserErrorCaptureEnum.tryAndCatch);
-		let iterations = 0;
-		const id = TIMER.setInterval(
-			() => {
-				if (useTryCatch) {
-					let result: any;
-					try {
-						result = callback(...args);
-					} catch (error) {
-						this.clearInterval(id);
-						this[PropertySymbol.dispatchError](error);
-					}
-					if (result instanceof Promise) {
-						result.catch((error: Error) => {
-							this.clearInterval(id);
-							this[PropertySymbol.dispatchError](error);
-						});
-					}
-				} else {
-					callback(...args);
-				}
-				if (settings?.timer.maxIntervalIterations !== -1) {
-					if (iterations >= settings?.timer.maxIntervalIterations) {
-						this.clearInterval(id);
-					}
-					iterations++;
-				}
-			},
-			settings?.timer.maxIntervalTime !== -1 && delay && delay > settings?.timer.maxIntervalTime
-				? settings?.timer.maxIntervalTime
-				: delay
-		);
-		this.#browserFrame[PropertySymbol.asyncTaskManager].startTimer(id);
-		return id;
-	}
-
-	/**
-	 * Cancels a timed repeating action which was previously established by a call to setInterval().
-	 *
-	 * @param id ID of the interval.
-	 */
-	public clearInterval(id: NodeJS.Timeout): void {
-		// We need to make sure that the ID is a Timeout object, otherwise Node.js might throw an error.
-		// This is only necessary if we are in a Node.js environment.
-		if (IS_NODE_JS_TIMEOUT_ENVIRONMENT && (!id || id.constructor.name !== 'Timeout')) {
-			return;
-		}
-		TIMER.clearInterval(id);
-		this.#browserFrame[PropertySymbol.asyncTaskManager].endTimer(id);
-	}
-
-	/**
-	 * Mock animation frames with timeouts.
-	 *
-	 * @param callback Callback.
-	 * @returns ID.
-	 */
-	public requestAnimationFrame(callback: (timestamp: number) => void): NodeJS.Immediate {
-		if (this.closed) {
-			return;
-		}
-		const settings = this.#browserFrame.page?.context?.browser?.settings;
-
-		if (settings.timer.preventTimerLoops) {
-			const stack = new Error().stack;
-			const timerLoopStacks = this.#timerLoopStacks;
-			if (timerLoopStacks.includes(stack)) {
-				return;
-			}
-			timerLoopStacks.push(stack);
-		}
-
-		const useTryCatch =
-			!settings ||
-			(!settings.disableErrorCapturing &&
-				settings.errorCapture === BrowserErrorCaptureEnum.tryAndCatch);
-		const id = TIMER.setImmediate(() => {
-			// We need to call endImmediate() before the callback as the callback might throw an error.
-			this.#browserFrame[PropertySymbol.asyncTaskManager].endImmediate(id);
-			if (useTryCatch) {
-				let result: any;
-				try {
-					result = callback(this.performance.now());
-				} catch (error) {
-					this[PropertySymbol.dispatchError](error);
-				}
-				if (result instanceof Promise) {
-					result.catch((error: Error) => this[PropertySymbol.dispatchError](error));
-				}
-			} else {
-				callback(this.performance.now());
-			}
-		});
-		this.#browserFrame[PropertySymbol.asyncTaskManager].startImmediate(id);
-		return id;
-	}
-
-	/**
-	 * Mock animation frames with timeouts.
-	 *
-	 * @param id ID.
-	 */
-	public cancelAnimationFrame(id: NodeJS.Immediate): void {
+	globalThis['cancelAnimationFrame'] = function (id: NodeJS.Immediate): void {
 		// We need to make sure that the ID is an Immediate object, otherwise Node.js might throw an error.
 		// This is only necessary if we are in a Node.js environment.
 		if (IS_NODE_JS_TIMEOUT_ENVIRONMENT && (!id || id.constructor.name !== 'Immediate')) {
 			return;
 		}
 		TIMER.clearImmediate(id);
-		this.#browserFrame[PropertySymbol.asyncTaskManager].endImmediate(id);
-	}
+		globalThis.#browserFrame[PropertySymbol.asyncTaskManager].endImmediate(id);
+	}.bind(globalThis);
 
-	/**
-	 * Queues a microtask to be executed at a safe time prior to control returning to the browser's event loop.
-	 *
-	 * @param callback Function to be executed.
-	 */
-	public queueMicrotask(callback: Function): void {
-		if (this.closed) {
+	globalThis['queueMicrotask'] = function (callback: Function): void {
+		if (globalThis.closed) {
 			return;
 		}
 		let isAborted = false;
-		const taskId = this.#browserFrame[PropertySymbol.asyncTaskManager].startTask(
+		const taskId = globalThis.#browserFrame[PropertySymbol.asyncTaskManager].startTask(
 			() => (isAborted = true)
 		);
-		const settings = this.#browserFrame.page?.context?.browser?.settings;
+		const settings = globalThis.#browserFrame.page?.context?.browser?.settings;
 		const useTryCatch =
 			!settings ||
 			(!settings.disableErrorCapturing &&
 				settings.errorCapture === BrowserErrorCaptureEnum.tryAndCatch);
+
 		TIMER.queueMicrotask(() => {
 			if (!isAborted) {
 				// We need to call endTask() before the callback as the callback might throw an error.
-				this.#browserFrame[PropertySymbol.asyncTaskManager].endTask(taskId);
+				globalThis.#browserFrame[PropertySymbol.asyncTaskManager].endTask(taskId);
 				if (useTryCatch) {
 					let result: any;
 					try {
 						result = callback();
 					} catch (error) {
-						this[PropertySymbol.dispatchError](error);
+						globalThis[PropertySymbol.dispatchError](error);
 					}
 					if (result instanceof Promise) {
-						result.catch((error: Error) => this[PropertySymbol.dispatchError](error));
+						result.catch((error: Error) => globalThis[PropertySymbol.dispatchError](error));
 					}
 				} else {
 					callback();
 				}
 			}
 		});
-	}
+	}.bind(globalThis);
 
-	/**
-	 * This method provides an easy, logical way to fetch resources asynchronously across the network.
-	 *
-	 * @param url URL.
-	 * @param [init] Init.
-	 * @returns Promise.
-	 */
-	public async fetch(url: IRequestInfo, init?: IRequestInit): Promise<Response> {
-		if (this.closed) {
+	globalThis['fetch'] = async function (url: IRequestInfo, init?: IRequestInit): Promise<Response> {
+		if (globalThis.closed) {
 			return Promise.reject(
-				new this.DOMException(
+				new globalThis.DOMException(
 					"Failed to execute 'fetch' on 'Window': The window is closed.",
 					DOMExceptionNameEnum.invalidStateError
 				)
 			);
 		}
+
 		return await new Fetch({
-			browserFrame: this.#browserFrame,
-			window: this,
+			browserFrame: globalThis.#browserFrame,
+			window: globalThis,
 			url,
 			init
 		}).send();
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Creates a Base64-encoded ASCII string from a binary string (i.e., a string in which each character in the string is treated as a byte of binary data).
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/btoa
-	 * @param data Binay data.
-	 * @returns Base64-encoded string.
-	 */
-	public btoa(data: unknown): string {
+	globalThis['btoa'] = function (data: unknown): string {
 		return Base64.btoa(data);
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Decodes a string of data which has been encoded using Base64 encoding.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/atob
-	 * @see https://infra.spec.whatwg.org/#forgiving-base64-encode.
-	 * @see Https://html.spec.whatwg.org/multipage/webappapis.html#btoa.
-	 * @param data Binay string.
-	 * @returns An ASCII string containing decoded data from encodedData.
-	 */
-	public atob(data: unknown): string {
+	globalThis['atob'] = function (data: unknown): string {
 		return Base64.atob(data);
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Safely enables cross-origin communication between Window objects; e.g., between a page and a pop-up that it spawned, or between a page and an iframe embedded within it.
-	 *
-	 * @param message Message.
-	 * @param [targetOrigin=*] Target origin.
-	 * @param _transfer Transfer. Not implemented.
-	 */
-	public postMessage(message: unknown, targetOrigin = '*', _transfer?: unknown[]): void {
+	globalThis['postMessage'] = function (
+		message: unknown,
+		targetOrigin = '*',
+		_transfer?: unknown[]
+	): void {
 		// TODO: Implement transfer.
 
-		if (this.closed) {
+		if (globalThis.closed) {
 			return;
 		}
 
-		if (targetOrigin && targetOrigin !== '*' && this.location.origin !== targetOrigin) {
-			throw new this.DOMException(
-				`Failed to execute 'postMessage' on 'Window': The target origin provided ('${targetOrigin}') does not match the recipient window\'s origin ('${this.location.origin}').`,
+		if (targetOrigin && targetOrigin !== '*' && globalThis.location.origin !== targetOrigin) {
+			throw new globalThis.DOMException(
+				`Failed to execute 'postMessage' on 'Window': The target origin provided ('${targetOrigin}') does not match the recipient window\'s origin ('${globalThis.location.origin}').`,
 				DOMExceptionNameEnum.securityError
 			);
 		}
@@ -1644,105 +974,82 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 		try {
 			JSON.stringify(message);
 		} catch (error) {
-			throw new this.DOMException(
+			throw new globalThis.DOMException(
 				`Failed to execute 'postMessage' on 'Window': The provided message cannot be serialized.`,
 				DOMExceptionNameEnum.invalidStateError
 			);
 		}
 
-		this.setTimeout(() =>
-			this.dispatchEvent(
+		globalThis.setTimeout(() =>
+			globalThis.dispatchEvent(
 				new MessageEvent('message', {
 					data: message,
-					origin: this.#browserFrame.parentFrame
-						? this.#browserFrame.parentFrame.window.location.origin
-						: this.#browserFrame.window.location.origin,
-					source: this.#browserFrame.parentFrame
-						? this.#browserFrame.parentFrame.window
-						: this.#browserFrame.window,
+					origin: globalThis.#browserFrame.parentFrame
+						? globalThis.#browserFrame.parentFrame.window.location.origin
+						: globalThis.#browserFrame.window.location.origin,
+					source: globalThis.#browserFrame.parentFrame
+						? globalThis.#browserFrame.parentFrame.window
+						: globalThis.#browserFrame.window,
 					lastEventId: ''
 				})
 			)
 		);
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Resizes the window.
-	 *
-	 * @param width Width.
-	 * @param height Height.
-	 */
-	public resizeTo(width: number, height: number): void {
-		if (this.closed) {
+	globalThis['resizeTo'] = function (width: number, height: number): void {
+		if (globalThis.closed) {
 			return;
 		}
 
 		if (!width || !height) {
-			throw new this.DOMException(
+			throw new globalThis.DOMException(
 				`Failed to execute 'resizeTo' on 'Window': 2 arguments required, but only ${arguments.length} present.`
 			);
 		}
 
 		// We can only resize the window if it is a popup.
-		if (this.#browserFrame[PropertySymbol.popup]) {
-			this.#browserFrame.page.setViewport({ width, height });
+		if (globalThis.#browserFrame[PropertySymbol.popup]) {
+			globalThis.#browserFrame.page.setViewport({ width, height });
 		}
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Resizes the current window by a specified amount.
-	 *
-	 * @param width Width.
-	 * @param height Height.
-	 */
-	public resizeBy(width: number, height: number): void {
-		if (this.closed) {
+	globalThis['resizeBy'] = function (width: number, height: number): void {
+		if (globalThis.closed) {
 			return;
 		}
 
 		if (!width || !height) {
-			throw new this.DOMException(
+			throw new globalThis.DOMException(
 				`Failed to execute 'resizeBy' on 'Window': 2 arguments required, but only ${arguments.length} present.`
 			);
 		}
 
 		// We can only resize the window if it is a popup.
-		if (this.#browserFrame[PropertySymbol.popup]) {
-			const viewport = this.#browserFrame.page.viewport;
-			this.#browserFrame.page.setViewport({
+		if (globalThis.#browserFrame[PropertySymbol.popup]) {
+			const viewport = globalThis.#browserFrame.page.viewport;
+			globalThis.#browserFrame.page.setViewport({
 				width: viewport.width + width,
 				height: viewport.height + height
 			});
 		}
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Dispatches an error event and outputs the error to the console.
-	 *
-	 * @param error Error.
-	 */
-	public [PropertySymbol.dispatchError](error: Error): void {
-		this.#browserFrame?.page?.console.error(error);
-		this.dispatchEvent(new ErrorEvent('error', { message: error.message, error }));
-	}
+	globalThis[PropertySymbol.dispatchError] = function (error: Error): void {
+		globalThis.#browserFrame?.page?.console.error(error);
+		globalThis.dispatchEvent(new ErrorEvent('error', { message: error.message, error }));
+	}.bind(globalThis);
 
-	/**
-	 * Setup of VM context.
-	 */
-	protected [PropertySymbol.setupVMContext](): void {
-		if (!VM.isContext(this)) {
-			VM.createContext(this);
+	globalThis[PropertySymbol.setupVMContext] = function (): void {
+		if (!VM.isContext(globalThis)) {
+			VM.createContext(globalThis);
 
 			// Sets global properties from the VM to the Window object.
 			// Otherwise "this.Array" will be undefined for example.
-			VMGlobalPropertyScript.runInContext(this);
+			VMGlobalPropertyScript.runInContext(globalThis);
 		}
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Destroys the window.
-	 */
-	public [PropertySymbol.destroy](): void {
+	globalThis[PropertySymbol.destroy] = function (): void {
 		if (<boolean>this.closed) {
 			return;
 		}
@@ -1804,35 +1111,71 @@ export default class BrowserWindow extends EventTarget implements INodeJSGlobal 
 		this.document[PropertySymbol.selection] = null;
 
 		WindowBrowserContext.removeWindowBrowserFrameRelation(this);
-	}
+	}.bind(globalThis);
 
-	/**
-	 * Binds methods to a window as scope.
-	 */
-	public [PropertySymbol.bindMethods](): void {
-		for (const _class of [BrowserWindow, EventTarget]) {
-			const propertyDescriptors = Object.getOwnPropertyDescriptors(_class.prototype);
-			const keys: Array<string | symbol> = Object.keys(propertyDescriptors);
+	// constructor definition
 
-			for (const key of keys) {
-				const descriptor = propertyDescriptors[<string>key];
-				if (descriptor.get || descriptor.set) {
-					Object.defineProperty(this, key, {
-						...descriptor,
-						get: descriptor.get?.bind(this),
-						set: descriptor.set?.bind(this)
-					});
-				} else if (
-					key !== 'constructor' &&
-					typeof descriptor.value === 'function' &&
-					!descriptor.value.toString().startsWith('class ')
-				) {
-					Object.defineProperty(this, key, {
-						...descriptor,
-						value: descriptor.value.bind(this)
-					});
-				}
-			}
+	const globalThisEventTarget = new EventTarget();
+	globalThis['addEventListener'] = globalThisEventTarget.addEventListener.bind(globalThis);
+	globalThis['dispatchEvent'] = globalThisEventTarget.dispatchEvent.bind(globalThis);
+	globalThis['removeEventListener'] = globalThisEventTarget.removeEventListener.bind(globalThis);
+	globalThis['attachEvent'] = globalThisEventTarget.attachEvent.bind(globalThis);
+	globalThis['detachEvent'] = globalThisEventTarget.detachEvent.bind(globalThis);
+	globalThis[PropertySymbol.listeners] = globalThisEventTarget[PropertySymbol.listeners];
+	globalThis[PropertySymbol.listenerOptions] =
+		globalThisEventTarget[PropertySymbol.listenerOptions];
+
+	Object.defineProperty(globalThis, Symbol.toStringTag, {
+		get() {
+			return 'EventTarget';
 		}
-	}
-}
+	});
+
+	globalThis.#browserFrame = browserFrame;
+
+	globalThis[PropertySymbol.navigator] = new Navigator(globalThis);
+	globalThis[PropertySymbol.screen] = new Screen();
+	globalThis[PropertySymbol.sessionStorage] = new Storage();
+	globalThis[PropertySymbol.localStorage] = new Storage();
+	globalThis[PropertySymbol.location] = new Location(
+		globalThis.#browserFrame,
+		options?.url ?? 'about:blank'
+	);
+	globalThis[PropertySymbol.history] = new History(globalThis.#browserFrame, globalThis);
+
+	WindowBrowserContext.setWindowBrowserFrameRelation(globalThis, globalThis.#browserFrame);
+
+	globalThis[PropertySymbol.setupVMContext]();
+
+	WindowContextClassExtender.extendClasses(globalThis);
+
+	// Document
+	globalThis.document = new globalThis.HTMLDocument();
+	globalThis.document[PropertySymbol.defaultView] = globalThis;
+
+	// Ready state manager
+	globalThis[PropertySymbol.readyStateManager].waitUntilComplete().then(() => {
+		globalThis.document[PropertySymbol.readyState] = DocumentReadyStateEnum.complete;
+		globalThis.document.dispatchEvent(new Event('readystatechange'));
+
+		// Not sure why target is set to document here, but this is how it works in the browser
+		const loadEvent = new Event('load');
+
+		// @ts-ignore
+		loadEvent[PropertySymbol.currentTarget] = globalThis;
+		loadEvent[PropertySymbol.target] = globalThis.document;
+		loadEvent[PropertySymbol.eventPhase] = EventPhaseEnum.atTarget;
+
+		globalThis.dispatchEvent(loadEvent);
+
+		loadEvent[PropertySymbol.currentTarget] = null;
+		loadEvent[PropertySymbol.eventPhase] = EventPhaseEnum.none;
+		loadEvent[PropertySymbol.dispatching] = false;
+	});
+
+	// globalThis[PropertySymbol.bindMethods]();
+};
+
+// const BrowserWindow: typeof globalThis = globalThis;
+
+// export default BrowserWindow;

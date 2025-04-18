@@ -1,6 +1,5 @@
 import Event from '../../event/Event.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import Document from '../document/Document.js';
 import HTMLElement from '../html-element/HTMLElement.js';
 import CrossOriginBrowserWindow from '../../window/CrossOriginBrowserWindow.js';
@@ -44,7 +43,7 @@ export default class HTMLIFrameElement extends HTMLElement {
 	public [PropertySymbol.sandbox]: DOMTokenList | null = null;
 
 	// Private properties
-	#contentWindowContainer: { window: BrowserWindow | CrossOriginBrowserWindow | null } = {
+	#contentWindowContainer: { window: typeof globalThis | CrossOriginBrowserWindow | null } = {
 		window: null
 	};
 	#iframe: IBrowserFrame;
@@ -234,7 +233,8 @@ export default class HTMLIFrameElement extends HTMLElement {
 	 * @returns Content document.
 	 */
 	public get contentDocument(): Document | null {
-		return (<BrowserWindow>this.#contentWindowContainer.window)?.document ?? null;
+		// @ts-ignore
+		return (this.#contentWindowContainer.window)?.document ?? null;
 	}
 
 	/**
@@ -242,7 +242,7 @@ export default class HTMLIFrameElement extends HTMLElement {
 	 *
 	 * @returns Content window.
 	 */
-	public get contentWindow(): BrowserWindow | CrossOriginBrowserWindow | null {
+	public get contentWindow(): typeof globalThis | CrossOriginBrowserWindow | null {
 		return this.#contentWindowContainer.window;
 	}
 
@@ -427,7 +427,9 @@ export default class HTMLIFrameElement extends HTMLElement {
 
 		this.#iframe = this.#iframe ?? BrowserFrameFactory.createChildFrame(browserFrame);
 
+		// @ts-ignore
 		this.#iframe.window[PropertySymbol.top] = <BrowserWindow>parentWindow;
+		// @ts-ignore
 		this.#iframe.window[PropertySymbol.parent] = <BrowserWindow>parentWindow;
 
 		this.#iframe

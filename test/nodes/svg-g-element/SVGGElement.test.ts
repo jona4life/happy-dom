@@ -6,7 +6,7 @@ import SVGGraphicsElement from '../../../src/nodes/svg-graphics-element/SVGGraph
 import BrowserWindow from '../../../src/window/BrowserWindow.js';
 
 describe('SVGGElement', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let document: Document;
 	let element: SVGGElement;
 

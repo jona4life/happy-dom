@@ -1,5 +1,4 @@
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import SVGPreserveAspectRatio from './SVGPreserveAspectRatio.js';
 
 /**
@@ -9,7 +8,7 @@ import SVGPreserveAspectRatio from './SVGPreserveAspectRatio.js';
  */
 export default class SVGAnimatedPreserveAspectRatio {
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: () => string;
 	public [PropertySymbol.setAttribute]: (value: string) => void;
 	public [PropertySymbol.baseVal]: SVGPreserveAspectRatio | null = null;
@@ -26,7 +25,7 @@ export default class SVGAnimatedPreserveAspectRatio {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options: {
 			getAttribute: () => string | null;
 			setAttribute: (value: string) => void;

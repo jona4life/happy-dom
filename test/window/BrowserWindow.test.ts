@@ -54,7 +54,7 @@ describe('BrowserWindow', () => {
 	let browser: IBrowser;
 	let browserPage: IBrowserPage;
 	let browserFrame: IBrowserFrame;
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 	let document: Document;
 
 	beforeEach(() => {
@@ -1572,9 +1572,9 @@ describe('BrowserWindow', () => {
 				const jsURL = 'https://localhost:8080/path/to/file.js';
 				const cssResponse = 'body { background-color: red; }';
 				const jsResponse = 'globalThis.test = "test";';
-				let resourceFetchCSSWindow: BrowserWindow | null = null;
+				let resourceFetchCSSWindow: typeof globalThis | null = null;
 				let resourceFetchCSSURL: string | null = null;
-				let resourceFetchJSWindow: BrowserWindow | null = null;
+				let resourceFetchJSWindow: typeof globalThis | null = null;
 				let resourceFetchJSURL: string | null = null;
 				let loadEvent: Event | null = null;
 				let loadEventTarget: EventTarget | null = null;

@@ -2,7 +2,6 @@ import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
 import CSSParser from './utilities/CSSParser.js';
 import CSSRule from './CSSRule.js';
 import MediaList from './MediaList.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 
 /**
@@ -13,7 +12,7 @@ import * as PropertySymbol from '../PropertySymbol.js';
  */
 export default class CSSStyleSheet {
 	// Injected by WindowContextClassExtender
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	public value: string = null;
 	public name: string = null;

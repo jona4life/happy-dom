@@ -1,4 +1,3 @@
-import BrowserWindow from '../window/BrowserWindow.js';
 import { URL } from 'url';
 import IModule from './IModule.js';
 import CSSStyleSheet from '../css/CSSStyleSheet.js';
@@ -8,7 +7,7 @@ import CSSStyleSheet from '../css/CSSStyleSheet.js';
  */
 export default class CSSModule implements IModule {
 	public readonly url: URL;
-	readonly #window: BrowserWindow;
+	readonly #window: typeof globalThis;
 	readonly #source: string;
 	#exports: { default: CSSStyleSheet } | null = null;
 
@@ -19,7 +18,7 @@ export default class CSSModule implements IModule {
 	 * @param url Module URL.
 	 * @param source Source code.
 	 */
-	constructor(window: BrowserWindow, url: URL, source: string) {
+	constructor(window: typeof globalThis, url: URL, source: string) {
 		this.#window = window;
 		this.url = url;
 		this.#source = source;

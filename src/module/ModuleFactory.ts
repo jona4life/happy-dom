@@ -7,7 +7,6 @@ import UnresolvedModule from './UnresolvedModule.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
 import ResourceFetch from '../fetch/ResourceFetch.js';
 import ECMAScriptModule from './ECMAScriptModule.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import Location from '../location/Location.js';
 
 /**
@@ -25,7 +24,7 @@ export default class ModuleFactory {
 	 * @param [options.with.type] Module type.
 	 */
 	public static async getModule(
-		window: BrowserWindow,
+		window: typeof globalThis,
 		parentURL: URL | Location,
 		url: string,
 		options?: { with?: { type?: string } }
@@ -99,7 +98,7 @@ export default class ModuleFactory {
 	 * @param parentURL Parent URL.
 	 * @param url Module URL.
 	 */
-	private static getURL(window: BrowserWindow, parentURL: URL | Location, url: string): URL {
+	private static getURL(window: typeof globalThis, parentURL: URL | Location, url: string): URL {
 		const parentURLString = parentURL.href;
 		const absoluteURL = new URL(url, parentURLString);
 		const absoluteURLString = absoluteURL.href;

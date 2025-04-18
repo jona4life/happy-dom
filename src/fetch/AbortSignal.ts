@@ -2,7 +2,6 @@ import EventTarget from '../event/EventTarget.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 import Event from '../event/Event.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * AbortSignal.
@@ -11,8 +10,8 @@ import BrowserWindow from '../window/BrowserWindow.js';
  */
 export default class AbortSignal extends EventTarget {
 	// Injected by WindowContextClassExtender
-	protected declare static [PropertySymbol.window]: BrowserWindow;
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare static [PropertySymbol.window]: typeof globalThis;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	// Internal properties
 	public [PropertySymbol.aborted]: boolean = false;

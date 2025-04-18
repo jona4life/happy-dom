@@ -1,6 +1,5 @@
 import SVGTransformList from './SVGTransformList.js';
 import * as PropertySymbol from '../PropertySymbol.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * The SVGAnimatedTransformList interface is used for attributes which take a list of numbers and which can be animated.
@@ -9,7 +8,7 @@ import BrowserWindow from '../window/BrowserWindow.js';
  */
 export default class SVGAnimatedTransformList {
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: () => string;
 	public [PropertySymbol.setAttribute]: (value: string) => void;
 	public [PropertySymbol.baseVal]: SVGTransformList | null = null;
@@ -26,7 +25,7 @@ export default class SVGAnimatedTransformList {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options: {
 			getAttribute: () => string | null;
 			setAttribute: (value: string) => void;

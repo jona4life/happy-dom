@@ -1,6 +1,5 @@
 import File from '../../file/File.js';
 import FormData from '../../form-data/FormData.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 
 enum MultipartParserStateEnum {
 	boundary = 0,
@@ -44,7 +43,7 @@ export default class MultipartReader {
 	 * @param formData Form data.
 	 * @param boundary Boundary.
 	 */
-	constructor(window: BrowserWindow, boundary: string) {
+	constructor(window: typeof globalThis, boundary: string) {
 		const boundaryHeader = `--${boundary}`;
 		this.boundary = new Uint8Array(boundaryHeader.length);
 		this.formData = new window.FormData();

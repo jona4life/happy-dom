@@ -1,4 +1,3 @@
-import BrowserWindow from './BrowserWindow.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 
 import DocumentImplementation from '../nodes/document/Document.js';
@@ -58,7 +57,7 @@ export default class WindowContextClassExtender {
 	 *
 	 * @param window Window.
 	 */
-	public static extendClasses(window: BrowserWindow): void {
+	public static extendClasses(window: typeof globalThis): void {
 		/* eslint-disable jsdoc/require-jsdoc */
 
 		// Document
@@ -179,6 +178,7 @@ export default class WindowContextClassExtender {
 		// XMLHttpRequestEventTarget
 		class EventTarget extends EventTargetImplementation {}
 		EventTarget.prototype[PropertySymbol.window] = window;
+		// @ts-ignore
 		(<typeof EventTarget>window.EventTarget) = EventTarget;
 
 		// XMLHttpRequestUpload
@@ -195,12 +195,14 @@ export default class WindowContextClassExtender {
 		// AbortController
 		class AbortController extends AbortControllerImplementation {}
 		AbortController.prototype[PropertySymbol.window] = window;
+		// @ts-ignore
 		(<typeof AbortController>window.AbortController) = AbortController;
 
 		// AbortSignal
 		class AbortSignal extends AbortSignalImplementation {}
 		AbortSignal.prototype[PropertySymbol.window] = window;
 		AbortSignal[PropertySymbol.window] = window;
+		// @ts-ignore
 		(<typeof AbortSignal>window.AbortSignal) = AbortSignal;
 
 		// FormData

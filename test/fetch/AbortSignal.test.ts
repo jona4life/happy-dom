@@ -6,7 +6,7 @@ import Window from '../../src/window/Window.js';
 import DOMException from '../../src/exception/DOMException.js';
 
 describe('AbortSignal', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

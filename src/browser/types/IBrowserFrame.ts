@@ -1,6 +1,5 @@
 import AsyncTaskManager from '../../async-task-manager/AsyncTaskManager.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import Document from '../../nodes/document/Document.js';
 import IBrowserPage from './IBrowserPage.js';
 import Response from '../../fetch/Response.js';
@@ -17,7 +16,7 @@ export default interface IBrowserFrame {
 	readonly childFrames: IBrowserFrame[];
 	readonly parentFrame: IBrowserFrame | null;
 	readonly page: IBrowserPage;
-	readonly window: BrowserWindow;
+	window: typeof globalThis;
 	readonly document: Document;
 	content: string;
 	url: string;
@@ -25,7 +24,7 @@ export default interface IBrowserFrame {
 	[PropertySymbol.asyncTaskManager]: AsyncTaskManager;
 	[PropertySymbol.listeners]: { navigation: Array<() => void> };
 	[PropertySymbol.openerFrame]: IBrowserFrame | null;
-	[PropertySymbol.openerWindow]: BrowserWindow | CrossOriginBrowserWindow | null;
+	[PropertySymbol.openerWindow]: typeof globalThis | CrossOriginBrowserWindow | null;
 	[PropertySymbol.popup]: boolean;
 
 	/**

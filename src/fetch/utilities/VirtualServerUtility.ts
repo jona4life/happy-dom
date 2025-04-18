@@ -1,4 +1,3 @@
-import BrowserWindow from '../../window/BrowserWindow.js';
 import WindowBrowserContext from '../../window/WindowBrowserContext.js';
 import Path from 'path';
 import Response from '../Response.js';
@@ -17,7 +16,7 @@ export default class VirtualServerUtility {
 	 * @param window Window.
 	 * @param requestURL Request URL.
 	 */
-	public static getFilepath(window: BrowserWindow, requestURL: string): string | null {
+	public static getFilepath(window: typeof globalThis, requestURL: string): string | null {
 		const browserSettings = new WindowBrowserContext(window).getSettings();
 		if (!browserSettings || !browserSettings.fetch.virtualServers) {
 			return null;
@@ -57,7 +56,7 @@ export default class VirtualServerUtility {
 	 * @param window Window.
 	 * @returns 404 response.
 	 */
-	public static getNotFoundResponse(window: BrowserWindow): Response {
+	public static getNotFoundResponse(window: typeof globalThis): Response {
 		return new window.Response(NOT_FOUND_HTML, {
 			status: 404,
 			statusText: 'Not Found',
@@ -73,7 +72,7 @@ export default class VirtualServerUtility {
 	 * @param window Window.
 	 * @returns 404 response.
 	 */
-	public static getNotFoundSyncResponse(window: BrowserWindow): ISyncResponse {
+	public static getNotFoundSyncResponse(window: typeof globalThis): ISyncResponse {
 		return <ISyncResponse>{
 			status: 404,
 			statusText: 'Not Found',

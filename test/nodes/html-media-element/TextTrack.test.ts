@@ -7,7 +7,7 @@ import Window from '../../../src/window/Window.js';
 import EventTarget from '../../../src/event/EventTarget.js';
 
 describe('TextTrack', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

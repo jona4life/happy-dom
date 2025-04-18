@@ -50,7 +50,7 @@ export default class ClipboardItem {
 			);
 		}
 		if (this.#data[type] instanceof Blob) {
-			return this.#data[type];
+			return this.#data[type] as Blob;
 		}
 		return new Blob([await this.#data[type]], { type });
 	}

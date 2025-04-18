@@ -4,7 +4,6 @@ import * as PropertySymbol from '../PropertySymbol.js';
 import IHistoryItem from './IHistoryItem.js';
 import BrowserFrameURL from '../browser/utilities/BrowserFrameURL.js';
 import DOMExceptionNameEnum from '../exception/DOMExceptionNameEnum.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 /**
  * History API.
@@ -14,7 +13,7 @@ import BrowserWindow from '../window/BrowserWindow.js';
  */
 export default class History {
 	#browserFrame: IBrowserFrame;
-	#window: BrowserWindow;
+	#window: typeof globalThis;
 	#currentHistoryItem: IHistoryItem;
 
 	/**
@@ -23,7 +22,7 @@ export default class History {
 	 * @param browserFrame Browser frame.
 	 * @param window Owner window.
 	 */
-	constructor(browserFrame: IBrowserFrame, window: BrowserWindow) {
+	constructor(browserFrame: IBrowserFrame, window: typeof globalThis) {
 		if (!browserFrame) {
 			throw new TypeError('Illegal constructor');
 		}

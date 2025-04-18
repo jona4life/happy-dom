@@ -7,7 +7,7 @@ import SVGAngleTypeEnum from '../../src/svg/SVGAngleTypeEnum.js';
 import SVGAnimatedAngle from '../../src/svg/SVGAnimatedAngle.js';
 
 describe('SVGAnimatedAngle', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

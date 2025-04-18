@@ -16,7 +16,6 @@ import FetchRequestHeaderUtility from './utilities/FetchRequestHeaderUtility.js'
 import IRequestCredentials from './types/IRequestCredentials.js';
 import FormData from '../form-data/FormData.js';
 import MultipartFormDataParser from './multipart/MultipartFormDataParser.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
 import IRequestMode from './types/IRequestMode.js';
 
@@ -30,7 +29,7 @@ import IRequestMode from './types/IRequestMode.js';
  */
 export default class Request implements Request {
 	// Injected by WindowContextClassExtender
-	protected declare [PropertySymbol.window]: BrowserWindow;
+	protected declare [PropertySymbol.window]: typeof globalThis;
 
 	// Public properties
 	public [PropertySymbol.method]: string;
@@ -130,6 +129,7 @@ export default class Request implements Request {
 		this[PropertySymbol.referrerPolicy] = <IRequestReferrerPolicy>(
 			(init?.referrerPolicy || (<Request>input).referrerPolicy || '').toLowerCase()
 		);
+		// @ts-ignore
 		this[PropertySymbol.signal] =
 			init?.signal || (<Request>input).signal || new window.AbortSignal();
 		this[PropertySymbol.referrer] = FetchRequestReferrerUtility.getInitialReferrer(

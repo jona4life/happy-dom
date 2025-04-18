@@ -1,11 +1,9 @@
-import BrowserWindow from '../../window/BrowserWindow.js';
-
 /**
  * Listens for uncaught exceptions coming from Happy DOM on the running Node process and dispatches error events on the Window instance.
  */
 export default class BrowserExceptionObserver {
 	private static listenerCount = 0;
-	private observedWindows: BrowserWindow[] = [];
+	private observedWindows: (typeof globalThis)[] = [];
 	private uncaughtExceptionListener:
 		| ((error: Error, origin: 'uncaughtException' | 'unhandledRejection') => void)
 		| null = null;
@@ -16,7 +14,7 @@ export default class BrowserExceptionObserver {
 	 *
 	 * @param window Browser window.
 	 */
-	public observe(window: BrowserWindow): void {
+	public observe(window: typeof globalThis): void {
 		if (this.observedWindows.includes(window)) {
 			throw new Error('Browser window is already being observed.');
 		}
@@ -35,7 +33,7 @@ export default class BrowserExceptionObserver {
 				return;
 			}
 
-			let targetWindow: BrowserWindow | null = null;
+			let targetWindow: typeof globalThis | null = null;
 
 			for (const window of this.observedWindows) {
 				if (error instanceof window.Error || error instanceof window.DOMException) {
@@ -66,7 +64,7 @@ export default class BrowserExceptionObserver {
 		// The "uncaughtException" event is not always triggered for unhandled rejections.
 		// Therefore we want to use the "unhandledRejection" event as well.
 		this.uncaughtRejectionListener = (error: unknown): void => {
-			let targetWindow: BrowserWindow | null = null;
+			let targetWindow: typeof globalThis | null = null;
 
 			for (const window of this.observedWindows) {
 				if (error instanceof window.Error || error instanceof window.DOMException) {
@@ -104,7 +102,7 @@ export default class BrowserExceptionObserver {
 	 *
 	 * @param window Browser window.
 	 */
-	public disconnect(window: BrowserWindow): void {
+	public disconnect(window: typeof globalThis): void {
 		const index = this.observedWindows.indexOf(window);
 
 		if (index === -1) {

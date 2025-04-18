@@ -2,7 +2,6 @@ import * as PropertySymbol from '../PropertySymbol.js';
 import NamespaceURI from '../config/NamespaceURI.js';
 import Element from '../nodes/element/Element.js';
 import Node from '../nodes/node/Node.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 import XMLDocument from '../nodes/xml-document/XMLDocument.js';
 import XMLEncodeUtility from '../utilities/XMLEncodeUtility.js';
 import NodeFactory from '../nodes/NodeFactory.js';
@@ -89,7 +88,7 @@ const NAMESPACE_URIS = Object.values(NamespaceURI);
  * XML parser.
  */
 export default class XMLParser {
-	private window: BrowserWindow;
+	private window: typeof globalThis;
 	private rootNode: XMLDocument | null = null;
 	private nodeStack: Node[] = [];
 	private tagNameStack: string[] = [];
@@ -113,7 +112,7 @@ export default class XMLParser {
 	 * @param [options.mode] Mode. Defaults to "htmlFragment".
 	 * @param [options.evaluateScripts] Set to "true" to enable script execution
 	 */
-	constructor(window: BrowserWindow) {
+	constructor(window: typeof globalThis) {
 		this.window = window;
 	}
 	/**
@@ -526,6 +525,7 @@ export default class XMLParser {
 						attribute[PropertySymbol.prefix] = namespaceURI && nameParts[1] ? nameParts[0] : null;
 						attribute[PropertySymbol.value] = value;
 
+						// @ts-ignore
 						attributes[PropertySymbol.setNamedItem](attribute);
 
 						// Attributes prefixed with "xmlns:" should be added to the namespace prefix map, so that the prefix can be added as namespaceURI to elements using the prefix.

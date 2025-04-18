@@ -1,6 +1,5 @@
 import Element from '../element/Element.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import Node from '../node/Node.js';
 import NodeIterator from '../../tree-walker/NodeIterator.js';
 import TreeWalker from '../../tree-walker/TreeWalker.js';
@@ -72,7 +71,7 @@ export default class Document extends Node {
 	public [PropertySymbol.implementation] = new DOMImplementation(this);
 	public [PropertySymbol.readyState] = DocumentReadyStateEnum.interactive;
 	public [PropertySymbol.referrer] = '';
-	public [PropertySymbol.defaultView]: BrowserWindow | null = null;
+	public [PropertySymbol.defaultView]: typeof globalThis | null = null;
 	public [PropertySymbol.forms]: HTMLCollection<HTMLFormElement> | null = null;
 	public [PropertySymbol.affectsComputedStyleCache]: ICachedResult[] = [];
 	public [PropertySymbol.ownerDocument]: Document = <Document>(<unknown>null);
@@ -1067,7 +1066,7 @@ export default class Document extends Node {
 	 *
 	 * @returns Default view.
 	 */
-	public get defaultView(): BrowserWindow | null {
+	public get defaultView(): typeof globalThis | null {
 		return this[PropertySymbol.defaultView];
 	}
 
@@ -1745,7 +1744,7 @@ export default class Document extends Node {
 	/**
 	 * Closes the document.
 	 */
-	public close(): void {}
+	public close(): void { }
 
 	/* eslint-disable jsdoc/valid-types */
 
@@ -2051,6 +2050,7 @@ export default class Document extends Node {
 		attribute[PropertySymbol.localName] = parts[1] ?? name;
 		attribute[PropertySymbol.prefix] = parts[1] ? parts[0] : null;
 
+		// @ts-ignore
 		return attribute;
 	}
 
@@ -2074,13 +2074,13 @@ export default class Document extends Node {
 
 		if (!namespaceURI && attribute[PropertySymbol.prefix]) {
 			throw new this[PropertySymbol.window].DOMException(
-				`Failed to execute 'createAttributeNS' on 'Document': The namespace URI provided ('${
-					namespaceURI || ''
+				`Failed to execute 'createAttributeNS' on 'Document': The namespace URI provided ('${namespaceURI || ''
 				}') is not valid for the qualified name provided ('${qualifiedName}').`,
 				DOMExceptionNameEnum.namespaceError
 			);
 		}
 
+		// @ts-ignore
 		return attribute;
 	}
 
@@ -2181,6 +2181,7 @@ export default class Document extends Node {
 		element[PropertySymbol.data] = data;
 		element[PropertySymbol.target] = target;
 
+		// @ts-ignore
 		return element;
 	}
 

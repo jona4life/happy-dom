@@ -6,7 +6,7 @@ import * as PropertySymbol from '../../src/PropertySymbol.js';
 import SVGPointList from '../../src/svg/SVGPointList.js';
 
 describe('SVGPointList', () => {
-	let window: BrowserWindow;
+	let window: typeof globalThis;
 
 	beforeEach(() => {
 		window = new Window();

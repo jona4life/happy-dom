@@ -1,6 +1,5 @@
 import * as PropertySymbol from '../PropertySymbol.js';
 import SVGLengthTypeEnum from './SVGLengthTypeEnum.js';
-import BrowserWindow from '../window/BrowserWindow.js';
 
 const ATTRIBUTE_REGEXP = /^(\d+|\d+\.\d+)(px|em|ex|cm|mm|in|pt|pc|%|)$/;
 
@@ -24,7 +23,7 @@ export default class SVGLength {
 	public static SVG_LENGTHTYPE_PC = SVGLengthTypeEnum.pc;
 
 	// Internal properties
-	public [PropertySymbol.window]: BrowserWindow;
+	public [PropertySymbol.window]: typeof globalThis;
 	public [PropertySymbol.getAttribute]: (() => string | null) | null = null;
 	public [PropertySymbol.setAttribute]: ((value: string) => void) | null = null;
 	public [PropertySymbol.attributeValue]: string | null = null;
@@ -42,7 +41,7 @@ export default class SVGLength {
 	 */
 	constructor(
 		illegalConstructorSymbol: symbol,
-		window: BrowserWindow,
+		window: typeof globalThis,
 		options?: {
 			readOnly?: boolean;
 			getAttribute?: () => string | null;

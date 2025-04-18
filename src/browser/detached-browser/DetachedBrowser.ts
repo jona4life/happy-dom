@@ -4,8 +4,6 @@ import IOptionalBrowserSettings from '../types/IOptionalBrowserSettings.js';
 import BrowserSettingsFactory from '../BrowserSettingsFactory.js';
 import DetachedBrowserPage from './DetachedBrowserPage.js';
 import IBrowser from '../types/IBrowser.js';
-import IBrowserFrame from '../types/IBrowserFrame.js';
-import BrowserWindow from '../../window/BrowserWindow.js';
 import * as PropertySymbol from '../../PropertySymbol.js';
 import BrowserErrorCaptureEnum from '../enums/BrowserErrorCaptureEnum.js';
 import BrowserExceptionObserver from '../utilities/BrowserExceptionObserver.js';
@@ -17,10 +15,7 @@ export default class DetachedBrowser implements IBrowser {
 	public readonly contexts: DetachedBrowserContext[];
 	public readonly settings: IBrowserSettings;
 	public readonly console: Console | null;
-	public readonly windowClass: new (
-		browserFrame: IBrowserFrame,
-		options?: { url?: string; width?: number; height?: number }
-	) => BrowserWindow | null;
+	public readonly windowClass: typeof globalThis | null;
 	public [PropertySymbol.exceptionObserver]: BrowserExceptionObserver | null = null;
 
 	/**
@@ -32,10 +27,7 @@ export default class DetachedBrowser implements IBrowser {
 	 * @param [options.console] Console.
 	 */
 	constructor(
-		windowClass: new (
-			browserFrame: IBrowserFrame,
-			options?: { url?: string; width?: number; height?: number }
-		) => BrowserWindow,
+		windowClass: typeof globalThis,
 		options?: { settings?: IOptionalBrowserSettings; console?: Console }
 	) {
 		this.windowClass = windowClass;
@@ -67,7 +59,7 @@ export default class DetachedBrowser implements IBrowser {
 		await Promise.all(this.contexts.slice().map((context) => context.close()));
 		(<DetachedBrowserContext[]>this.contexts) = [];
 		(<Console | null>this.console) = null;
-		(<(new (browserFrame: IBrowserFrame) => BrowserWindow) | null>this.windowClass) = null;
+		// this.windowClass = null;
 	}
 
 	/**

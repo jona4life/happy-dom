@@ -2,7 +2,7 @@ import BrowserPage from './BrowserPage.js';
 import * as PropertySymbol from '../PropertySymbol.js';
 import AsyncTaskManager from '../async-task-manager/AsyncTaskManager.js';
 import IBrowserFrame from './types/IBrowserFrame.js';
-import BrowserWindow from '../window/BrowserWindow.js';
+import { prepareWindow } from '../window/BrowserWindow.js';
 import CrossOriginBrowserWindow from '../window/CrossOriginBrowserWindow.js';
 import Response from '../fetch/Response.js';
 import IGoToOptions from './types/IGoToOptions.js';
@@ -22,11 +22,11 @@ export default class BrowserFrame implements IBrowserFrame {
 	public readonly childFrames: BrowserFrame[] = [];
 	public readonly parentFrame: BrowserFrame | null = null;
 	public readonly page: BrowserPage;
-	public readonly window: BrowserWindow;
+	public readonly window: typeof globalThis;
 	public [PropertySymbol.asyncTaskManager] = new AsyncTaskManager(this);
 	public [PropertySymbol.listeners]: { navigation: Array<() => void> } = { navigation: [] };
 	public [PropertySymbol.openerFrame]: IBrowserFrame | null = null;
-	public [PropertySymbol.openerWindow]: BrowserWindow | CrossOriginBrowserWindow | null = null;
+	public [PropertySymbol.openerWindow]: typeof globalThis | CrossOriginBrowserWindow | null = null;
 	public [PropertySymbol.popup] = false;
 	public [PropertySymbol.history]: IHistoryItem[] = [
 		{
@@ -47,7 +47,8 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	constructor(page: BrowserPage) {
 		this.page = page;
-		this.window = new BrowserWindow(this);
+		prepareWindow(this);
+		this.window = globalThis;
 
 		// Attach process level error capturing.
 		if (page.context.browser[PropertySymbol.exceptionObserver]) {
@@ -161,7 +162,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public goto(url: string, options?: IGoToOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.navigate({
-			windowClass: BrowserWindow,
+			windowClass: globalThis,
 			frame: this,
 			url: url,
 			goToOptions: options
@@ -175,7 +176,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public goBack(options?: IGoToOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.navigateBack({
-			windowClass: BrowserWindow,
+			windowClass: globalThis,
 			frame: this,
 			goToOptions: options
 		});
@@ -188,7 +189,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public goForward(options?: IGoToOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.navigateForward({
-			windowClass: BrowserWindow,
+			windowClass: globalThis,
 			frame: this,
 			goToOptions: options
 		});
@@ -202,7 +203,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public goSteps(steps?: number, options?: IGoToOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.navigateSteps({
-			windowClass: BrowserWindow,
+			windowClass: globalThis,
 			frame: this,
 			steps: steps,
 			goToOptions: options
@@ -217,7 +218,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public reload(options?: IReloadOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.reload({
-			windowClass: BrowserWindow,
+			windowClass: globalThis,
 			frame: this,
 			goToOptions: options
 		});

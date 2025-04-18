@@ -739,6 +739,7 @@ export default class Element
 				attributeNamespaceURI && nameParts[1] ? nameParts[0] : null;
 			attribute[PropertySymbol.value] = String(value);
 
+			// @ts-ignore
 			this[PropertySymbol.attributes][PropertySymbol.setNamedItem](attribute);
 		}
 	}
@@ -930,6 +931,7 @@ export default class Element
 			this[PropertySymbol.window].ShadowRoot
 		);
 
+		// @ts-ignore
 		this[PropertySymbol.shadowRoot] = shadowRoot;
 
 		shadowRoot[PropertySymbol.host] = this;
