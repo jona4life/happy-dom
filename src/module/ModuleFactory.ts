@@ -5,7 +5,7 @@ import CSSModule from './CSSModule.js';
 import JSONModule from './JSONModule.js';
 import UnresolvedModule from './UnresolvedModule.js';
 import WindowBrowserContext from '../window/WindowBrowserContext.js';
-import ResourceFetch from '../fetch/ResourceFetch.js';
+// import ResourceFetch from '../fetch/ResourceFetch.js';
 import ECMAScriptModule from './ECMAScriptModule.js';
 import Location from '../location/Location.js';
 
@@ -62,10 +62,10 @@ export default class ModuleFactory {
 
 		window[PropertySymbol.modules][type].set(absoluteURLString, unresolvedModule);
 
-		const resourceFetch = new ResourceFetch(window);
-		let source: string;
+		// const resourceFetch = new ResourceFetch(window);
+		// let source: string;
 		try {
-			source = await resourceFetch.fetch(absoluteURL, 'module');
+			// source = await resourceFetch.fetch(absoluteURL, 'module');
 		} catch (error) {
 			unresolvedModule.resolve(error);
 			throw error;
@@ -74,13 +74,13 @@ export default class ModuleFactory {
 
 		switch (type) {
 			case 'json':
-				module = new JSONModule(window, absoluteURL, source);
+				module = new JSONModule(window, absoluteURL, '{}');
 				break;
 			case 'css':
-				module = new CSSModule(window, absoluteURL, source);
+				module = new CSSModule(window, absoluteURL, '');
 				break;
 			case 'esm':
-				module = new ECMAScriptModule(window, absoluteURL, source);
+				module = new ECMAScriptModule(window, absoluteURL, '');
 				break;
 		}
 

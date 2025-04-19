@@ -5,7 +5,7 @@ import Event from '../../event/Event.js';
 import DOMTokenList from '../../dom/DOMTokenList.js';
 import Attr from '../attr/Attr.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
-import ResourceFetch from '../../fetch/ResourceFetch.js';
+// import ResourceFetch from '../../fetch/ResourceFetch.js';
 import WindowBrowserContext from '../../window/WindowBrowserContext.js';
 // import Fetch from '../../fetch/Fetch.js';
 import BrowserErrorCaptureEnum from '../../browser/enums/BrowserErrorCaptureEnum.js';
@@ -451,20 +451,20 @@ export default class HTMLLinkElement extends HTMLElement {
 			return;
 		}
 
-		const resourceFetch = new ResourceFetch(window);
+		// const resourceFetch = new ResourceFetch(window);
 		const readyStateManager = window[PropertySymbol.readyStateManager];
 
 		this.#loadedStyleSheetURL = absoluteURL;
 
 		readyStateManager.startTask();
 
-		let code: string | null = null;
+		// let code: string | null = null;
 		let error: Error | null = null;
 
 		try {
-			code = await resourceFetch.fetch(absoluteURL, 'style', {
-				credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
-			});
+			// code = await resourceFetch.fetch(absoluteURL, 'style', {
+			// 	credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
+			// });
 		} catch (e) {
 			error = e;
 		}
@@ -478,7 +478,7 @@ export default class HTMLLinkElement extends HTMLElement {
 			const styleSheet = new this[PropertySymbol.ownerDocument][
 				PropertySymbol.window
 			].CSSStyleSheet();
-			styleSheet.replaceSync(code);
+			// styleSheet.replaceSync(code);
 			this[PropertySymbol.sheet] = styleSheet;
 
 			// Computed style cache is affected by all mutations.

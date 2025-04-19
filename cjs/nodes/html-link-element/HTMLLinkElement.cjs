@@ -41,7 +41,7 @@ const HTMLElement_js_1 = __importDefault(require("../html-element/HTMLElement.cj
 const Event_js_1 = __importDefault(require("../../event/Event.cjs"));
 const DOMTokenList_js_1 = __importDefault(require("../../dom/DOMTokenList.cjs"));
 const DOMExceptionNameEnum_js_1 = __importDefault(require("../../exception/DOMExceptionNameEnum.cjs"));
-const ResourceFetch_js_1 = __importDefault(require("../../fetch/ResourceFetch.cjs"));
+// import ResourceFetch from '../../fetch/ResourceFetch.cjs';
 const WindowBrowserContext_js_1 = __importDefault(require("../../window/WindowBrowserContext.cjs"));
 // import Fetch from '../../fetch/Fetch.cjs';
 const BrowserErrorCaptureEnum_js_1 = __importDefault(require("../../browser/enums/BrowserErrorCaptureEnum.cjs"));
@@ -412,16 +412,16 @@ class HTMLLinkElement extends HTMLElement_js_1.default {
             }
             return;
         }
-        const resourceFetch = new ResourceFetch_js_1.default(window);
+        // const resourceFetch = new ResourceFetch(window);
         const readyStateManager = window[PropertySymbol.readyStateManager];
         this.#loadedStyleSheetURL = absoluteURL;
         readyStateManager.startTask();
-        let code = null;
+        // let code: string | null = null;
         let error = null;
         try {
-            code = await resourceFetch.fetch(absoluteURL, 'style', {
-                credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
-            });
+            // code = await resourceFetch.fetch(absoluteURL, 'style', {
+            // 	credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin'
+            // });
         }
         catch (e) {
             error = e;
@@ -433,7 +433,7 @@ class HTMLLinkElement extends HTMLElement_js_1.default {
         }
         else {
             const styleSheet = new this[PropertySymbol.ownerDocument][PropertySymbol.window].CSSStyleSheet();
-            styleSheet.replaceSync(code);
+            // styleSheet.replaceSync(code);
             this[PropertySymbol.sheet] = styleSheet;
             // Computed style cache is affected by all mutations.
             const document = this[PropertySymbol.ownerDocument];

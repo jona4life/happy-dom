@@ -5,7 +5,7 @@ import WindowBrowserContext from '../../window/WindowBrowserContext.js';
 import BrowserErrorCaptureEnum from '../../browser/enums/BrowserErrorCaptureEnum.js';
 import Attr from '../attr/Attr.js';
 import DOMExceptionNameEnum from '../../exception/DOMExceptionNameEnum.js';
-import ResourceFetch from '../../fetch/ResourceFetch.js';
+// import ResourceFetch from '../../fetch/ResourceFetch.js';
 import ECMAScriptModule from '../../module/ECMAScriptModule.js';
 import ModuleFactory from '../../module/ModuleFactory.js';
 import DOMTokenList from '../../dom/DOMTokenList.js';
@@ -660,9 +660,9 @@ export default class HTMLScriptElement extends HTMLElement {
 
 		this.#loadedScriptURL = absoluteURLString;
 
-		const resourceFetch = new ResourceFetch(window);
+		// const resourceFetch = new ResourceFetch(window);
 		const async = this.getAttribute('async') !== null || this.getAttribute('defer') !== null;
-		let code: string | null = null;
+		// let code: string | null = null;
 
 		if (async) {
 			const readyStateManager = window[PropertySymbol.readyStateManager];
@@ -670,10 +670,10 @@ export default class HTMLScriptElement extends HTMLElement {
 			readyStateManager.startTask();
 
 			try {
-				code = await resourceFetch.fetch(absoluteURLString, 'script', {
-					credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin',
-					referrerPolicy: this.referrerPolicy
-				});
+				// code = await resourceFetch.fetch(absoluteURLString, 'script', {
+				// 	credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin',
+				// 	referrerPolicy: this.referrerPolicy
+				// });
 			} catch (error) {
 				browserFrame.page?.console.error(error);
 				this.dispatchEvent(new Event('error'));
@@ -683,10 +683,10 @@ export default class HTMLScriptElement extends HTMLElement {
 			readyStateManager.endTask();
 		} else {
 			try {
-				code = resourceFetch.fetchSync(absoluteURLString, 'script', {
-					credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin',
-					referrerPolicy: this.referrerPolicy
-				});
+				// code = resourceFetch.fetchSync(absoluteURLString, 'script', {
+				// 	credentials: this.crossOrigin === 'use-credentials' ? 'include' : 'same-origin',
+				// 	referrerPolicy: this.referrerPolicy
+				// });
 			} catch (error) {
 				browserFrame.page?.console.error(error);
 				this.dispatchEvent(new Event('error'));
@@ -696,16 +696,16 @@ export default class HTMLScriptElement extends HTMLElement {
 
 		this[PropertySymbol.ownerDocument][PropertySymbol.currentScript] = this;
 
-		code = '//# sourceURL=' + absoluteURL + '\n' + code;
+		// code = '//# sourceURL=' + absoluteURL + '\n' + code;
 
 		if (
 			browserSettings.disableErrorCapturing ||
 			browserSettings.errorCapture !== BrowserErrorCaptureEnum.tryAndCatch
 		) {
-			this[PropertySymbol.window].eval(code);
+			// this[PropertySymbol.window].eval(code);
 		} else {
 			try {
-				this[PropertySymbol.window].eval(code);
+				// this[PropertySymbol.window].eval(code);
 			} catch (error) {
 				this[PropertySymbol.ownerDocument][PropertySymbol.currentScript] = null;
 				window[PropertySymbol.dispatchError](error);

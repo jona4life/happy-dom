@@ -42,7 +42,7 @@ const CSSModule_js_1 = __importDefault(require("./CSSModule.cjs"));
 const JSONModule_js_1 = __importDefault(require("./JSONModule.cjs"));
 const UnresolvedModule_js_1 = __importDefault(require("./UnresolvedModule.cjs"));
 const WindowBrowserContext_js_1 = __importDefault(require("../window/WindowBrowserContext.cjs"));
-const ResourceFetch_js_1 = __importDefault(require("../fetch/ResourceFetch.cjs"));
+// import ResourceFetch from '../fetch/ResourceFetch.cjs';
 const ECMAScriptModule_js_1 = __importDefault(require("./ECMAScriptModule.cjs"));
 /**
  * Module factory.
@@ -81,10 +81,10 @@ class ModuleFactory {
         }
         const unresolvedModule = new UnresolvedModule_js_1.default(window, absoluteURL);
         window[PropertySymbol.modules][type].set(absoluteURLString, unresolvedModule);
-        const resourceFetch = new ResourceFetch_js_1.default(window);
-        let source;
+        // const resourceFetch = new ResourceFetch(window);
+        // let source: string;
         try {
-            source = await resourceFetch.fetch(absoluteURL, 'module');
+            // source = await resourceFetch.fetch(absoluteURL, 'module');
         }
         catch (error) {
             unresolvedModule.resolve(error);
@@ -93,13 +93,13 @@ class ModuleFactory {
         let module;
         switch (type) {
             case 'json':
-                module = new JSONModule_js_1.default(window, absoluteURL, source);
+                module = new JSONModule_js_1.default(window, absoluteURL, '{}');
                 break;
             case 'css':
-                module = new CSSModule_js_1.default(window, absoluteURL, source);
+                module = new CSSModule_js_1.default(window, absoluteURL, '');
                 break;
             case 'esm':
-                module = new ECMAScriptModule_js_1.default(window, absoluteURL, source);
+                module = new ECMAScriptModule_js_1.default(window, absoluteURL, '');
                 break;
         }
         window[PropertySymbol.modules][type].set(absoluteURLString, module);
