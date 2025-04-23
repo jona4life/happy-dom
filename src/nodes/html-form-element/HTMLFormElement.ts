@@ -690,7 +690,7 @@ export default class HTMLFormElement extends HTMLElement {
 			}
 
 			BrowserFrameNavigator.navigate({
-				windowClass: globalThis,
+				windowClass: globalThis['window'],
 				frame: targetFrame,
 				url: url.href,
 				goToOptions: {
@@ -702,7 +702,7 @@ export default class HTMLFormElement extends HTMLElement {
 		}
 
 		BrowserFrameNavigator.navigate({
-			windowClass: globalThis,
+			windowClass: globalThis['window'],
 			frame: targetFrame,
 			method: method,
 			url: action,

@@ -36,7 +36,7 @@ export default class Window {
 		console?: Console;
 		settings?: IOptionalBrowserSettings;
 	}) {
-		const browser = new DetachedBrowser(globalThis, {
+		const browser = new DetachedBrowser(globalThis['window'], {
 			console: options?.console,
 			settings: options?.settings
 		});

@@ -161,7 +161,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public goto(url: string, options?: IGoToOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.navigate({
-			windowClass: globalThis,
+			windowClass: globalThis['window'],
 			frame: this,
 			url: url,
 			goToOptions: options
@@ -175,7 +175,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public goBack(options?: IGoToOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.navigateBack({
-			windowClass: globalThis,
+			windowClass: globalThis['window'],
 			frame: this,
 			goToOptions: options
 		});
@@ -188,7 +188,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public goForward(options?: IGoToOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.navigateForward({
-			windowClass: globalThis,
+			windowClass: globalThis['window'],
 			frame: this,
 			goToOptions: options
 		});
@@ -202,7 +202,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public goSteps(steps?: number, options?: IGoToOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.navigateSteps({
-			windowClass: globalThis,
+			windowClass: globalThis['window'],
 			frame: this,
 			steps: steps,
 			goToOptions: options
@@ -217,7 +217,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	 */
 	public reload(options?: IReloadOptions): Promise<Response | null> {
 		return BrowserFrameNavigator.reload({
-			windowClass: globalThis,
+			windowClass: globalThis['window'],
 			frame: this,
 			goToOptions: options
 		});
