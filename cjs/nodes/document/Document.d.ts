@@ -500,6 +500,12 @@ export default class Document extends Node {
      */
     get currentScript(): HTMLScriptElement;
     /**
+     * Sets the currently executing script element.
+     *
+     * @param script the currently executing script element.
+     */
+    set currentScript(script: HTMLScriptElement);
+    /**
      * Returns content type.
      *
      * @returns Content type.

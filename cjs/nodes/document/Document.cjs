@@ -1134,6 +1134,14 @@ class Document extends Node_js_1.default {
         return this[PropertySymbol.currentScript];
     }
     /**
+     * Sets the currently executing script element.
+     *
+     * @param script the currently executing script element.
+     */
+    set currentScript(script) {
+        this[PropertySymbol.currentScript] = script;
+    }
+    /**
      * Returns content type.
      *
      * @returns Content type.
