@@ -625,7 +625,7 @@ class HTMLFormElement extends HTMLElement_js_1.default {
                 }
             }
             BrowserFrameNavigator_js_1.default.navigate({
-                windowClass: globalThis,
+                windowClass: globalThis['window'],
                 frame: targetFrame,
                 url: url.href,
                 goToOptions: {
@@ -635,7 +635,7 @@ class HTMLFormElement extends HTMLElement_js_1.default {
             return;
         }
         BrowserFrameNavigator_js_1.default.navigate({
-            windowClass: globalThis,
+            windowClass: globalThis['window'],
             frame: targetFrame,
             method: method,
             url: action,

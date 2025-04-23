@@ -28,7 +28,7 @@ class Window {
      * @param [options.settings] Settings.
      */
     constructor(options) {
-        const browser = new DetachedBrowser_js_1.default(globalThis, {
+        const browser = new DetachedBrowser_js_1.default(globalThis['window'], {
             console: options?.console,
             settings: options?.settings
         });
@@ -43,7 +43,7 @@ class Window {
         (0, BrowserWindow_js_1.prepareWindow)(browserFrame, {
             url: options?.url
         });
-        browserFrame.window = globalThis;
+        browserFrame.window = globalThis['window'];
         globalThis.happyDOM = new DetachedWindowAPI_js_1.default(browserFrame);
     }
 }

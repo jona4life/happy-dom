@@ -78,7 +78,7 @@ class DetachedBrowserFrame {
         this.page = page;
         if (page.context.browser.contexts[0]?.pages[0]?.mainFrame) {
             (0, BrowserWindow_js_1.prepareWindow)(this);
-            this.window = globalThis;
+            this.window = globalThis['window'];
         }
         // Attach process level error capturing.
         if (page.context.browser[PropertySymbol.exceptionObserver]) {

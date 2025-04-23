@@ -597,7 +597,7 @@ const prepareWindow = (browserFrame, options) => {
     globalThis['onload'] = null;
     globalThis['onerror'] = null;
     // Public properties.
-    globalThis['window'] = globalThis;
+    globalThis['window'] = globalThis['window'];
     globalThis['customElements'] = new CustomElementRegistry_js_1.default(globalThis);
     globalThis['performance'] = performance;
     globalThis['screenLeft'] = 0;
@@ -616,10 +616,10 @@ const prepareWindow = (browserFrame, options) => {
     // See EventTarget class.
     globalThis[PropertySymbol.mutationObservers] = [];
     globalThis[PropertySymbol.readyStateManager] = new DocumentReadyStateManager_js_1.default(globalThis);
-    globalThis[PropertySymbol.self] = globalThis;
-    globalThis[PropertySymbol.top] = globalThis;
-    globalThis[PropertySymbol.parent] = globalThis;
-    globalThis[PropertySymbol.window] = globalThis;
+    globalThis[PropertySymbol.self] = globalThis['window'];
+    globalThis[PropertySymbol.top] = globalThis['window'];
+    globalThis[PropertySymbol.parent] = globalThis['window'];
+    globalThis[PropertySymbol.window] = globalThis['window'];
     globalThis[PropertySymbol.internalId] = -1;
     globalThis[PropertySymbol.customElementReactionStack] = new CustomElementReactionStack_js_1.default(globalThis);
     globalThis[PropertySymbol.modules] = {
@@ -1075,10 +1075,10 @@ const prepareWindow = (browserFrame, options) => {
     globalThis[PropertySymbol.history] = new History_js_1.default(globalThis._browserFrame, globalThis);
     WindowBrowserContext_js_1.default.setWindowBrowserFrameRelation(globalThis, globalThis._browserFrame);
     globalThis[PropertySymbol.setupVMContext]();
-    WindowContextClassExtender_js_1.default.extendClasses(globalThis);
+    WindowContextClassExtender_js_1.default.extendClasses(globalThis['window']);
     // Document
     globalThis.document = new globalThis.HTMLDocument();
-    globalThis.document[PropertySymbol.defaultView] = globalThis;
+    globalThis.document[PropertySymbol.defaultView] = globalThis['window'];
     // Ready state manager
     globalThis[PropertySymbol.readyStateManager].waitUntilComplete().then(() => {
         globalThis.document[PropertySymbol.readyState] = DocumentReadyStateEnum_js_1.default.complete;
@@ -1086,7 +1086,7 @@ const prepareWindow = (browserFrame, options) => {
         // Not sure why target is set to document here, but this is how it works in the browser
         const loadEvent = new Event_js_1.default('load');
         // @ts-ignore
-        loadEvent[PropertySymbol.currentTarget] = globalThis;
+        loadEvent[PropertySymbol.currentTarget] = globalThis['window'];
         loadEvent[PropertySymbol.target] = globalThis.document;
         loadEvent[PropertySymbol.eventPhase] = EventPhaseEnum_js_1.default.atTarget;
         globalThis.dispatchEvent(loadEvent);

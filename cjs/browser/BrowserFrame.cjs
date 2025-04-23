@@ -75,7 +75,7 @@ class BrowserFrame {
     constructor(page) {
         this.page = page;
         (0, BrowserWindow_js_1.prepareWindow)(this);
-        this.window = globalThis;
+        this.window = globalThis['window'];
         // Attach process level error capturing.
         if (page.context.browser[PropertySymbol.exceptionObserver]) {
             page.context.browser[PropertySymbol.exceptionObserver].observe(this.window);
@@ -173,7 +173,7 @@ class BrowserFrame {
      */
     goto(url, options) {
         return BrowserFrameNavigator_js_1.default.navigate({
-            windowClass: globalThis,
+            windowClass: globalThis['window'],
             frame: this,
             url: url,
             goToOptions: options
@@ -186,7 +186,7 @@ class BrowserFrame {
      */
     goBack(options) {
         return BrowserFrameNavigator_js_1.default.navigateBack({
-            windowClass: globalThis,
+            windowClass: globalThis['window'],
             frame: this,
             goToOptions: options
         });
@@ -198,7 +198,7 @@ class BrowserFrame {
      */
     goForward(options) {
         return BrowserFrameNavigator_js_1.default.navigateForward({
-            windowClass: globalThis,
+            windowClass: globalThis['window'],
             frame: this,
             goToOptions: options
         });
@@ -211,7 +211,7 @@ class BrowserFrame {
      */
     goSteps(steps, options) {
         return BrowserFrameNavigator_js_1.default.navigateSteps({
-            windowClass: globalThis,
+            windowClass: globalThis['window'],
             frame: this,
             steps: steps,
             goToOptions: options
@@ -225,7 +225,7 @@ class BrowserFrame {
      */
     reload(options) {
         return BrowserFrameNavigator_js_1.default.reload({
-            windowClass: globalThis,
+            windowClass: globalThis['window'],
             frame: this,
             goToOptions: options
         });
