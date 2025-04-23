@@ -131,7 +131,7 @@ export default class BrowserFrameNavigator {
 		frame[PropertySymbol.asyncTaskManager] = new AsyncTaskManager(frame);
 		// @ts-ignore
 		prepareWindow(frame, { url: targetURL.href, width, height });
-		frame.window = globalThis;
+		frame.window = globalThis['window'];
 		frame.window[PropertySymbol.parent] = parentWindow;
 		frame.window[PropertySymbol.top] = topWindow;
 		(<number>frame.window.devicePixelRatio) = devicePixelRatio;

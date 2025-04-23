@@ -47,7 +47,7 @@ export default class BrowserFrame implements IBrowserFrame {
 	constructor(page: BrowserPage) {
 		this.page = page;
 		prepareWindow(this);
-		this.window = globalThis;
+		this.window = globalThis['window'];
 
 		// Attach process level error capturing.
 		if (page.context.browser[PropertySymbol.exceptionObserver]) {

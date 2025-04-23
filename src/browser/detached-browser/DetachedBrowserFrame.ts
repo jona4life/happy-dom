@@ -50,7 +50,7 @@ export default class DetachedBrowserFrame implements IBrowserFrame {
 		this.page = page;
 		if (page.context.browser.contexts[0]?.pages[0]?.mainFrame) {
 			prepareWindow(this);
-			this.window = globalThis;
+			this.window = globalThis['window'];
 		}
 
 		// Attach process level error capturing.
