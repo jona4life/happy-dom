@@ -1423,6 +1423,11 @@ export default class Document extends Node {
 		return this[PropertySymbol.currentScript];
 	}
 
+	/**
+	 * Sets the currently executing script element.
+	 *
+	 * @param script the currently executing script element.
+	 */
 	public set currentScript(script: HTMLScriptElement) {
 		this[PropertySymbol.currentScript] = script;
 	}
