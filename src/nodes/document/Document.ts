@@ -1423,6 +1423,10 @@ export default class Document extends Node {
 		return this[PropertySymbol.currentScript];
 	}
 
+	public set currentScript(script: HTMLScriptElement) {
+		this[PropertySymbol.currentScript] = script;
+	}
+
 	/**
 	 * Returns content type.
 	 *
