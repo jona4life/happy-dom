@@ -277,6 +277,7 @@ const IS_NODE_JS_TIMEOUT_ENVIRONMENT = setTimeout.toString().includes('new Timeo
 // }
 
 export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: string }): void => {
+	
 	// Assigning Node-related classes to globalThis
 	globalThis['Node'] = Node;
 	globalThis['Attr'] = Attr;
@@ -574,7 +575,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 	globalThis['onerror'] = null;
 
 	// Public properties.
-	globalThis['window'] = globalThis;
+	globalThis['window'] = globalThis['window'];
 	globalThis['customElements'] = new CustomElementRegistry(globalThis);
 	globalThis['performance'] = performance;
 	globalThis['screenLeft'] = 0;
@@ -596,10 +597,10 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 	// See EventTarget class.
 	globalThis[PropertySymbol.mutationObservers] = [];
 	globalThis[PropertySymbol.readyStateManager] = new DocumentReadyStateManager(globalThis);
-	globalThis[PropertySymbol.self] = globalThis;
-	globalThis[PropertySymbol.top] = globalThis;
-	globalThis[PropertySymbol.parent] = globalThis;
-	globalThis[PropertySymbol.window] = globalThis;
+	globalThis[PropertySymbol.self] = globalThis['window'];
+	globalThis[PropertySymbol.top] = globalThis['window'];
+	globalThis[PropertySymbol.parent] = globalThis['window'];
+	globalThis[PropertySymbol.window] = globalThis['window'];
 	globalThis[PropertySymbol.internalId] = -1;
 	globalThis[PropertySymbol.customElementReactionStack] = new CustomElementReactionStack(
 		globalThis
@@ -1166,7 +1167,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 
 	// Document
 	globalThis.document = new globalThis.HTMLDocument();
-	globalThis.document[PropertySymbol.defaultView] = globalThis;
+	globalThis.document[PropertySymbol.defaultView] = globalThis['window'];
 
 	// Ready state manager
 	globalThis[PropertySymbol.readyStateManager].waitUntilComplete().then(() => {
@@ -1177,7 +1178,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 		const loadEvent = new Event('load');
 
 		// @ts-ignore
-		loadEvent[PropertySymbol.currentTarget] = globalThis;
+		loadEvent[PropertySymbol.currentTarget] = globalThis['window'];
 		loadEvent[PropertySymbol.target] = globalThis.document;
 		loadEvent[PropertySymbol.eventPhase] = EventPhaseEnum.atTarget;
 

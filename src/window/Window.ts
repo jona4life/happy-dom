@@ -54,7 +54,7 @@ export default class Window {
 			url: options?.url
 		});
 
-		browserFrame.window = globalThis;
+		browserFrame.window = globalThis['window'];
 
 		globalThis.happyDOM = new DetachedWindowAPI(browserFrame);
 	}
