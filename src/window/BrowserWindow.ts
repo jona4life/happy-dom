@@ -277,7 +277,7 @@ const IS_NODE_JS_TIMEOUT_ENVIRONMENT = setTimeout.toString().includes('new Timeo
 // }
 
 export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: string }): void => {
-	
+
 	// Assigning Node-related classes to globalThis
 	globalThis['Node'] = Node;
 	globalThis['Attr'] = Attr;
@@ -1163,7 +1163,7 @@ export const prepareWindow = (browserFrame: IBrowserFrame, options?: { url?: str
 
 	globalThis[PropertySymbol.setupVMContext]();
 
-	WindowContextClassExtender.extendClasses(globalThis);
+	WindowContextClassExtender.extendClasses(globalThis['window']);
 
 	// Document
 	globalThis.document = new globalThis.HTMLDocument();
